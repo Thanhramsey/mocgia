@@ -27,7 +27,7 @@ return [
     'footer_cta_title' => 'Bạn đang tìm kiếm dịch vụ hoặc đối tác uy tín?',
     'footer_cta_desc' => 'Hãy liên hệ với Ngân Gia Nguyễn ngay hôm nay để nhận thông tin tư vấn dịch vụ chi tiết và ưu đãi tốt nhất.',
     'contact_now' => 'Liên Hệ Ngay',
-    'footer_company_desc' => 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN - nhà cung cấp giải pháp vật liệu gỗ công nghiệp cao cấp và thiết kế nội thất may đo hàng đầu.',
+    'footer_company_desc' => 'Nội thất Ngân Gia Nguyễn - Nhà cung cấp giải pháp vật liệu gỗ công nghiệp cao cấp và thiết kế thi công nội thất may đo hàng đầu.',
     'quick_links' => 'Liên Kết Nhanh',
     'news_events' => 'Tin tức & Sự kiện',
     'contact_info' => 'Thông Tin Liên Hệ',

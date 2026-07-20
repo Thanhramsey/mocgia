@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Khối ảnh mô phỏng - Địa chỉ</label>
-                                    <input type="text" name="home_intro_card_address" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_address', 'Trụ sở tại: 77 Quang Trung, thị trấn Chư Ty, Đức Cơ, Gia Lai')) ?>">
+                                    <input type="text" name="home_intro_card_address" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_address', 'VP: 126 Lý Thái Tổ, P. Diên Hồng | Xưởng: 772 Nguyễn Chí Thanh, P. An Phú, Gia Lai')) ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Feature 1 - Tiêu đề</label>
@@ -365,7 +365,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-semibold">Địa chỉ trụ sở</label>
-                                    <input type="text" name="about_address" class="form-control rounded-3" value="<?= esc(get_setting('about_address', '77 Quang Trung, khu phố II, Thị trấn Chư Ty, Huyện Đức Cơ, Tỉnh Gia Lai')) ?>">
+                                    <input type="text" name="about_address" class="form-control rounded-3" value="<?= esc(get_setting('about_address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai')) ?>">
                                 </div>
                             </div>
                         </div>

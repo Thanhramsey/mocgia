@@ -336,7 +336,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Khối ảnh mô phỏng - Địa chỉ</label>
-                                            <input type="text" name="home_intro_card_address" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_address', 'Trụ sở tại: 77 Quang Trung, thị trấn Chư Ty, Đức Cơ, Gia Lai')) ?>">
+                                            <input type="text" name="home_intro_card_address" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_address', 'VP: 126 Lý Thái Tổ, P. Diên Hồng | Xưởng: 772 Nguyễn Chí Thanh, P. An Phú, Gia Lai')) ?>">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Feature 1 - Tiêu đề</label>
@@ -536,7 +536,7 @@
                                         <div class="col-md-3"><label class="form-label fw-semibold">Mã số thuế</label><input type="text" name="about_tax_code" class="form-control rounded-3" value="<?= esc(get_setting('about_tax_code', '0314436582')) ?>"></div>
                                         <div class="col-md-5"><label class="form-label fw-semibold">Đại diện pháp luật</label><input type="text" name="about_legal_rep" class="form-control rounded-3" value="<?= esc(get_setting('about_legal_rep', 'TRẦN MINH ĐỨC')) ?>"></div>
                                         <div class="col-md-4"><label class="form-label fw-semibold">Ngày cấp phép</label><input type="text" name="about_license_date" class="form-control rounded-3" value="<?= esc(get_setting('about_license_date', '30/05/2017')) ?>"></div>
-                                        <div class="col-12"><label class="form-label fw-semibold">Địa chỉ trụ sở</label><input type="text" name="about_address" class="form-control rounded-3" value="<?= esc(get_setting('about_address', '128 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh')) ?>"></div>
+                                        <div class="col-12"><label class="form-label fw-semibold">Địa chỉ trụ sở</label><input type="text" name="about_address" class="form-control rounded-3" value="<?= esc(get_setting('about_address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai')) ?>"></div>
                                     </div>
                                 </div>
                             </div>

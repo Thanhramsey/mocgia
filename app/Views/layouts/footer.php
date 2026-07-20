@@ -55,8 +55,12 @@
                 <h4 class="text-dark"><?= esc(lang('Site.contact_info')) ?></h4>
                 <div class="footer-contact-info">
                     <p>
-                        <i class="bi bi-geo-alt-fill"></i>
-                        <span class="text-dark"><?= esc(get_setting('address')) ?></span>
+                        <i class="bi bi-geo-alt-fill text-primary"></i>
+                        <span class="text-dark"><strong>VP:</strong> <?= esc(get_setting('address', '126 Lý Thái Tổ, P. Diên Hồng, Gia Lai')) ?></span>
+                    </p>
+                    <p>
+                        <i class="bi bi-tools text-primary"></i>
+                        <span class="text-dark"><strong>Xưởng:</strong> <?= esc(get_setting('factory_address', '772 Nguyễn Chí Thanh, P. An Phú, Gia Lai')) ?></span>
                     </p>
                     <p>
                         <i class="bi bi-telephone-fill"></i>

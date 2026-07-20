@@ -23,7 +23,7 @@ $companyInfos = [
     ['icon' => 'bi-hash', 'label' => lang('Site.tax_code'), 'value' => get_setting('about_tax_code', '0314436582')],
     ['icon' => 'bi-person-fill-check', 'label' => lang('Site.legal_representative'), 'value' => get_setting('about_legal_rep', 'TRẦN MINH ĐỨC')],
     ['icon' => 'bi-calendar-event', 'label' => lang('Site.license_date'), 'value' => get_setting('about_license_date', '30/05/2017')],
-    ['icon' => 'bi-geo-alt-fill', 'label' => lang('Site.head_office'), 'value' => get_setting('about_address', '128 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh')],
+    ['icon' => 'bi-geo-alt-fill', 'label' => lang('Site.head_office'), 'value' => get_setting('about_address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai')],
 ];
 
 $vision = get_setting('about_vision', 'Trở thành thương hiệu hàng đầu cung cấp giải pháp vật liệu gỗ công nghiệp và nội thất cao cấp tại Việt Nam, mang lại không gian sống đẳng cấp và bền vững.');

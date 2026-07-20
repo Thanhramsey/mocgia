@@ -60,8 +60,18 @@
                         <i class="bi bi-geo-alt-fill fs-5"></i>
                     </div>
                     <div>
-                        <h5 class="fw-bold mb-1"><?= esc(lang('Site.head_office_address')) ?></h5>
-                        <p class="text-muted mb-0"><?= esc(get_setting('address')) ?></p>
+                        <h5 class="fw-bold mb-1">Văn phòng</h5>
+                        <p class="text-muted mb-0"><?= esc(get_setting('address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai')) ?></p>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-start mb-4">
+                    <div class="bg-primary-light text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; min-width: 50px;">
+                        <i class="bi bi-tools fs-5"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Xưởng sản xuất</h5>
+                        <p class="text-muted mb-0"><?= esc(get_setting('factory_address', '772 Nguyễn Chí Thanh, phường An Phú, Gia Lai')) ?></p>
                     </div>
                 </div>
 
