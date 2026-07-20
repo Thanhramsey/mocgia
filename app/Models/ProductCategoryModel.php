@@ -36,12 +36,31 @@ class ProductCategoryModel extends Model
      */
     public function getActiveCategories(): array
     {
-        return $this->select('product_categories.*, COUNT(products.id) as product_count')
-                    ->join('products', 'products.category_id = product_categories.id AND products.deleted_at IS NULL AND products.status = 1', 'left')
-                    ->where('product_categories.status', 1)
-                    ->groupBy('product_categories.id')
-                    ->orderBy('product_categories.sort_order', 'ASC')
-                    ->findAll();
+        $categories = $this->select('product_categories.*, COUNT(products.id) as product_count')
+                           ->join('products', 'products.category_id = product_categories.id AND products.deleted_at IS NULL AND products.status = 1', 'left')
+                           ->where('product_categories.status', 1)
+                           ->groupBy('product_categories.id')
+                           ->orderBy('product_categories.sort_order', 'ASC')
+                           ->findAll();
+
+        // Accumulate subcategory product counts into parents
+        $childCounts = [];
+        foreach ($categories as $cat) {
+            if (! empty($cat['parent_id']) && $cat['parent_id'] > 0) {
+                if (! isset($childCounts[$cat['parent_id']])) {
+                    $childCounts[$cat['parent_id']] = 0;
+                }
+                $childCounts[$cat['parent_id']] += (int) $cat['product_count'];
+            }
+        }
+
+        foreach ($categories as &$cat) {
+            if (isset($childCounts[$cat['id']])) {
+                $cat['product_count'] = (int) $cat['product_count'] + $childCounts[$cat['id']];
+            }
+        }
+
+        return $categories;
     }
 
     /**

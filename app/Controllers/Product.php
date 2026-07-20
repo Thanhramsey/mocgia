@@ -43,7 +43,15 @@ class Product extends BaseController
         }
 
         $categoryId = $activeCategory ? (int) $activeCategory['id'] : null;
-        $products   = $this->productModel->getProductsWithCategory($categoryId);
+        $categoryIds = null;
+        if ($categoryId !== null) {
+            $categoryIds = [$categoryId];
+            $subCategories = $this->categoryModel->where('parent_id', $categoryId)->where('status', 1)->findAll();
+            foreach ($subCategories as $sub) {
+                $categoryIds[] = (int) $sub['id'];
+            }
+        }
+        $products   = $this->productModel->getProductsWithCategory($categoryIds);
 
         $seoTitle = $activeCategory
             ? ($activeCategory['seo_title'] ?: $activeCategory['title'] . ' - ' . get_setting('company_name', 'Ngân Gia Nguyễn'))

@@ -79,6 +79,11 @@
                                             <input type="text" class="form-control rounded-3" name="phone" value="<?= esc(get_setting('phone')) ?>" required>
                                         </div>
                                         <div class="col-12">
+                                            <label class="form-label fw-semibold"><i class="bi bi-chat-dots text-primary me-1"></i>Số điện thoại Zalo</label>
+                                            <input type="text" class="form-control rounded-3" name="zalo_phone" value="<?= esc(get_setting('zalo_phone', get_setting('zalo'))) ?>" placeholder="Ví dụ: 0912345678">
+                                            <div class="form-text">Số điện thoại liên hệ qua Zalo (dùng cho các nút liên hệ Zalo trên website). Để trống sẽ dùng số Hotline.</div>
+                                        </div>
+                                        <div class="col-12">
                                             <label class="form-label fw-semibold">Email nhận liên hệ</label>
                                             <input type="email" class="form-control rounded-3" name="email" value="<?= esc(get_setting('email')) ?>" required>
                                         </div>
@@ -229,7 +234,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-semibold">Hotline/SĐT Zalo</label>
-                            <input type="text" class="form-control" name="zalo" value="<?= esc(get_setting('zalo')) ?>">
+                            <input type="text" class="form-control" name="zalo_phone" value="<?= esc(get_setting('zalo_phone', get_setting('zalo'))) ?>" placeholder="Ví dụ: 0912345678">
                         </div>
                     </div>
                     <div class="mt-4 border-top pt-3 text-end">

@@ -63,6 +63,16 @@ $currentFlagUrl = $currentLocale === 'vi' ? 'https://flagcdn.com/w20/vn.png' : '
                     } catch (\Throwable $e) {
                         $navProductCats = [];
                     }
+
+                    $parentCats = [];
+                    $childCatsByParent = [];
+                    foreach ($navProductCats as $pc) {
+                        if (empty($pc['parent_id']) || $pc['parent_id'] == 0) {
+                            $parentCats[] = $pc;
+                        } else {
+                            $childCatsByParent[$pc['parent_id']][] = $pc;
+                        }
+                    }
                     ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?= (uri_string() == 'san-pham' || strpos(uri_string(), 'san-pham/') === 0) ? 'active' : '' ?>"
@@ -74,14 +84,34 @@ $currentFlagUrl = $currentLocale === 'vi' ? 'https://flagcdn.com/w20/vn.png' : '
                             <li><a class="dropdown-item" href="<?= base_url('san-pham') ?>">
                                 <i class="bi bi-box-seam me-2 text-primary"></i>Tất cả sản phẩm
                             </a></li>
-                            <?php if (!empty($navProductCats)): ?>
+                            <?php if (!empty($parentCats)): ?>
                                 <li><hr class="dropdown-divider"></li>
-                                <?php foreach ($navProductCats as $pc): ?>
-                                    <li>
-                                        <a class="dropdown-item" href="<?= base_url('san-pham/nhom/' . $pc['slug']) ?>">
-                                            <i class="bi <?= esc($pc['icon'] ?: 'bi-chevron-right') ?> me-2 text-primary" style="font-size:0.8rem;"></i><?= esc($pc['title']) ?>
-                                        </a>
-                                    </li>
+                                <?php foreach ($parentCats as $parent): ?>
+                                    <?php if (!empty($childCatsByParent[$parent['id']])): ?>
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center" href="<?= base_url('san-pham/nhom/' . $parent['slug']) ?>">
+                                                <span>
+                                                    <i class="bi <?= esc($parent['icon'] ?: 'bi-chevron-right') ?> me-2 text-primary" style="font-size:0.8rem;"></i><?= esc($parent['title']) ?>
+                                                </span>
+                                                <i class="bi bi-chevron-right ms-2 submenu-arrow d-none d-lg-inline-block" style="font-size:0.7rem; color: var(--primary-color);"></i>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <?php foreach ($childCatsByParent[$parent['id']] as $child): ?>
+                                                    <li>
+                                                        <a class="dropdown-item" href="<?= base_url('san-pham/nhom/' . $child['slug']) ?>">
+                                                            <i class="bi <?= esc($child['icon'] ?: 'bi-chevron-right') ?> me-2 text-primary" style="font-size:0.75rem;"></i><?= esc($child['title']) ?>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </li>
+                                    <?php else: ?>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= base_url('san-pham/nhom/' . $parent['slug']) ?>">
+                                                <i class="bi <?= esc($parent['icon'] ?: 'bi-chevron-right') ?> me-2 text-primary" style="font-size:0.8rem;"></i><?= esc($parent['title']) ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </ul>
@@ -196,3 +226,57 @@ $currentFlagUrl = $currentLocale === 'vi' ? 'https://flagcdn.com/w20/vn.png' : '
         </div>
     </nav>
 </header>
+
+<style>
+/* Hierarchical Dropdown Submenu Styles */
+@media (min-width: 992px) {
+    .dropdown-menu .dropdown-submenu {
+        position: relative;
+    }
+    .dropdown-menu .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: 0;
+        margin-top: -6px;
+        display: none;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        visibility: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border-color);
+        border-radius: 8px !important;
+    }
+    .dropdown-menu .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+    }
+    /* Rotate submenu arrow on hover */
+    .dropdown-menu .dropdown-submenu:hover > .dropdown-item .submenu-arrow {
+        transform: rotate(90deg);
+        transition: transform 0.2s ease;
+    }
+    .dropdown-item .submenu-arrow {
+        transition: transform 0.2s ease;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .dropdown-menu .dropdown-submenu .dropdown-menu {
+        display: block;
+        position: static;
+        float: none;
+        background-color: rgba(0, 0, 0, 0.03) !important;
+        border: none;
+        box-shadow: none;
+        padding-left: 1.25rem;
+        margin: 0;
+        border-radius: 0;
+    }
+    .dropdown-menu .dropdown-submenu .dropdown-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    }
+}
+</style>

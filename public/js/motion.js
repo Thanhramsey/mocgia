@@ -6,37 +6,27 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Page Loading Overlay Logic
     const loader = document.getElementById('page-loader');
-    const loaderContent = document.querySelector('.loader-content');
+    const loaderContent = document.querySelector('.preloader-content');
 
     if (loader && loaderContent) {
-        // Logo / text fade-in and scale up
-        gsap.to(loaderContent, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.9,
-            ease: 'power2.out',
-            onComplete: () => {
-                // Remove loader when assets are loaded
-                const removeLoader = () => {
-                    gsap.to(loader, {
-                        opacity: 0,
-                        duration: 0.5,
-                        onComplete: () => {
-                            loader.style.display = 'none';
-                            playHeroEntrance();
-                        }
-                    });
-                };
-
-                if (document.readyState === 'complete') {
-                    removeLoader();
-                } else {
-                    window.addEventListener('load', removeLoader);
-                    // Fallback timeout
-                    setTimeout(removeLoader, 1600);
+        const removeLoader = () => {
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power2.out',
+                onComplete: () => {
+                    loader.style.display = 'none';
+                    playHeroEntrance();
                 }
-            }
-        });
+            });
+        };
+
+        if (document.readyState === 'complete') {
+            setTimeout(removeLoader, 650);
+        } else {
+            window.addEventListener('load', () => setTimeout(removeLoader, 250));
+            setTimeout(removeLoader, 2600); // Fallback
+        }
     } else {
         playHeroEntrance();
     }
@@ -130,48 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 6. Hero Entrance Sequence
+// 6. Hero Entrance Sequence & Slide Transitions (Handled natively by CSS .swiper-slide-active for loop stability)
+function animateHeroSlide(slide) {
+    // CSS-driven transitions prevent loop jump flickering
+}
+
+// Make it globally accessible
+window.animateHeroSlide = animateHeroSlide;
+
 function playHeroEntrance() {
-    // Zoom out hero background
-    const activeSlide = document.querySelector('.hero-slider .swiper-slide-active');
-    if (activeSlide) {
-        gsap.fromTo(activeSlide,
-            { backgroundSize: '108%' },
-            { backgroundSize: '100%', duration: 1.4, ease: 'power2.out' }
-        );
-    }
-
-    // Split text into characters for premium stagger entrance
-    const heroTitle = document.querySelector('.hero-slide-content h2');
-    if (heroTitle) {
-        if (typeof SplitType !== 'undefined') {
-            const split = new SplitType(heroTitle, { types: 'chars' });
-            gsap.fromTo(split.chars,
-                { opacity: 0, y: 35 },
-                { opacity: 1, y: 0, stagger: 0.03, duration: 0.8, ease: 'power3.out' }
-            );
-        } else {
-            gsap.fromTo(heroTitle,
-                { opacity: 0, y: 35 },
-                { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }
-            );
-        }
-    }
-
-    // Fade up subtitle and buttons
-    const heroSub = document.querySelector('.hero-slide-content p');
-    if (heroSub) {
-        gsap.fromTo(heroSub,
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, delay: 0.35, duration: 0.8, ease: 'power2.out' }
-        );
-    }
-
-    const heroButtons = document.querySelectorAll('.hero-slide-content .btn');
-    if (heroButtons.length > 0) {
-        gsap.fromTo(heroButtons,
-            { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, delay: 0.55, duration: 0.8, ease: 'power2.out', stagger: 0.1 }
-        );
-    }
+    // CSS-driven transitions prevent loop jump flickering
 }

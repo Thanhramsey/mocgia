@@ -200,7 +200,7 @@
                        style="background:#1a1a1a;color:#fff;flex:1;text-align:center;">
                         <i class="bi bi-telephone-fill me-2"></i>Liên hệ đặt hàng
                     </a>
-                    <a href="https://zalo.me/<?= esc(get_setting('phone', '')) ?>"
+                    <a href="https://zalo.me/<?= esc(get_setting('zalo_phone') ?: (get_setting('zalo') ?: get_setting('phone'))) ?>"
                        target="_blank" rel="noopener"
                        class="btn rounded-pill px-4 py-3 fw-semibold"
                        style="background:#0068ff;color:#fff;min-width:130px;text-align:center;">

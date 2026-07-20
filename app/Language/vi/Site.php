@@ -18,6 +18,8 @@ return [
     'switch_language' => 'Ngôn ngữ',
     'legal_docs' => 'Hồ sơ pháp lý',
     'certificates' => 'Giấy Chứng Nhận',
+    'our_partners' => 'Đối Tác Chiến Lược',
+    'partners_subtitle' => 'Đồng Hành Cùng Sự Phát Triển',
     'view_all' => 'Xem tất cả',
     'attachment_document' => 'Tài liệu đính kèm',
     'view_file' => 'Xem file',

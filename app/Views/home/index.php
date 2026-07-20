@@ -423,7 +423,11 @@ $extractYouTubeId = static function (string $url): ?string {
 <!-- Partners Section -->
 <section class="section-padding bg-light-gray home-sortable-section home-partners-section" data-home-section="home-partners" data-home-order="<?= $homeSectionOrders['home-partners'] ?>">
     <div class="container">
-        <div class="swiper partners-slider">
+        <div class="section-title-wrapper text-center mb-4" data-aos="fade-up">
+            <span class="text-primary fw-bold text-uppercase d-block mb-2"><?= esc(lang('Site.our_partners')) ?></span>
+            <h2 class="fw-bold mb-0 text-dark"><?= esc(lang('Site.partners_subtitle')) ?></h2>
+        </div>
+        <div class="swiper partners-slider" data-aos="fade-up" data-aos-delay="150">
             <div class="swiper-wrapper align-items-center">
                 <?php if (!empty($partners)): ?>
                     <?php foreach ($partners as $partner): ?>
@@ -435,16 +439,16 @@ $extractYouTubeId = static function (string $url): ?string {
                             ?>
                             <?php if ($hasLogo): ?>
                                 <?php if (!empty($partner['link']) && $partner['link'] !== '#'): ?>
-                                    <a href="<?= esc($partner['link']) ?>" target="_blank" rel="noopener" class="d-inline-flex align-items-center justify-content-center p-3 bg-white shadow-sm rounded-3 border" style="height:80px;min-width:150px;">
-                                        <img src="<?= $logoUrl ?>" alt="<?= esc($partner['name']) ?>" style="max-width:130px;max-height:56px;object-fit:contain;">
+                                    <a href="<?= esc($partner['link']) ?>" target="_blank" rel="noopener" class="partner-card-item w-100 d-flex align-items-center justify-content-center p-3 bg-white shadow-sm rounded-4 border text-decoration-none">
+                                        <img src="<?= $logoUrl ?>" alt="<?= esc($partner['name']) ?>" class="partner-logo-img">
                                     </a>
                                 <?php else: ?>
-                                    <div class="d-inline-flex align-items-center justify-content-center p-3 bg-white shadow-sm rounded-3 border" style="height:80px;min-width:150px;">
-                                        <img src="<?= $logoUrl ?>" alt="<?= esc($partner['name']) ?>" style="max-width:130px;max-height:56px;object-fit:contain;">
+                                    <div class="partner-card-item w-100 d-flex align-items-center justify-content-center p-3 bg-white shadow-sm rounded-4 border">
+                                        <img src="<?= $logoUrl ?>" alt="<?= esc($partner['name']) ?>" class="partner-logo-img">
                                     </div>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <div class="p-3 bg-white shadow-sm rounded-3 d-inline-block text-muted fw-bold border" style="min-width: 150px;">
+                                <div class="partner-card-item w-100 d-flex align-items-center justify-content-center p-3 bg-white shadow-sm rounded-4 border text-dark fw-bold">
                                     <?= esc($partner['name']) ?>
                                 </div>
                             <?php endif; ?>
@@ -453,8 +457,8 @@ $extractYouTubeId = static function (string $url): ?string {
                 <?php else: ?>
                     <?php for($i=1; $i<=6; $i++): ?>
                         <div class="swiper-slide text-center">
-                            <div class="p-3 bg-white shadow-sm rounded-3 d-inline-block text-muted fw-semibold border" style="min-width: 150px; font-size: 0.85rem;">
-                                <i class="bi bi-building me-1"></i> <?= esc($homePartnersEmptyPrefix) ?> <?= $i ?>
+                            <div class="partner-card-item w-100 d-flex align-items-center justify-content-center p-3 bg-white shadow-sm rounded-4 border text-muted fw-semibold" style="font-size: 0.9rem;">
+                                <i class="bi bi-building me-2 text-primary"></i> <?= esc($homePartnersEmptyPrefix) ?> <?= $i ?>
                             </div>
                         </div>
                     <?php endfor; ?>

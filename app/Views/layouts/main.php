@@ -362,15 +362,112 @@
             border-color: var(--primary-color) !important;
             box-shadow: 0 0 0 6px var(--bg-body) !important;
         }
+
+        /* Luxury Preloader Styles */
+        .preloader-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F8F6F2;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .preloader-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .gold-ring {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transform-origin: 50px 50px;
+            animation: drawRing 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        .gold-path-n {
+            stroke-dasharray: 180;
+            stroke-dashoffset: 180;
+            animation: drawPath 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+        }
+        .gold-path-g {
+            stroke-dasharray: 120;
+            stroke-dashoffset: 120;
+            animation: drawPath 1.6s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+        }
+        @keyframes drawRing {
+            from { stroke-dashoffset: 283; transform: rotate(0deg); }
+            to { stroke-dashoffset: 0; transform: rotate(360deg); }
+        }
+        @keyframes drawPath {
+            to { stroke-dashoffset: 0; }
+        }
+        .loader-brand-text {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            color: #c5a880;
+            text-transform: uppercase;
+            margin-top: 24px;
+            opacity: 0;
+            animation: letterSpacingExpand 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+        }
+        .loader-brand-sub {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 0.72rem;
+            letter-spacing: 6px;
+            color: rgba(197, 168, 128, 0.6);
+            text-transform: uppercase;
+            margin-top: 6px;
+            opacity: 0;
+            animation: fadeInSub 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.8s forwards;
+        }
+        @keyframes letterSpacingExpand {
+            from {
+                letter-spacing: 2px;
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                letter-spacing: 8px;
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInSub {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Page Loader Overlay -->
-    <div id="page-loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-body); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-        <div class="loader-content text-center" style="opacity: 0; transform: scale(0.9);">
-            <h2 class="fw-bold" style="font-family: var(--font-heading); letter-spacing: 4px; font-size: 2.2rem; color: var(--text-main);">NGÂN GIA NGUYỄN</h2>
-            <div class="spinner-border spinner-border-sm mt-3" role="status" style="color: var(--primary-color);"></div>
+    <div id="page-loader" class="preloader-wrap">
+        <div class="preloader-content text-center">
+            <svg class="loader-logo-svg" viewBox="0 0 100 100" style="width: 85px; height: 85px; margin-bottom: 12px;">
+                <!-- Outer delicate ring -->
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#c5a880" stroke-width="1.5" class="gold-ring"/>
+                <!-- Stylized premium monogram pattern -->
+                <path d="M32 68 V32 L50 56 L68 32 V68" fill="none" stroke="#c5a880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="gold-path-n" />
+                <path d="M50 44 A 9 9 0 1 1 50 62 A 9 9 0 0 1 44 59" fill="none" stroke="#c5a880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="gold-path-g" />
+            </svg>
+            <h2 class="loader-brand-text">NGÂN GIA NGUYỄN</h2>
+            <div class="loader-brand-sub">Premium Wood & Interior</div>
         </div>
     </div>
 
@@ -417,15 +514,15 @@
             once: true
         });
 
-        // Init Swiper sliders
         const heroSwiper = new Swiper('.hero-slider', {
             loop: true,
             effect: 'fade',
             fadeEffect: {
                 crossFade: true
             },
+            speed: 1000, // Smooth transition duration
             autoplay: {
-                delay: 5000,
+                delay: 6000, // Slightly longer delay for premium viewing
                 disableOnInteraction: false,
             },
             pagination: {
@@ -450,12 +547,11 @@
             breakpoints: {
                 576: {
                     slidesPerView: 3,
-                },
-                768: {
-                    slidesPerView: 4,
+                    spaceBetween: 24,
                 },
                 992: {
-                    slidesPerView: 5,
+                    slidesPerView: 4,
+                    spaceBetween: 30,
                 }
             }
         });
@@ -561,14 +657,16 @@
     </script>
 
     <!-- ===== FLOATING ACTION BUTTONS ===== -->
-    <?php $zaloNumber = get_setting('zalo') ?: get_setting('phone'); ?>
+    <?php $zaloNumber = get_setting('zalo_phone') ?: (get_setting('zalo') ?: get_setting('phone')); ?>
     <div class="floating-buttons" id="floatingButtons">
         <!-- Phone / Zalo Button -->
         <a href="https://zalo.me/<?= esc($zaloNumber) ?>" target="_blank" rel="noopener" class="float-btn float-btn-zalo" aria-label="Liên hệ Zalo">
             <div class="float-btn-icon">
-                <i class="bi bi-telephone-fill"></i>
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 11.5a.75.75 0 01.75-.75h11.5a.75.75 0 01.54 1.27l-8.23 8.73h7.69a.75.75 0 010 1.5H9.75a.75.75 0 01-.54-1.27l8.23-8.73H10.25a.75.75 0 01-.75-.75z" fill="#FFFFFF"/>
+                </svg>
             </div>
-            <span class="float-btn-label">Gọi Zalo</span>
+            <span class="float-btn-label">Chat Zalo</span>
         </a>
         <!-- Contact Button -->
         <a href="<?= base_url('lien-he') ?>" class="float-btn float-btn-contact" aria-label="Liên hệ">

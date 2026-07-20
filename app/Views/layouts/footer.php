@@ -32,7 +32,7 @@
                 <p class="text-muted mb-4"><?= esc(lang('Site.footer_company_desc')) ?></p>
                 <div class="d-flex gap-2">
                     <a href="<?= esc(get_setting('facebook')) ?>" class="btn btn-outline-primary btn-sm rounded-circle d-flex align-items-center justify-content-center footer-social-icon" style="width: 36px; height: 36px;"><i class="bi bi-facebook"></i></a>
-                    <a href="https://zalo.me/<?= esc(get_setting('zalo')) ?>" class="btn btn-outline-primary btn-sm rounded-circle d-flex align-items-center justify-content-center footer-social-icon" style="width: 36px; height: 36px;"><i class="bi bi-chat-text-fill"></i></a>
+                    <a href="https://zalo.me/<?= esc(get_setting('zalo_phone') ?: (get_setting('zalo') ?: get_setting('phone'))) ?>" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm rounded-circle d-flex align-items-center justify-content-center footer-social-icon" style="width: 36px; height: 36px;"><i class="bi bi-chat-text-fill"></i></a>
                     <a href="mailto:<?= esc(get_setting('email')) ?>" class="btn btn-outline-primary btn-sm rounded-circle d-flex align-items-center justify-content-center footer-social-icon" style="width: 36px; height: 36px;"><i class="bi bi-envelope-fill"></i></a>
                 </div>
             </div>

@@ -18,6 +18,8 @@ return [
     'switch_language' => 'Language',
     'legal_docs' => 'Legal documents',
     'certificates' => 'Certificates',
+    'our_partners' => 'Strategic Partners',
+    'partners_subtitle' => 'Accompanying Our Growth',
     'view_all' => 'View all',
     'attachment_document' => 'Attached document',
     'view_file' => 'View file',

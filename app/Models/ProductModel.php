@@ -35,7 +35,7 @@ class ProductModel extends Model
     /**
      * Return all active products with their category name.
      */
-    public function getProductsWithCategory(?int $categoryId = null, int $limit = 0): array
+    public function getProductsWithCategory($categoryIds = null, int $limit = 0): array
     {
         $builder = $this->select('products.*, product_categories.title AS category_title, product_categories.slug AS category_slug')
                         ->join('product_categories', 'product_categories.id = products.category_id', 'left')
@@ -43,8 +43,16 @@ class ProductModel extends Model
                         ->orderBy('products.sort_order', 'ASC')
                         ->orderBy('products.created_at', 'DESC');
 
-        if ($categoryId !== null) {
-            $builder->where('products.category_id', $categoryId);
+        if ($categoryIds !== null) {
+            if (is_array($categoryIds)) {
+                if (! empty($categoryIds)) {
+                    $builder->whereIn('products.category_id', $categoryIds);
+                } else {
+                    $builder->where('products.category_id', -1);
+                }
+            } else {
+                $builder->where('products.category_id', (int) $categoryIds);
+            }
         }
 
         if ($limit > 0) {

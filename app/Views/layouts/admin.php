@@ -31,84 +31,149 @@
                 <span class="h5 mb-0 text-white fw-bold">Admin CMS</span>
             </div>
             
-            <ul class="nav flex-column mt-3">
+            <ul class="nav flex-column mt-2">
+                <!-- 1. Tổng Quan -->
                 <li class="nav-item">
                     <a class="nav-link <?= (uri_string() == 'admin/dashboard') ? 'active' : '' ?>" href="<?= base_url('admin/dashboard') ?>">
                         <i class="bi bi-speedometer2"></i> Tổng Quan
                     </a>
                 </li>
+
+                <!-- 2. Tin Nhắn Liên Hệ -->
                 <li class="nav-item">
                     <a class="nav-link <?= (uri_string() == 'admin/contacts') ? 'active' : '' ?>" href="<?= base_url('admin/contacts') ?>">
                         <i class="bi bi-envelope-paper"></i> Tin Nhắn Liên Hệ
                     </a>
                 </li>
-                <?php if (session()->get('admin_role') === 'superadmin'): ?>
+
+                <!-- 3. Quản Lý Sản Phẩm -->
+                <?php $isProductActive = (strpos(uri_string(), 'admin/products') === 0 || strpos(uri_string(), 'admin/product-categories') === 0); ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/settings') ? 'active' : '' ?>" href="<?= base_url('admin/settings') ?>">
-                        <i class="bi bi-gear"></i> Cấu Hình Chung
+                    <a class="nav-link d-flex justify-content-between align-items-center <?= $isProductActive ? '' : 'collapsed' ?>" 
+                       data-bs-toggle="collapse" href="#menuProducts" role="button" 
+                       aria-expanded="<?= $isProductActive ? 'true' : 'false' ?>" aria-controls="menuProducts">
+                        <span><i class="bi bi-box-seam"></i> Quản Lý Sản Phẩm</span>
+                        <i class="bi bi-chevron-down ms-auto" style="font-size: 0.75rem;"></i>
                     </a>
+                    <div class="collapse <?= $isProductActive ? 'show' : '' ?>" id="menuProducts">
+                        <ul class="nav flex-column border-start border-secondary ms-4 my-1">
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (strpos(uri_string(), 'admin/product-categories') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/product-categories') ?>">
+                                    <i class="bi bi-tags"></i> Nhóm Sản Phẩm
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (strpos(uri_string(), 'admin/products') === 0 && strpos(uri_string(), 'admin/product-categories') === false) ? 'active' : '' ?>" href="<?= base_url('admin/products') ?>">
+                                    <i class="bi bi-list-stars"></i> Tất Cả Sản Phẩm
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
+                <!-- 4. Quản Lý Bài Viết & Dịch Vụ -->
+                <?php $isContentActive = (uri_string() == 'admin/services' || uri_string() == 'admin/news' || uri_string() == 'admin/news-categories'); ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/users') ? 'active' : '' ?>" href="<?= base_url('admin/users') ?>">
-                        <i class="bi bi-people"></i> Quản Lý Thành Viên
+                    <a class="nav-link d-flex justify-content-between align-items-center <?= $isContentActive ? '' : 'collapsed' ?>" 
+                       data-bs-toggle="collapse" href="#menuContent" role="button" 
+                       aria-expanded="<?= $isContentActive ? 'true' : 'false' ?>" aria-controls="menuContent">
+                        <span><i class="bi bi-newspaper"></i> Bài Viết & Dịch Vụ</span>
+                        <i class="bi bi-chevron-down ms-auto" style="font-size: 0.75rem;"></i>
                     </a>
+                    <div class="collapse <?= $isContentActive ? 'show' : '' ?>" id="menuContent">
+                        <ul class="nav flex-column border-start border-secondary ms-4 my-1">
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/services') ? 'active' : '' ?>" href="<?= base_url('admin/services') ?>">
+                                    <i class="bi bi-briefcase"></i> Quản Lý Dịch Vụ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/news-categories') ? 'active' : '' ?>" href="<?= base_url('admin/news-categories') ?>">
+                                    <i class="bi bi-folder2-open"></i> Danh Mục Tin Tức
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/news') ? 'active' : '' ?>" href="<?= base_url('admin/news') ?>">
+                                    <i class="bi bi-newspaper"></i> Quản Lý Tin Tức
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                <?php endif; ?>
+
+                <!-- 5. Thư Viện & Tài Liệu -->
+                <?php $isMediaActive = (strpos(uri_string(), 'admin/document') === 0 || uri_string() == 'admin/gallery' || uri_string() == 'admin/gallery-albums'); ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/banners') ? 'active' : '' ?>" href="<?= base_url('admin/banners') ?>">
-                        <i class="bi bi-images"></i> Quản Lý Banners
+                    <a class="nav-link d-flex justify-content-between align-items-center <?= $isMediaActive ? '' : 'collapsed' ?>" 
+                       data-bs-toggle="collapse" href="#menuMedia" role="button" 
+                       aria-expanded="<?= $isMediaActive ? 'true' : 'false' ?>" aria-controls="menuMedia">
+                        <span><i class="bi bi-folder2"></i> Thư Viện & Tài Liệu</span>
+                        <i class="bi bi-chevron-down ms-auto" style="font-size: 0.75rem;"></i>
                     </a>
+                    <div class="collapse <?= $isMediaActive ? 'show' : '' ?>" id="menuMedia">
+                        <ul class="nav flex-column border-start border-secondary ms-4 my-1">
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (strpos(uri_string(), 'admin/document-categories') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/document-categories') ?>">
+                                    <i class="bi bi-tags"></i> Loại Giấy Tờ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (strpos(uri_string(), 'admin/documents') === 0 && strpos(uri_string(), 'admin/document-categories') === false) ? 'active' : '' ?>" href="<?= base_url('admin/documents') ?>">
+                                    <i class="bi bi-file-earmark-text"></i> Quản Lý Giấy Tờ
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/gallery-albums') ? 'active' : '' ?>" href="<?= base_url('admin/gallery-albums') ?>">
+                                    <i class="bi bi-folder-symlink"></i> Album Ảnh
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/gallery') ? 'active' : '' ?>" href="<?= base_url('admin/gallery') ?>">
+                                    <i class="bi bi-image"></i> Thư Viện Ảnh
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+
+                <!-- 6. Cấu Hình & Hệ Thống -->
+                <?php $isSystemActive = (strpos(uri_string(), 'admin/banners') === 0 || uri_string() == 'admin/settings' || uri_string() == 'admin/users' || uri_string() == 'admin/trash'); ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/services') ? 'active' : '' ?>" href="<?= base_url('admin/services') ?>">
-                        <i class="bi bi-briefcase"></i> Quản Lý Dịch Vụ
+                    <a class="nav-link d-flex justify-content-between align-items-center <?= $isSystemActive ? '' : 'collapsed' ?>" 
+                       data-bs-toggle="collapse" href="#menuSystem" role="button" 
+                       aria-expanded="<?= $isSystemActive ? 'true' : 'false' ?>" aria-controls="menuSystem">
+                        <span><i class="bi bi-sliders"></i> Giao Diện & Hệ Thống</span>
+                        <i class="bi bi-chevron-down ms-auto" style="font-size: 0.75rem;"></i>
                     </a>
+                    <div class="collapse <?= $isSystemActive ? 'show' : '' ?>" id="menuSystem">
+                        <ul class="nav flex-column border-start border-secondary ms-4 my-1">
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (strpos(uri_string(), 'admin/banners') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/banners') ?>">
+                                    <i class="bi bi-images"></i> Quản Lý Banners
+                                </a>
+                            </li>
+                            <?php if (session()->get('admin_role') === 'superadmin'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/settings') ? 'active' : '' ?>" href="<?= base_url('admin/settings') ?>">
+                                    <i class="bi bi-gear"></i> Cấu Hình Chung
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/users') ? 'active' : '' ?>" href="<?= base_url('admin/users') ?>">
+                                    <i class="bi bi-people"></i> Quản Lý Thành Viên
+                                </a>
+                            </li>
+                            <?php endif; ?>
+                            <li class="nav-item">
+                                <a class="nav-link py-2 <?= (uri_string() == 'admin/trash') ? 'active' : '' ?>" href="<?= base_url('admin/trash') ?>">
+                                    <i class="bi bi-trash3"></i> Thùng Rác
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (strpos(uri_string(), 'admin/product-categories') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/product-categories') ?>">
-                        <i class="bi bi-tags"></i> Nhóm Sản Phẩm
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (strpos(uri_string(), 'admin/products') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/products') ?>">
-                        <i class="bi bi-box-seam"></i> Quản Lý Sản Phẩm
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/news') ? 'active' : '' ?>" href="<?= base_url('admin/news') ?>">
-                        <i class="bi bi-newspaper"></i> Quản Lý Tin Tức
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/news-categories') ? 'active' : '' ?>" href="<?= base_url('admin/news-categories') ?>">
-                        <i class="bi bi-folder2-open"></i> Danh Mục Tin Tức
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (strpos(uri_string(), 'admin/document-categories') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/document-categories') ?>">
-                        <i class="bi bi-tags"></i> Loại Giấy Tờ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (strpos(uri_string(), 'admin/documents') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/documents') ?>">
-                        <i class="bi bi-file-earmark-text"></i> Quản Lý Giấy Tờ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/gallery') ? 'active' : '' ?>" href="<?= base_url('admin/gallery') ?>">
-                        <i class="bi bi-image"></i> Thư Viện Ảnh
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/gallery-albums') ? 'active' : '' ?>" href="<?= base_url('admin/gallery-albums') ?>">
-                        <i class="bi bi-folder-symlink"></i> Album Ảnh
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= (uri_string() == 'admin/trash') ? 'active' : '' ?>" href="<?= base_url('admin/trash') ?>">
-                        <i class="bi bi-trash3"></i> Thùng Rác
-                    </a>
-                </li>
+
+                <!-- Log out -->
                 <li class="nav-item mt-4 border-top border-secondary">
                     <a class="nav-link text-danger" href="<?= base_url('admin/logout') ?>">
                         <i class="bi bi-box-arrow-left text-danger"></i> Đăng xuất

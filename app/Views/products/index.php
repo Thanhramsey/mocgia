@@ -48,15 +48,50 @@
                             <span><i class="bi bi-grid-3x3-gap me-2"></i>Tất cả sản phẩm</span>
                             <span class="badge bg-secondary rounded-pill"><?= array_sum(array_column($categories, 'product_count')) ?></span>
                         </a>
-                        <?php foreach ($categories as $cat): ?>
-                            <a href="<?= base_url('san-pham/nhom/' . $cat['slug']) ?>"
-                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center <?= ($activeCategory && $activeCategory['id'] == $cat['id']) ? 'active' : '' ?>">
-                                <span>
-                                    <i class="bi <?= esc($cat['icon'] ?: 'bi-box-seam') ?> me-2"></i>
-                                    <?= esc($cat['title']) ?>
+                        
+                        <?php
+                        $parentCats = [];
+                        $childCatsByParent = [];
+                        foreach ($categories as $cat) {
+                            if (empty($cat['parent_id']) || $cat['parent_id'] == 0) {
+                                $parentCats[] = $cat;
+                            } else {
+                                $childCatsByParent[$cat['parent_id']][] = $cat;
+                            }
+                        }
+                        ?>
+
+                        <?php foreach ($parentCats as $parent): ?>
+                            <?php 
+                            $isParentActive = ($activeCategory && $activeCategory['id'] == $parent['id']);
+                            ?>
+                            <a href="<?= base_url('san-pham/nhom/' . $parent['slug']) ?>"
+                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center <?= $isParentActive ? 'active' : '' ?>">
+                                <span class="fw-semibold">
+                                    <i class="bi <?= esc($parent['icon'] ?: 'bi-box-seam') ?> me-2"></i>
+                                    <?= esc($parent['title']) ?>
                                 </span>
-                                <span class="badge bg-secondary rounded-pill"><?= (int) $cat['product_count'] ?></span>
+                                <span class="badge bg-secondary rounded-pill"><?= (int) $parent['product_count'] ?></span>
                             </a>
+                            
+                            <?php if (!empty($childCatsByParent[$parent['id']])): ?>
+                                <div class="sub-categories-list" style="background: rgba(0,0,0,0.02); border-bottom: 1px solid var(--border-color);">
+                                    <?php foreach ($childCatsByParent[$parent['id']] as $child): ?>
+                                        <?php 
+                                        $isChildActive = ($activeCategory && $activeCategory['id'] == $child['id']);
+                                        ?>
+                                        <a href="<?= base_url('san-pham/nhom/' . $child['slug']) ?>"
+                                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-2 ps-4 border-0 <?= $isChildActive ? 'active' : '' ?>"
+                                           style="font-size: 0.88rem;">
+                                            <span>
+                                                <i class="bi bi-arrow-return-right me-2 text-muted" style="font-size: 0.8rem;"></i>
+                                                <?= esc($child['title']) ?>
+                                            </span>
+                                            <span class="badge bg-light text-dark rounded-pill border" style="font-size: 0.72rem;"><?= (int) $child['product_count'] ?></span>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
