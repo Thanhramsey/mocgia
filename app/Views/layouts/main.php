@@ -899,5 +899,72 @@
     }());
     </script>
 
+    <!-- ===== DOCUMENT / PDF VIEWER MODAL ===== -->
+    <div class="modal fade" id="docViewerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" style="max-width: 92vw;">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden" style="height: 88vh;">
+                <div class="modal-header bg-dark text-white border-0 py-2 px-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2 overflow-hidden me-2">
+                        <i class="bi bi-file-earmark-pdf text-danger fs-4 flex-shrink-0"></i>
+                        <h6 class="modal-title fw-bold text-white mb-0 text-truncate" id="docViewerTitle">Xem Giấy Tờ</h6>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <a id="docViewerDownloadBtn" href="#" download class="btn btn-outline-light btn-sm rounded-pill px-3 py-1">
+                            <i class="bi bi-download me-1"></i> Tải về
+                        </a>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body p-0 bg-dark position-relative d-flex align-items-center justify-content-center" id="docViewerBody" style="height: calc(88vh - 50px);">
+                    <!-- iFrame / Object inserted dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+        function escapeHTML(str) {
+            return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        window.openDocumentViewer = function (fileUrl, title) {
+            var modalEl = document.getElementById('docViewerModal');
+            var titleEl = document.getElementById('docViewerTitle');
+            var bodyEl  = document.getElementById('docViewerBody');
+            var dlBtn   = document.getElementById('docViewerDownloadBtn');
+
+            if (!modalEl || !bodyEl || !fileUrl) return;
+
+            titleEl.textContent = title || 'Xem Giấy Tờ';
+            dlBtn.setAttribute('href', fileUrl);
+
+            bodyEl.innerHTML = '<div class="text-white small p-3"><i class="bi bi-hourglass-split me-2"></i>Đang tải tài liệu...</div>';
+
+            var modal = new bootstrap.Modal(modalEl);
+            modal.show();
+
+            setTimeout(function () {
+                bodyEl.innerHTML = '<iframe src="' + escapeHTML(fileUrl) + '#toolbar=1" width="100%" height="100%" style="border:none; background:#323639;" title="' + escapeHTML(title) + '">'
+                    + '<object data="' + escapeHTML(fileUrl) + '" type="application/pdf" width="100%" height="100%">'
+                    + '<div class="text-center text-white p-4">'
+                    + '<p>Trình duyệt của bạn không hỗ trợ xem trực tiếp PDF.</p>'
+                    + '<a href="' + escapeHTML(fileUrl) + '" download class="btn btn-primary rounded-pill"><i class="bi bi-download me-1"></i> Tải file PDF về xem</a>'
+                    + '</div></object></iframe>';
+            }, 100);
+        };
+
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-doc-viewer]');
+            if (!btn) return;
+            e.preventDefault();
+            var url = btn.getAttribute('data-doc-viewer');
+            var title = btn.getAttribute('data-doc-title') || 'Xem Tài Liệu';
+            window.openDocumentViewer(url, title);
+        });
+    }());
+    </script>
+
 </body>
 </html>
