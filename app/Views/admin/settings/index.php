@@ -104,34 +104,56 @@
                                             <label class="form-label fw-semibold">Preset Font FE</label>
                                             <select class="form-select rounded-3" name="theme_font_preset">
                                                 <?php $fontPreset = get_setting('theme_font_preset', 'mocgia_font'); ?>
-                                                <option value="mocgia_font" <?= $fontPreset === 'mocgia_font' ? 'selected' : '' ?>>Ngân Gia Nguyễn Font (Be Vietnam Pro + Inter + Manrope)</option>
-                                                <option value="helvetica" <?= $fontPreset === 'helvetica' ? 'selected' : '' ?>>Helvetica (Viet Le Thanh style)</option>
-                                                <option value="inter_outfit" <?= $fontPreset === 'inter_outfit' ? 'selected' : '' ?>>Inter + Outfit (Hiện đại, cân bằng)</option>
-                                                <option value="manrope_plusjakarta" <?= $fontPreset === 'manrope_plusjakarta' ? 'selected' : '' ?>>Manrope + Plus Jakarta (Sắc nét)</option>
-                                                <option value="nunito_poppins" <?= $fontPreset === 'nunito_poppins' ? 'selected' : '' ?>>Nunito + Poppins (Mềm mại)</option>
-                                                <option value="montserrat_lato" <?= $fontPreset === 'montserrat_lato' ? 'selected' : '' ?>>Montserrat + Lato (Doanh nghiệp)</option>
-                                                <option value="spacemono_dmsans" <?= $fontPreset === 'spacemono_dmsans' ? 'selected' : '' ?>>Space Grotesk + DM Sans (Tech)</option>
-                                                <option value="playfair_sourcesans" <?= $fontPreset === 'playfair_sourcesans' ? 'selected' : '' ?>>Playfair + Source Sans 3 (Thanh lịch)</option>
-                                                <option value="merriweather_worksans" <?= $fontPreset === 'merriweather_worksans' ? 'selected' : '' ?>>Merriweather + Work Sans (Dễ đọc)</option>
-                                                <option value="raleway_urbanist" <?= $fontPreset === 'raleway_urbanist' ? 'selected' : '' ?>>Raleway + Urbanist (Trẻ trung)</option>
-                                                <option value="oswald_mulish" <?= $fontPreset === 'oswald_mulish' ? 'selected' : '' ?>>Oswald + Mulish (Mạnh mẽ)</option>
+                                                <optgroup label="✨ Luxury & Nội Thất Độc Bản">
+                                                    <option value="mocgia_font" <?= $fontPreset === 'mocgia_font' ? 'selected' : '' ?>>🏆 Ngân Gia Nguyễn (Be Vietnam Pro + Inter + Manrope)</option>
+                                                    <option value="luxury_cormorant_montserrat" <?= $fontPreset === 'luxury_cormorant_montserrat' ? 'selected' : '' ?>>👑 Cormorant + Montserrat (Kiến trúc Luxury, Tạp chí)</option>
+                                                    <option value="luxury_bodoni_inter" <?= $fontPreset === 'luxury_bodoni_inter' ? 'selected' : '' ?>>💎 Bodoni Moda + Inter (Thời thượng, Cao cấp)</option>
+                                                    <option value="luxury_cinzel_manrope" <?= $fontPreset === 'luxury_cinzel_manrope' ? 'selected' : '' ?>>🏰 Cinzel + Manrope (Tân Cổ Điển, Uy Nghiêm)</option>
+                                                    <option value="luxury_syne_outfit" <?= $fontPreset === 'luxury_syne_outfit' ? 'selected' : '' ?>>🌿 Syne + Outfit (Japandi, Modern Minimalist)</option>
+                                                    <option value="luxury_tenor_plusjakarta" <?= $fontPreset === 'luxury_tenor_plusjakarta' ? 'selected' : '' ?>>🏛️ Tenor Sans + Plus Jakarta (Style Ý, Tinh tế)</option>
+                                                    <option value="luxury_prata_bevietnam" <?= $fontPreset === 'luxury_prata_bevietnam' ? 'selected' : '' ?>>📜 Prata + Be Vietnam Pro (Mềm mại, Thượng lưu)</option>
+                                                </optgroup>
+                                                <optgroup label="🎨 Hiện Đại & Doanh Nghiệp">
+                                                    <option value="inter_outfit" <?= $fontPreset === 'inter_outfit' ? 'selected' : '' ?>>Inter + Outfit (Cân bằng, Hiện đại)</option>
+                                                    <option value="manrope_plusjakarta" <?= $fontPreset === 'manrope_plusjakarta' ? 'selected' : '' ?>>Manrope + Plus Jakarta (Sắc nét)</option>
+                                                    <option value="helvetica" <?= $fontPreset === 'helvetica' ? 'selected' : '' ?>>Helvetica (Viet Le Thanh style)</option>
+                                                    <option value="montserrat_lato" <?= $fontPreset === 'montserrat_lato' ? 'selected' : '' ?>>Montserrat + Lato (Doanh nghiệp)</option>
+                                                    <option value="playfair_sourcesans" <?= $fontPreset === 'playfair_sourcesans' ? 'selected' : '' ?>>Playfair + Source Sans 3 (Thanh lịch)</option>
+                                                    <option value="raleway_urbanist" <?= $fontPreset === 'raleway_urbanist' ? 'selected' : '' ?>>Raleway + Urbanist (Trẻ trung)</option>
+                                                    <option value="nunito_poppins" <?= $fontPreset === 'nunito_poppins' ? 'selected' : '' ?>>Nunito + Poppins (Mềm mại)</option>
+                                                    <option value="spacemono_dmsans" <?= $fontPreset === 'spacemono_dmsans' ? 'selected' : '' ?>>Space Grotesk + DM Sans (Tech)</option>
+                                                    <option value="merriweather_worksans" <?= $fontPreset === 'merriweather_worksans' ? 'selected' : '' ?>>Merriweather + Work Sans (Dễ đọc)</option>
+                                                    <option value="oswald_mulish" <?= $fontPreset === 'oswald_mulish' ? 'selected' : '' ?>>Oswald + Mulish (Mạnh mẽ)</option>
+                                                </optgroup>
                                             </select>
                                         </div>
                                         <div class="col-md-6 col-lg-3">
                                             <label class="form-label fw-semibold">Preset Màu Chủ Đạo FE</label>
                                             <select class="form-select rounded-3" name="theme_color_preset">
                                                 <?php $colorPreset = get_setting('theme_color_preset', 'mocgia'); ?>
-                                                <option value="mocgia" <?= $colorPreset === 'mocgia' ? 'selected' : '' ?>>Ngân Gia Nguyễn Premium Charcoal/Wood/Gold (#333333)</option>
-                                                <option value="huongvietsinh" <?= $colorPreset === 'huongvietsinh' ? 'selected' : '' ?>>Hương Việt Sinh Red/Gold (#e41e26)</option>
-                                                <option value="ocean_blue" <?= $colorPreset === 'ocean_blue' ? 'selected' : '' ?>>Ocean Blue (#0b5ed7)</option>
-                                                <option value="emerald" <?= $colorPreset === 'emerald' ? 'selected' : '' ?>>Emerald (#0f766e)</option>
-                                                <option value="sunset_orange" <?= $colorPreset === 'sunset_orange' ? 'selected' : '' ?>>Sunset Orange (#ea580c)</option>
-                                                <option value="ruby_red" <?= $colorPreset === 'ruby_red' ? 'selected' : '' ?>>Ruby Red (#c81e3a)</option>
-                                                <option value="indigo_night" <?= $colorPreset === 'indigo_night' ? 'selected' : '' ?>>Indigo Night (#4338ca)</option>
-                                                <option value="teal_cyan" <?= $colorPreset === 'teal_cyan' ? 'selected' : '' ?>>Teal Cyan (#0f766e)</option>
-                                                <option value="royal_purple" <?= $colorPreset === 'royal_purple' ? 'selected' : '' ?>>Royal Purple (#6d28d9)</option>
-                                                <option value="rose_pink" <?= $colorPreset === 'rose_pink' ? 'selected' : '' ?>>Rose Pink (#e11d48)</option>
-                                                <option value="forest_green" <?= $colorPreset === 'forest_green' ? 'selected' : '' ?>>Forest Green (#166534)</option>
+                                                <optgroup label="🪵 Tone Gỗ & Luxury Nội Thất">
+                                                    <option value="mocgia" <?= $colorPreset === 'mocgia' ? 'selected' : '' ?>>🏆 Ngân Gia Nguyễn Premium Charcoal/Wood/Gold (#333333)</option>
+                                                    <option value="luxury_walnut_gold" <?= $colorPreset === 'luxury_walnut_gold' ? 'selected' : '' ?>>🌰 Gỗ Óc Chó & Vàng Hoàng Gia (Walnut & Royal Gold)</option>
+                                                    <option value="luxury_bronze_champagne" <?= $colorPreset === 'luxury_bronze_champagne' ? 'selected' : '' ?>>🎺 Đồng Thau & Champagne (Aged Bronze & Champagne)</option>
+                                                    <option value="luxury_sand_beige" <?= $colorPreset === 'luxury_sand_beige' ? 'selected' : '' ?>>🏖️ Gỗ Sồi & Cát Mịn (Nordic Oak & Warm Beige)</option>
+                                                    <option value="luxury_marble_black" <?= $colorPreset === 'luxury_marble_black' ? 'selected' : '' ?>>🖤 Đá Cẩm Thạch Đen & Vàng Kim (Black Marble & Brass)</option>
+                                                    <option value="luxury_terracotta_clay" <?= $colorPreset === 'luxury_terracotta_clay' ? 'selected' : '' ?>>🏺 Đất Nung Terracotta & Gỗ Ấm (Tuscan Terracotta)</option>
+                                                    <option value="luxury_sage_minimal" <?= $colorPreset === 'luxury_sage_minimal' ? 'selected' : '' ?>>🍃 Xanh Xám Japandi Minimalist (Sage Green & Ash)</option>
+                                                    <option value="luxury_slate_gold" <?= $colorPreset === 'luxury_slate_gold' ? 'selected' : '' ?>>🏢 Đá Phiến Xám & Vàng Kim (Architectural Slate & Gold)</option>
+                                                    <option value="luxury_copper_mahogany" <?= $colorPreset === 'luxury_copper_mahogany' ? 'selected' : '' ?>>🪵 Đồng Đỏ & Gỗ Hồng Mộc (Copper & Mahogany)</option>
+                                                </optgroup>
+                                                <optgroup label="🎨 Phổ Thông & Thương Hiệu">
+                                                    <option value="huongvietsinh" <?= $colorPreset === 'huongvietsinh' ? 'selected' : '' ?>>Hương Việt Sinh Red/Gold (#e41e26)</option>
+                                                    <option value="ocean_blue" <?= $colorPreset === 'ocean_blue' ? 'selected' : '' ?>>Ocean Blue (#0b5ed7)</option>
+                                                    <option value="emerald" <?= $colorPreset === 'emerald' ? 'selected' : '' ?>>Emerald (#0f766e)</option>
+                                                    <option value="sunset_orange" <?= $colorPreset === 'sunset_orange' ? 'selected' : '' ?>>Sunset Orange (#ea580c)</option>
+                                                    <option value="ruby_red" <?= $colorPreset === 'ruby_red' ? 'selected' : '' ?>>Ruby Red (#c81e3a)</option>
+                                                    <option value="indigo_night" <?= $colorPreset === 'indigo_night' ? 'selected' : '' ?>>Indigo Night (#4338ca)</option>
+                                                    <option value="teal_cyan" <?= $colorPreset === 'teal_cyan' ? 'selected' : '' ?>>Teal Cyan (#0f766e)</option>
+                                                    <option value="royal_purple" <?= $colorPreset === 'royal_purple' ? 'selected' : '' ?>>Royal Purple (#6d28d9)</option>
+                                                    <option value="rose_pink" <?= $colorPreset === 'rose_pink' ? 'selected' : '' ?>>Rose Pink (#e11d48)</option>
+                                                    <option value="forest_green" <?= $colorPreset === 'forest_green' ? 'selected' : '' ?>>Forest Green (#166534)</option>
+                                                </optgroup>
                                             </select>
                                             <small class="text-muted d-block mt-1">Tự động chọn màu chữ tương thích.</small>
                                         </div>
@@ -925,8 +947,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const previewCard = document.getElementById('preview-card');
 
     const fontMap = {
+        mocgia_font: { heading: "'Be Vietnam Pro', 'Inter', sans-serif", body: "'Inter', sans-serif" },
+        luxury_cormorant_montserrat: { heading: "'Cormorant Garamond', serif", body: "'Montserrat', sans-serif" },
+        luxury_bodoni_inter: { heading: "'Bodoni Moda', serif", body: "'Inter', sans-serif" },
+        luxury_cinzel_manrope: { heading: "'Cinzel', serif", body: "'Manrope', sans-serif" },
+        luxury_syne_outfit: { heading: "'Syne', sans-serif", body: "'Outfit', sans-serif" },
+        luxury_tenor_plusjakarta: { heading: "'Tenor Sans', sans-serif", body: "'Plus Jakarta Sans', sans-serif" },
+        luxury_prata_bevietnam: { heading: "'Prata', serif", body: "'Be Vietnam Pro', sans-serif" },
         inter_outfit: { heading: "'Outfit', 'Inter', sans-serif", body: "'Inter', sans-serif" },
         manrope_plusjakarta: { heading: "'Plus Jakarta Sans', 'Manrope', sans-serif", body: "'Manrope', sans-serif" },
+        helvetica: { heading: "Helvetica, Arial, sans-serif", body: "Helvetica, Arial, sans-serif" },
         nunito_poppins: { heading: "'Poppins', 'Nunito', sans-serif", body: "'Nunito', sans-serif" },
         montserrat_lato: { heading: "'Montserrat', 'Lato', sans-serif", body: "'Lato', sans-serif" },
         spacemono_dmsans: { heading: "'Space Grotesk', 'DM Sans', sans-serif", body: "'DM Sans', sans-serif" },
@@ -937,6 +967,16 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const colorMap = {
+        mocgia: { primary: '#333333', dark: '#1a1a1a', light: '#f8f6f2' },
+        luxury_walnut_gold: { primary: '#2c1d11', dark: '#180e07', light: '#fdfaf6' },
+        luxury_bronze_champagne: { primary: '#7a5c38', dark: '#402f1a', light: '#faf7f2' },
+        luxury_sand_beige: { primary: '#8c6d53', dark: '#4d3929', light: '#fcf9f5' },
+        luxury_marble_black: { primary: '#1f2421', dark: '#111412', light: '#f8f9fa' },
+        luxury_terracotta_clay: { primary: '#a04729', dark: '#682b17', light: '#fdf8f5' },
+        luxury_sage_minimal: { primary: '#4a5d4e', dark: '#2d3b30', light: '#f6f8f6' },
+        luxury_slate_gold: { primary: '#334155', dark: '#0f172a', light: '#f8fafc' },
+        luxury_copper_mahogany: { primary: '#8b3a2b', dark: '#541e15', light: '#fdf7f5' },
+        huongvietsinh: { primary: '#e41e26', dark: '#9f212e', light: '#fff1f2' },
         ocean_blue: { primary: '#0b5ed7', dark: '#0a369d', light: '#eef2ff' },
         emerald: { primary: '#0f766e', dark: '#115e59', light: '#e8f7f5' },
         sunset_orange: { primary: '#ea580c', dark: '#c2410c', light: '#fff1e9' },

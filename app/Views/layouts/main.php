@@ -8,6 +8,36 @@
             'heading' => "'Be Vietnam Pro', 'Inter', sans-serif",
             'body'    => "'Inter', sans-serif",
         ],
+        'luxury_cormorant_montserrat' => [
+            'google'  => 'family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700',
+            'heading' => "'Cormorant Garamond', serif",
+            'body'    => "'Montserrat', sans-serif",
+        ],
+        'luxury_bodoni_inter' => [
+            'google'  => 'family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;0,6..96,700;1,6..96,400&family=Inter:wght@300;400;500;600',
+            'heading' => "'Bodoni Moda', serif",
+            'body'    => "'Inter', sans-serif",
+        ],
+        'luxury_cinzel_manrope' => [
+            'google'  => 'family=Cinzel:wght@500;600;700;800&family=Manrope:wght@400;500;600;700',
+            'heading' => "'Cinzel', serif",
+            'body'    => "'Manrope', sans-serif",
+        ],
+        'luxury_syne_outfit' => [
+            'google'  => 'family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600',
+            'heading' => "'Syne', sans-serif",
+            'body'    => "'Outfit', sans-serif",
+        ],
+        'luxury_tenor_plusjakarta' => [
+            'google'  => 'family=Tenor+Sans&family=Plus+Jakarta+Sans:wght@300;400;500;600;700',
+            'heading' => "'Tenor Sans', sans-serif",
+            'body'    => "'Plus Jakarta Sans', sans-serif",
+        ],
+        'luxury_prata_bevietnam' => [
+            'google'  => 'family=Prata&family=Be+Vietnam+Pro:wght@300;400;500;600;700',
+            'heading' => "'Prata', serif",
+            'body'    => "'Be Vietnam Pro', sans-serif",
+        ],
         'helvetica' => [
             'google'  => 'family=Plus+Jakarta+Sans:wght@400;500;600;700;800',
             'heading' => "Helvetica, Arial, sans-serif",
@@ -65,6 +95,46 @@
             'primary' => '#333333', 'dark' => '#1a1a1a', 'light' => '#f8f6f2', 'accent' => '#c5a880',
             'text' => '#1f1f1f', 'muted' => '#6e6e6e', 'bg_light' => '#f9f9f9',
             'primary_rgb' => '51, 51, 51', 'dark_rgb' => '26, 26, 26',
+        ],
+        'luxury_walnut_gold' => [
+            'primary' => '#2c1d11', 'dark' => '#180e07', 'light' => '#fdfaf6', 'accent' => '#c9a84c',
+            'text' => '#1f1915', 'muted' => '#756a62', 'bg_light' => '#f7f3ed',
+            'primary_rgb' => '44, 29, 17', 'dark_rgb' => '24, 14, 7',
+        ],
+        'luxury_bronze_champagne' => [
+            'primary' => '#7a5c38', 'dark' => '#402f1a', 'light' => '#faf7f2', 'accent' => '#d4af37',
+            'text' => '#211c16', 'muted' => '#807365', 'bg_light' => '#f5f0e8',
+            'primary_rgb' => '122, 92, 56', 'dark_rgb' => '64, 47, 26',
+        ],
+        'luxury_sand_beige' => [
+            'primary' => '#8c6d53', 'dark' => '#4d3929', 'light' => '#fcf9f5', 'accent' => '#b8860b',
+            'text' => '#26201b', 'muted' => '#7d7268', 'bg_light' => '#f5efe6',
+            'primary_rgb' => '140, 109, 83', 'dark_rgb' => '77, 57, 41',
+        ],
+        'luxury_marble_black' => [
+            'primary' => '#1f2421', 'dark' => '#111412', 'light' => '#f8f9fa', 'accent' => '#d4af37',
+            'text' => '#181a1b', 'muted' => '#6b7280', 'bg_light' => '#f3f4f6',
+            'primary_rgb' => '31, 36, 33', 'dark_rgb' => '17, 20, 18',
+        ],
+        'luxury_terracotta_clay' => [
+            'primary' => '#a04729', 'dark' => '#682b17', 'light' => '#fdf8f5', 'accent' => '#d97706',
+            'text' => '#201815', 'muted' => '#7a6a63', 'bg_light' => '#f8f1ec',
+            'primary_rgb' => '160, 71, 41', 'dark_rgb' => '104, 43, 23',
+        ],
+        'luxury_sage_minimal' => [
+            'primary' => '#4a5d4e', 'dark' => '#2d3b30', 'light' => '#f6f8f6', 'accent' => '#c29b38',
+            'text' => '#1d241e', 'muted' => '#68776b', 'bg_light' => '#eef2ef',
+            'primary_rgb' => '74, 93, 78', 'dark_rgb' => '45, 59, 48',
+        ],
+        'luxury_slate_gold' => [
+            'primary' => '#334155', 'dark' => '#0f172a', 'light' => '#f8fafc', 'accent' => '#ca8a04',
+            'text' => '#0f172a', 'muted' => '#64748b', 'bg_light' => '#f1f5f9',
+            'primary_rgb' => '51, 65, 85', 'dark_rgb' => '15, 23, 42',
+        ],
+        'luxury_copper_mahogany' => [
+            'primary' => '#8b3a2b', 'dark' => '#541e15', 'light' => '#fdf7f5', 'accent' => '#e07a5f',
+            'text' => '#211715', 'muted' => '#7a6662', 'bg_light' => '#f6ece9',
+            'primary_rgb' => '139, 58, 43', 'dark_rgb' => '84, 30, 21',
         ],
         'huongvietsinh' => [
             'primary' => '#e41e26', 'dark' => '#9f212e', 'light' => '#fff1f2', 'accent' => '#f3be17',
@@ -467,7 +537,7 @@
                 <path d="M50 44 A 9 9 0 1 1 50 62 A 9 9 0 0 1 44 59" fill="none" stroke="#c5a880" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="gold-path-g" />
             </svg>
             <h2 class="loader-brand-text">NGÂN GIA NGUYỄN</h2>
-            <div class="loader-brand-sub">Premium Wood & Interior</div>
+            <div class="loader-brand-sub">Tư vấn - thiết kế - thi công nội thất</div>
         </div>
     </div>
 

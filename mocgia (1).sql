@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2026 at 10:17 AM
+-- Generation Time: Jul 20, 2026 at 11:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,7 +85,7 @@ CREATE TABLE `certificates` (
 
 INSERT INTO `certificates` (`id`, `category_id`, `title`, `description`, `image`, `issue_date`, `organization`, `pdf_attachment`, `file_attachment`, `file_mime`, `sort_order`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
 (1, 1, 'Giấy chứng nhận 1', 'Giấy chứng nhận 1', '1783746126_fc42ccc4528257eb6c6f.png', NULL, 'Sở GTVT Gia Lai', '1783746073_455c76990398fffce865.pdf', '1783746126_fc42ccc4528257eb6c6f.png', 'image/png', 0, 1, '2026-07-11 05:01:13', '2026-07-11 05:02:06', NULL, 1, 1),
-(2, 1, 'Giấy chứng nhận số 2', 'Giấy chứng nhận 2', '1783754637_f65f31937d4c5ffff04a.png', NULL, 'Giấy chứng nhận 2', '1783746093_690235cc4ad468a05c89.pdf', '1783754637_f65f31937d4c5ffff04a.png', 'image/png', 0, 1, '2026-07-11 05:01:33', '2026-07-11 07:23:57', NULL, 1, 1),
+(2, 1, 'Giấy chứng nhận số 2', 'Giấy chứng nhận 2', '1784540140_de28f2941b3e7c82894f.jpg', NULL, 'Giấy chứng nhận 2', '1783746093_690235cc4ad468a05c89.pdf', '1784540140_de28f2941b3e7c82894f.jpg', 'image/jpeg', 0, 1, '2026-07-11 05:01:33', '2026-07-20 09:35:40', NULL, 1, 1),
 (3, 1, 'Giấy chứng nhận số 3', 'Giấy chứng nhận số 3', NULL, NULL, 'Công an', '1783746315_86341e587336029a0ead.pdf', '1783746315_86341e587336029a0ead.pdf', 'application/pdf', 0, 1, '2026-07-11 05:05:15', '2026-07-11 05:05:15', NULL, 1, NULL),
 (4, 1, 'Giấy chứng nhận số 4', 'Giấy chứng nhận số 4', NULL, NULL, 'aaaaaaaaaaa', '1783746449_39bfbb81fa7eeaad5bbf.pdf', '1783746449_39bfbb81fa7eeaad5bbf.pdf', 'application/pdf', 0, 1, '2026-07-11 05:07:29', '2026-07-11 05:07:29', NULL, 1, NULL);
 
@@ -194,8 +194,12 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `album_id`, `title`, `album`, `image`, `video`, `is_featured`, `sort_order`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, NULL, 'Phòng đơn sạch sẽ tiện nghi', 'thi-cong-cong-trinh', '1783747872_41317a0d4eed1bedce48.png', '', 0, 1, 1, '2026-07-11 02:49:34', '2026-07-11 06:22:06', NULL, 2, 1),
-(2, NULL, 'Lê bá dũng', 'khong-gian-phong-nghi', '1783750984_f7ad521b476636edab83.png', 'https://www.youtube.com/watch?v=lqMltpHNmig', 0, 2, 1, '2026-07-11 06:23:04', '2026-07-11 06:23:04', NULL, 1, NULL);
+(1, NULL, 'Phòng đơn sạch sẽ tiện nghi', 'albul-nha-djep', '1784536658_54ae0ba26def55ae72e4.jpg', '', 0, 1, 1, '2026-07-11 02:49:34', '2026-07-20 08:37:38', NULL, 2, 1),
+(2, NULL, 'Lê bá dũng', 'khong-gian-phong-nghi', '1783750984_f7ad521b476636edab83.png', 'https://www.youtube.com/watch?v=lqMltpHNmig', 0, 2, 1, '2026-07-11 06:23:04', '2026-07-11 06:23:04', NULL, 1, NULL),
+(3, NULL, 'Ảnh số 2 ', 'albul-nha-djep', '1784536577_7e96c53ab139fc1cd7fa.jpg', '', 0, 2, 1, '2026-07-20 08:36:17', '2026-07-20 08:36:17', NULL, 1, NULL),
+(4, NULL, 'Anhr số 3', 'albul-nha-djep', '1784536602_7750091d520d2057bc44.jpg', '', 0, 0, 1, '2026-07-20 08:36:42', '2026-07-20 08:36:42', NULL, 1, NULL),
+(5, NULL, 'Anhr số 4', 'albul-nha-djep', '1784536615_5954004d51cb6b0d9a4f.jpg', '', 0, 0, 1, '2026-07-20 08:36:55', '2026-07-20 08:36:55', NULL, 1, NULL),
+(6, NULL, 'Ảnh số 5 ', 'albul-nha-djep', '1784536643_a2807ded1426257a0162.jpg', '', 0, 4, 1, '2026-07-20 08:37:23', '2026-07-20 08:37:23', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -221,7 +225,7 @@ CREATE TABLE `gallery_albums` (
 --
 
 INSERT INTO `gallery_albums` (`id`, `title`, `slug`, `sort_order`, `status`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 'Không gian phòng nghỉ', 'khong-gian-phong-nghi', 1, 1, '2026-07-11 02:48:42', '2026-07-11 02:48:42', NULL, 2, NULL),
+(1, 'Albul nhà đẹp', 'albul-nha-djep', 1, 1, '2026-07-11 02:48:42', '2026-07-20 08:35:44', NULL, 2, 1),
 (2, 'Thi công công trình', 'thi-cong-cong-trinh', 2, 1, '2026-07-11 02:48:55', '2026-07-11 02:48:55', NULL, 2, NULL),
 (3, 'Trang trại hữu cơ', 'trang-trai-huu-co', 3, 1, '2026-07-11 02:49:06', '2026-07-11 02:49:06', NULL, 2, NULL);
 
@@ -501,24 +505,24 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`, `deleted_at`, `created_by`, `updated_by`) VALUES
-(1, 'company_name', 'CÔNG TY CỔ PHẦN NGÂN GIA NGUYỄN', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(2, 'company_name_en', 'NGAN GIA NGUYEN WOOD JOINT STOCK COMPANY', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(3, 'address', '126 Lý Thái Tổ, Pleiku, Gia Lai ', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(4, 'phone', ' 091 611 31 69', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(5, 'email', 'info@mocgiawood.com', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
+(1, 'company_name', 'Nội thất Ngân Gia Nguyễn', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(2, 'company_name_en', 'Ngan Gia Nguyen Interior', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(3, 'address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(4, 'phone', '0916113169', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(5, 'email', 'info@mocgiawood.com', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
 (6, 'map_embed', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.231987515155!2d106.6775191!3d10.7935405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528cb2c6d4825%3A0xe5a36398d5c414!2s128%20Nguy%E1%BB%85n%20V%C4%83n%20Tr%E1%BB%97i%2C%20Ph%C6%B0%E1%BB%9Dng%208%2C%20Ph%C3%BA%20Nhu%E1%BA%ADn%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh!5e0!3m2!1svi!2s!4v1720668000000!5m2!1svi!2s', '2026-07-20 03:16:41', '2026-07-20 07:48:45', NULL, NULL, 1),
 (7, 'seo_title', 'NGÂN GIA NGUYỄN - Giải pháp vật liệu gỗ công nghiệp & nội thất cao cấp', '2026-07-20 03:16:41', '2026-07-20 07:48:33', NULL, NULL, 1),
 (8, 'seo_description', 'NGÂN GIA NGUYỄN chuyên cung cấp ván gỗ công nghiệp cao cấp, MDF phủ Melamine, Acrylic, Laminate đạt tiêu chuẩn châu Âu và dịch vụ thi công nội thất may đo đẳng cấp.', '2026-07-20 03:16:41', '2026-07-20 07:48:33', NULL, NULL, 1),
 (9, 'seo_keywords', 'go cong nghiep moc gia, mdf moc gia, melamine moc gia, noi that may do, thiet ke noi that', '2026-07-20 03:16:41', '2026-07-20 07:48:33', NULL, NULL, 1),
-(10, 'facebook', 'https://www.facebook.com/noithatngangianguyen', '2026-07-20 03:16:41', '2026-07-20 07:48:45', NULL, NULL, 1),
-(11, 'zalo', ' 091 611 31 69', '2026-07-20 03:16:41', '2026-07-20 07:48:45', NULL, NULL, 1),
-(12, 'working_hours', '8:00 - 18:00 (Thứ 2 - Thứ 7)', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(13, 'theme_color_preset', 'mocgia', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(14, 'theme_font_preset', 'mocgia_font', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(15, 'theme_border_radius_btn', '4px', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
-(16, 'theme_border_radius_block', '8px', '2026-07-20 03:16:41', '2026-07-20 08:14:43', NULL, NULL, 1),
+(10, 'facebook', 'https://www.facebook.com/noithatngangianguyen', '2026-07-20 03:16:41', '2026-07-20 10:25:56', NULL, NULL, 1),
+(11, 'zalo', '0916113169', '2026-07-20 03:16:41', '2026-07-20 10:25:56', NULL, NULL, 1),
+(12, 'working_hours', '8:00 - 18:00 (Thứ 2 - Thứ 7)', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(13, 'theme_color_preset', 'luxury_walnut_gold', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(14, 'theme_font_preset', 'mocgia_font', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(15, 'theme_border_radius_btn', '8px', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
+(16, 'theme_border_radius_block', '8px', '2026-07-20 03:16:41', '2026-07-20 09:55:21', NULL, NULL, 1),
 (17, 'site_logo', '1784521487_761e2a023eba6e1cac5e.jpg', '2026-07-20 04:14:48', '2026-07-20 04:24:47', NULL, 1, 1),
-(18, 'settings_tab', 'general', '2026-07-20 04:14:48', '2026-07-20 08:14:43', NULL, 1, 1),
+(18, 'settings_tab', 'general', '2026-07-20 04:14:48', '2026-07-20 09:55:21', NULL, 1, 1),
 (19, 'home_hero_label', 'Ngân Gia Nguyễn', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (20, 'home_hero_title', 'Đối tác tin cậy trong thiết kế, thi công , nội thất', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (21, 'home_hero_sub', 'Doanh nghiệp đa ngành tại Đức Cơ - Gia Lai với cam kết chất lượng và uy tín bền vững.', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
@@ -533,7 +537,7 @@ INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`, `delet
 (30, 'home_intro_body1', 'Được thành lập từ năm 2017 tại huyện Đức Cơ, tỉnh Gia Lai, Công ty TNHH Một Thành Viên Việt Lệ Thanh đã và đang khẳng định vị thế là một trong những doanh nghiệp đa ngành uy tín hàng đầu trong khu vực.', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (31, 'home_intro_body2', 'Lấy dịch vụ lưu trú ngắn ngày làm trọng tâm phát triển với hệ thống phòng nghỉ tiện nghi, sạch sẽ và an toàn. Bên cạnh đó, công ty còn phát triển mạnh mẽ mảng thi công xây dựng hạ tầng giao thông và trang trại chăn nuôi gia súc theo hướng bền vững.', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (32, 'home_intro_card_title', 'MỘC GIA', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
-(33, 'home_intro_card_address', 'Trụ sở tại: 77 Quang Trung, thị trấn Chư Ty, Đức Cơ, Gia Lai', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
+(33, 'home_intro_card_address', 'VP: 126 Lý Thái Tổ, P. Diên Hồng | Xưởng: 772 Nguyễn Chí Thanh, P. An Phú, Gia Lai', '2026-07-20 04:16:03', '2026-07-20 10:25:56', NULL, 1, 1),
 (34, 'home_intro_feature1_title', 'Uy Tín Hàng Đầu', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (35, 'home_intro_feature1_sub', 'Đặt chất lượng lên trên hết', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (36, 'home_intro_feature2_title', 'Dịch Vụ Chu Đáo', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
@@ -624,7 +628,10 @@ INSERT INTO `settings` (`id`, `key`, `value`, `created_at`, `updated_at`, `delet
 (121, 'home_news_empty_text_en', '', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (122, 'home_news_read_more_text_en', '', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
 (123, 'home_partners_empty_prefix_en', '', '2026-07-20 04:16:03', '2026-07-20 07:44:57', NULL, 1, 1),
-(124, 'zalo_phone', '0916113169', '2026-07-20 08:13:31', '2026-07-20 08:14:43', NULL, 1, 1);
+(124, 'zalo_phone', '0916113169', '2026-07-20 08:13:31', '2026-07-20 09:55:21', NULL, 1, 1),
+(125, 'office_address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai', '2026-07-20 10:25:56', '2026-07-20 10:25:56', NULL, NULL, NULL),
+(126, 'factory_address', '772 Nguyễn Chí Thanh, phường An Phú, Gia Lai', '2026-07-20 10:25:56', '2026-07-20 10:25:56', NULL, NULL, NULL),
+(127, 'about_address', '126 Lý Thái Tổ, phường Diên Hồng, Gia Lai', '2026-07-20 10:25:56', '2026-07-20 10:25:56', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -814,7 +821,7 @@ ALTER TABLE `document_categories`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `gallery_albums`
@@ -874,7 +881,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `users`

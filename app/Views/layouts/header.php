@@ -36,7 +36,7 @@ $currentFlagUrl = $currentLocale === 'vi' ? 'https://flagcdn.com/w20/vn.png' : '
                     <?php endif; ?>
                     <div class="lh-sm">
                         <span class="d-block fw-extrabold text-primary" style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">NGÂN GIA NGUYỄN</span>
-                        <span class="d-block text-muted" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Premium Wood & Interior</span>
+                        <!-- <span class="d-block text-muted" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Premium Wood & Interior</span> -->
                     </div>
                 </div>
             </a>
