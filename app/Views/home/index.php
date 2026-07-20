@@ -309,7 +309,89 @@ $extractYouTubeId = static function (string $url): ?string {
     </div>
 </section>
 
-<!-- Gallery Section -->
+<!-- Gallery Section (Album Cards) -->
+<?php
+$homeAlbumMap = [];
+if (!empty($albums)) {
+    foreach ($albums as $alb) {
+        $homeAlbumMap[$alb['slug']] = [
+            'title'       => $alb['title'],
+            'slug'        => $alb['slug'],
+            'images'      => [],
+            'cover_url'   => '',
+            'image_count' => 0,
+            'video_count' => 0,
+        ];
+    }
+}
+$homeAlbumMap['__uncategorised__'] = [
+    'title'       => 'Hình ảnh khác',
+    'slug'        => '__uncategorised__',
+    'images'      => [],
+    'cover_url'   => '',
+    'image_count' => 0,
+    'video_count' => 0,
+];
+
+if (!empty($gallery)) {
+    foreach ($gallery as $img) {
+        $albSlug     = $img['album'] ?? '';
+        $videoUrl    = trim((string)($img['video'] ?? ''));
+        $ytId        = $extractYouTubeId($videoUrl);
+        $isVideo     = !empty($ytId);
+        $imageUrl    = !empty($img['image']) ? base_url('uploads/gallery/' . $img['image']) : '';
+        $previewUrl  = $isVideo ? ('https://img.youtube.com/vi/' . $ytId . '/hqdefault.jpg') : $imageUrl;
+        $openUrl     = $isVideo ? ('https://www.youtube.com/embed/' . $ytId . '?autoplay=1&rel=0') : $imageUrl;
+        $imagePath   = !empty($img['image']) ? FCPATH . 'uploads/gallery/' . $img['image'] : '';
+        $hasPreview  = $isVideo || (!empty($imagePath) && file_exists($imagePath));
+
+        $entry = [
+            'title'       => $img['title'] ?? '',
+            'preview'     => $previewUrl,
+            'open_url'    => $openUrl,
+            'image_url'   => $imageUrl,
+            'is_video'    => $isVideo,
+            'has_preview' => $hasPreview,
+            'album_slug'  => $albSlug,
+        ];
+
+        if (isset($homeAlbumMap[$albSlug])) {
+            $homeAlbumMap[$albSlug]['images'][] = $entry;
+            if ($isVideo) {
+                $homeAlbumMap[$albSlug]['video_count']++;
+            } else {
+                $homeAlbumMap[$albSlug]['image_count']++;
+                if (empty($homeAlbumMap[$albSlug]['cover_url']) && !empty($imageUrl)) {
+                    $homeAlbumMap[$albSlug]['cover_url'] = $imageUrl;
+                }
+            }
+        } else {
+            $homeAlbumMap['__uncategorised__']['images'][] = $entry;
+            if ($isVideo) {
+                $homeAlbumMap['__uncategorised__']['video_count']++;
+            } else {
+                $homeAlbumMap['__uncategorised__']['image_count']++;
+                if (empty($homeAlbumMap['__uncategorised__']['cover_url']) && !empty($imageUrl)) {
+                    $homeAlbumMap['__uncategorised__']['cover_url'] = $imageUrl;
+                }
+            }
+        }
+    }
+}
+
+// Filter empty albums
+$homeAlbumMap = array_filter($homeAlbumMap, fn($a) => (count($a['images']) > 0));
+
+$jsHomeAlbumData = [];
+foreach ($homeAlbumMap as $slug => $alb) {
+    $jsHomeAlbumData[$slug] = [
+        'title'       => $alb['title'],
+        'all_items'   => array_values($alb['images']),
+        'photo_items' => array_values(array_filter($alb['images'], fn($i) => !$i['is_video'])),
+    ];
+}
+?>
+
 <section class="section-padding home-sortable-section" id="gallery" data-home-section="home-gallery" data-home-order="<?= $homeSectionOrders['home-gallery'] ?>">
     <div class="container">
         <div class="section-title-wrapper text-center">
@@ -318,59 +400,99 @@ $extractYouTubeId = static function (string $url): ?string {
         </div>
         
         <div class="row g-4">
-            <?php if (!empty($gallery)): ?>
-                <?php foreach ($gallery as $item): ?>
+            <?php if (!empty($homeAlbumMap)): ?>
+                <?php $displayedCount = 0; ?>
+                <?php foreach ($homeAlbumMap as $slug => $alb): ?>
                     <?php
-                    $homeGalleryImagePath = !empty($item['image']) ? FCPATH . 'uploads/gallery/' . $item['image'] : '';
-                    $homeGalleryImageUrl = !empty($item['image']) ? base_url('uploads/gallery/' . $item['image']) : '';
-                    $homeGalleryVideoUrl = trim((string) ($item['video'] ?? ''));
-                    $homeGalleryYouTubeId = $extractYouTubeId($homeGalleryVideoUrl);
-                    $isHomeGalleryVideo = !empty($homeGalleryYouTubeId);
-                    $homeGalleryVideoThumb = $isHomeGalleryVideo ? ('https://img.youtube.com/vi/' . $homeGalleryYouTubeId . '/hqdefault.jpg') : '';
-                    $homeGalleryVideoEmbed = $isHomeGalleryVideo ? ('https://www.youtube.com/embed/' . $homeGalleryYouTubeId . '?autoplay=1&rel=0') : '';
-                    $homeGalleryPreviewUrl = $isHomeGalleryVideo ? $homeGalleryVideoThumb : $homeGalleryImageUrl;
-                    $homeGalleryHasPreview = $isHomeGalleryVideo || (!empty($homeGalleryImagePath) && file_exists($homeGalleryImagePath));
-                    $homeGalleryOpenUrl = $isHomeGalleryVideo ? $homeGalleryVideoEmbed : (!empty($homeGalleryImageUrl) ? $homeGalleryImageUrl : '#');
+                    if ($displayedCount >= 6) break;
+                    $displayedCount++;
+                    $totalCount = $alb['image_count'] + $alb['video_count'];
+                    $hasCover   = !empty($alb['cover_url']);
                     ?>
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
-                        <div class="gallery-item">
-                            <div class="w-100 h-100 bg-dark d-flex align-items-center justify-content-center text-white text-center position-relative">
-                                <?php if ($homeGalleryHasPreview): ?>
-                                    <img src="<?= $homeGalleryPreviewUrl ?>" alt="<?= esc($item['title']) ?>" style="width:100%;height:100%;object-fit:cover;">
-                                    <?php if ($isHomeGalleryVideo): ?>
-                                        <span class="gallery-play-badge" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
+                        <div class="album-card home-album-card" data-album-slug="<?= esc($slug) ?>" role="button" tabindex="0" aria-label="Xem album <?= esc($alb['title']) ?>">
+                            <div class="album-card-thumb">
+                                <?php if ($hasCover): ?>
+                                    <img src="<?= esc($alb['cover_url']) ?>" alt="<?= esc($alb['title']) ?>" loading="lazy">
+                                <?php else: ?>
+                                    <div class="album-card-no-cover d-flex align-items-center justify-content-center h-100">
+                                        <i class="bi bi-images display-3 opacity-50"></i>
+                                    </div>
+                                <?php endif; ?>
+
+                                <!-- overlay -->
+                                <div class="album-card-overlay">
+                                    <div class="album-card-open-btn">
+                                        <i class="bi bi-journal-album me-2"></i>Xem Album (3D)
+                                    </div>
+                                </div>
+
+                                <!-- badges -->
+                                <div class="album-card-badges">
+                                    <?php if ($alb['image_count'] > 0): ?>
+                                        <span class="badge-count"><i class="bi bi-image-fill me-1"></i><?= $alb['image_count'] ?> ảnh</span>
                                     <?php endif; ?>
-                                <?php else: ?>
-                                    <span class="p-3"><?= esc($item['title']) ?></span>
-                                <?php endif; ?>
-                                <?php if ($isHomeGalleryVideo): ?>
-                                    <a href="<?= $homeGalleryOpenUrl ?>" data-fancybox="gallery" data-type="iframe" data-caption="<?= esc($item['title']) ?>" class="gallery-overlay">
-                                        <i class="bi bi-play-circle gallery-icon"></i>
-                                        <span class="fw-semibold"><?= esc($item['title']) ?></span>
-                                        <small class="mt-1">Xem video</small>
-                                    </a>
-                                <?php else: ?>
-                                    <a href="<?= $homeGalleryOpenUrl ?>" data-flipbook-album="<?= esc($item['album']) ?>" data-img-url="<?= $homeGalleryImageUrl ?>" data-caption="<?= esc($item['title']) ?>" class="gallery-overlay">
-                                        <i class="bi bi-journal-album gallery-icon"></i>
-                                        <span class="fw-semibold"><?= esc($item['title']) ?></span>
-                                        <small class="mt-1">Lật Album Ảnh</small>
-                                    </a>
-                                <?php endif; ?>
+                                    <?php if ($alb['video_count'] > 0): ?>
+                                        <span class="badge-count badge-video"><i class="bi bi-play-fill me-1"></i><?= $alb['video_count'] ?> video</span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="album-card-meta">
+                                <h5 class="album-card-title"><?= esc($alb['title']) ?></h5>
+                                <span class="album-card-sub"><?= $totalCount ?> mục &nbsp;·&nbsp; <span class="text-primary">Lật Xem Album <i class="bi bi-arrow-right"></i></span></span>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <div class="col-12 text-center">
+                <div class="col-12 text-center py-4">
                     <p class="text-muted"><?= esc($homeGalleryEmptyText) ?></p>
                 </div>
             <?php endif; ?>
         </div>
+
         <div class="text-center mt-4">
             <a href="<?= base_url('thu-vien') ?>" class="btn btn-outline-primary btn-custom rounded-pill"><?= esc($homeGalleryViewAllText) ?></a>
         </div>
     </div>
 </section>
+
+<script>
+(function() {
+    'use strict';
+    const HOME_ALBUM_DATA = <?= json_encode($jsHomeAlbumData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
+
+    document.querySelectorAll('.home-album-card[data-album-slug]').forEach(function(card) {
+        card.addEventListener('click', function() {
+            const slug = this.getAttribute('data-album-slug');
+            const alb = HOME_ALBUM_DATA[slug];
+            if (!alb) return;
+
+            if (alb.photo_items && alb.photo_items.length > 0) {
+                const imagesForFlip = alb.photo_items.map(function(img) {
+                    return {
+                        url: img.image_url,
+                        caption: img.title
+                    };
+                });
+                if (typeof window.openAlbumFlipbook === 'function') {
+                    window.openAlbumFlipbook(imagesForFlip, alb.title, 0);
+                }
+            } else if (alb.all_items && alb.all_items.length > 0 && alb.all_items[0].is_video) {
+                if (typeof Fancybox !== 'undefined' && Fancybox.show) {
+                    Fancybox.show([{ src: alb.all_items[0].open_url, type: 'iframe', caption: alb.all_items[0].title }]);
+                }
+            }
+        });
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+})();
+</script>
 
 <!-- Latest News Section -->
 <section class="section-padding home-sortable-section" data-home-section="home-news" data-home-order="<?= $homeSectionOrders['home-news'] ?>">

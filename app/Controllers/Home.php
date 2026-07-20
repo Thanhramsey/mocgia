@@ -7,6 +7,7 @@ use App\Models\CertificateModel;
 use App\Models\DocumentCategoryModel;
 use App\Models\ServiceModel;
 use App\Models\GalleryModel;
+use App\Models\GalleryAlbumModel;
 use App\Models\NewsModel;
 use App\Models\PartnerModel;
 
@@ -111,6 +112,7 @@ class Home extends BaseController
         $bannerModel = new BannerModel();
         $serviceModel = new ServiceModel();
         $galleryModel = new GalleryModel();
+        $galleryAlbumModel = new GalleryAlbumModel();
         $newsModel = new NewsModel();
         $partnerModel = new PartnerModel();
         $certificateModel = new CertificateModel();
@@ -138,7 +140,8 @@ class Home extends BaseController
         $data = [
             'banners'  => $bannerModel->where('status', 1)->orderBy('sort_order', 'ASC')->findAll(),
             'services' => $serviceModel->where('status', 1)->findAll(),
-            'gallery'  => $galleryModel->where('status', 1)->orderBy('sort_order', 'ASC')->limit(6)->findAll(),
+            'gallery'  => $galleryModel->where('status', 1)->orderBy('sort_order', 'ASC')->findAll(),
+            'albums'   => $galleryAlbumModel->where('status', 1)->orderBy('sort_order', 'ASC')->findAll(),
             'news'     => $newsModel->where('status', 'published')->orderBy('published_at', 'DESC')->limit(3)->findAll(),
             'partners' => $partnerModel->where('status', 1)->orderBy('sort_order', 'ASC')->findAll(),
             'certificates' => $certificateItems,
