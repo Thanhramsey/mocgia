@@ -343,11 +343,19 @@ $extractYouTubeId = static function (string $url): ?string {
                                 <?php else: ?>
                                     <span class="p-3"><?= esc($item['title']) ?></span>
                                 <?php endif; ?>
-                                <a href="<?= $homeGalleryOpenUrl ?>" data-fancybox="gallery" <?= $isHomeGalleryVideo ? 'data-type="iframe"' : '' ?> data-caption="<?= esc($item['title']) ?>" class="gallery-overlay">
-                                    <i class="bi <?= $isHomeGalleryVideo ? 'bi-play-circle' : 'bi-plus-circle' ?> gallery-icon"></i>
-                                    <span class="fw-semibold"><?= esc($item['title']) ?></span>
-                                    <small class="mt-1"><?= $isHomeGalleryVideo ? 'Xem video' : 'Xem ảnh lớn' ?></small>
-                                </a>
+                                <?php if ($isHomeGalleryVideo): ?>
+                                    <a href="<?= $homeGalleryOpenUrl ?>" data-fancybox="gallery" data-type="iframe" data-caption="<?= esc($item['title']) ?>" class="gallery-overlay">
+                                        <i class="bi bi-play-circle gallery-icon"></i>
+                                        <span class="fw-semibold"><?= esc($item['title']) ?></span>
+                                        <small class="mt-1">Xem video</small>
+                                    </a>
+                                <?php else: ?>
+                                    <a href="<?= $homeGalleryOpenUrl ?>" data-flipbook-album="<?= esc($item['album']) ?>" data-img-url="<?= $homeGalleryImageUrl ?>" data-caption="<?= esc($item['title']) ?>" class="gallery-overlay">
+                                        <i class="bi bi-journal-album gallery-icon"></i>
+                                        <span class="fw-semibold"><?= esc($item['title']) ?></span>
+                                        <small class="mt-1">Lật Album Ảnh</small>
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

@@ -1547,3 +1547,644 @@ html.lenis {
 .lenis-scrolling iframe {
     pointer-events: none;
 }
+
+/* 3D Flipbook Album Modal Styling */
+#flipbookModal .modal-content {
+    background-color: #0d1117 !important;
+}
+
+#flipbookWrapper {
+    perspective: 2000px;
+}
+
+.flipbook-container {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.flipbook-container .page {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.04);
+}
+
+.flipbook-container .page-content {
+    border-radius: 4px;
+}
+
+.flipbook-container .page-cover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ─────────────────────────────────────────────────────────
+   GALLERY — ALBUM CARDS (View 1)
+───────────────────────────────────────────────────────── */
+.album-card {
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card, #fff);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+.album-card:hover,
+.album-card:focus-visible {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.15);
+}
+.album-card-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1b2a4a 0%, #0b1329 100%);
+}
+.album-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.album-card:hover .album-card-thumb img,
+.album-card:focus-visible .album-card-thumb img {
+    transform: scale(1.07);
+}
+.album-card-no-cover {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: #fff;
+}
+.album-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 55%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.album-card:hover .album-card-overlay,
+.album-card:focus-visible .album-card-overlay {
+    opacity: 1;
+}
+.album-card-open-btn {
+    background: var(--primary-color, #6b4226);
+    color: #fff;
+    border-radius: 50px;
+    padding: 8px 22px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.album-card-badges {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+}
+.badge-count {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    border-radius: 50px;
+    padding: 3px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+.badge-count.badge-video {
+    background: rgba(220, 38, 38, 0.8);
+}
+.album-card-meta {
+    padding: 14px 16px 16px;
+}
+.album-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-heading, #1a1a1a);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.album-card-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted, #6c757d);
+}
+
+/* ─────────────────────────────────────────────────────────
+   GALLERY — IMAGE CARDS (View 2)
+───────────────────────────────────────────────────────── */
+.album-img-card {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg-card, #fff);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+}
+.album-img-card:hover,
+.album-img-card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+}
+.album-img-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+.album-img-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.album-img-card:hover .album-img-thumb img {
+    transform: scale(1.06);
+}
+.album-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    color: #fff;
+    font-size: 1.8rem;
+}
+.album-img-card:hover .album-img-overlay,
+.album-img-card:focus-visible .album-img-overlay {
+    opacity: 1;
+}
+.album-img-caption {
+    padding: 7px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-body, #333);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dark mode */
+[data-theme="dark"] .album-card,
+[data-theme="dark"] .album-img-card {
+    background: #1e2533;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+[data-theme="dark"] .album-card-title,
+[data-theme="dark"] .album-img-caption {
+    color: #e2e8f0;
+}
+[data-theme="dark"] .album-img-thumb {
+    background: #2d3748;
+}
+
+/* Video card badge + red overlay tint */
+.album-video-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(220, 38, 38, 0.88);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    border-radius: 50px;
+    padding: 3px 10px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    pointer-events: none;
+}
+.album-video-overlay {
+    background: rgba(180, 0, 0, 0.42) !important;
+    font-size: 2.4rem !important;
+}
+.album-video-card:hover .album-img-overlay,
+.album-video-card:focus-visible .album-img-overlay {
+    opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FLIPBOOK PREMIUM COVERS
+══════════════════════════════════════════════════════════ */
+
+/* ── FRONT COVER ─────────────────────────────────────── */
+.flipbook-cover-front {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Blurred dark overlay over the photo */
+.flipbook-cover-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(10, 10, 20, 0.78) 0%,
+        rgba(20, 12, 5, 0.72) 60%,
+        rgba(10, 10, 20, 0.82) 100%
+    );
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 0;
+}
+
+/* Thin gold top brand bar */
+.flipbook-cover-topbar {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(90deg, #c9a84c 0%, #e8c96c 50%, #c9a84c 100%);
+    color: #1a0e00;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+}
+
+/* Main centered body */
+.flipbook-cover-body {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+/* Gold border frame card */
+.flipbook-cover-frame {
+    border: 1.5px solid rgba(201, 168, 76, 0.65);
+    border-radius: 10px;
+    padding: 3px;
+    width: 100%;
+    max-width: 88%;
+    box-shadow:
+        0 0 0 1px rgba(201, 168, 76, 0.18),
+        inset 0 0 30px rgba(0, 0, 0, 0.25);
+}
+.flipbook-cover-frame-inner {
+    border: 1px solid rgba(201, 168, 76, 0.28);
+    border-radius: 8px;
+    padding: 22px 18px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.flipbook-cover-logo {
+    margin-bottom: 4px;
+}
+.flipbook-cover-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    margin: 0;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+.flipbook-cover-divider {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    border-radius: 2px;
+    margin: 2px auto;
+}
+.flipbook-cover-sub {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+.flipbook-cover-brand {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #c9a84c;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Bottom navigation hint */
+.flipbook-cover-hint {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-size: 0.66rem;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 10px 12px 12px;
+    letter-spacing: 0.05em;
+}
+
+/* ── BACK COVER ──────────────────────────────────────── */
+.flipbook-cover-back {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0f1c2e 0%, #1a1008 55%, #0f1c2e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 18px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+}
+/* Gold top accent line */
+.flipbook-back-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #c9a84c 0%, #e8c96c 50%, #c9a84c 100%);
+}
+/* Subtle decorative background ring */
+.flipbook-cover-back::before {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.1);
+    pointer-events: none;
+}
+.flipbook-cover-back::after {
+    content: '';
+    position: absolute;
+    bottom: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.06);
+    pointer-events: none;
+}
+
+.flipbook-back-logo {
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+.flipbook-back-brand {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+}
+.flipbook-back-brand span {
+    color: #c9a84c;
+    display: block;
+}
+.flipbook-back-tagline {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1;
+}
+.flipbook-back-divider {
+    width: 56px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    border-radius: 2px;
+    margin: 14px auto;
+    position: relative;
+    z-index: 1;
+}
+.flipbook-back-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.flipbook-back-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.73rem;
+    color: rgba(255, 255, 255, 0.82);
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    border-radius: 8px;
+    padding: 7px 12px;
+}
+.flipbook-back-contact-item i {
+    color: #c9a84c;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+.flipbook-back-contact-item strong {
+    color: #fff;
+    font-weight: 700;
+}
+.flipbook-back-bottom {
+    margin-top: 14px;
+    font-size: 0.63rem;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─────────────────────────────────────────────────────────
+   NEWS DETAIL & CONTENT BODY TYPOGRAPHY
+───────────────────────────────────────────────────────── */
+.news-detail-title {
+    font-size: 1.85rem;
+    line-height: 1.35;
+    color: var(--text-heading, #1a1a1a);
+    word-break: break-word;
+}
+
+@media (max-width: 768px) {
+    .news-detail-title {
+        font-size: 1.45rem;
+    }
+}
+
+.news-detail-summary {
+    background-color: rgba(var(--primary-rgb, 107, 66, 38), 0.06);
+    border-left: 4px solid var(--primary-color, #6b4226);
+    color: var(--text-body, #4a5568);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.news-detail-main-img img {
+    max-height: 480px;
+    object-fit: cover;
+}
+
+/* Content Body (CKEditor / HTML output) */
+.content-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-body, #2d3748);
+    word-break: break-word;
+}
+
+.content-body p {
+    margin-bottom: 1.25rem;
+}
+
+.content-body h1, 
+.content-body h2, 
+.content-body h3, 
+.content-body h4, 
+.content-body h5, 
+.content-body h6 {
+    font-weight: 700;
+    color: var(--text-heading, #1a202c);
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.35;
+}
+
+.content-body h2 { font-size: 1.5rem; }
+.content-body h3 { font-size: 1.3rem; }
+.content-body h4 { font-size: 1.15rem; }
+
+.content-body img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.content-body figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.content-body figcaption {
+    font-size: 0.85rem;
+    color: var(--text-muted, #718096);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.content-body blockquote {
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary-color, #6b4226);
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+}
+
+.content-body ul, 
+.content-body ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.content-body li {
+    margin-bottom: 0.4rem;
+}
+
+.content-body table {
+    width: 100% !important;
+    max-width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+}
+
+.content-body td, 
+.content-body th {
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.95rem;
+}
+
+.content-body th {
+    background-color: #f7fafc;
+    font-weight: 700;
+}
+
+.content-body iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+/* Dark mode overrides for news detail */
+[data-theme="dark"] .news-detail-title {
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .news-detail-summary {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .content-body {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .content-body h1,
+[data-theme="dark"] .content-body h2,
+[data-theme="dark"] .content-body h3,
+[data-theme="dark"] .content-body h4,
+[data-theme="dark"] .content-body h5,
+[data-theme="dark"] .content-body h6 {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .content-body blockquote {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .content-body td,
+[data-theme="dark"] .content-body th {
+    border-color: #334155;
+}
+
+[data-theme="dark"] .content-body th {
+    background-color: #1e293b;
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .news-sidebar-card {
+    background-color: #1e2533 !important;
+}
+

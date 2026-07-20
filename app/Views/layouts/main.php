@@ -504,6 +504,8 @@
     <script src="https://unpkg.com/split-type"></script>
     <!-- Motion JS -->
     <script src="<?= base_url('js/motion.js') ?>"></script>
+    <!-- StPageFlip 3D Flipbook -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
     
     <!-- Custom scripts -->
     <script>
@@ -731,6 +733,170 @@
                 icon.classList.replace('bi-moon-fill', 'bi-sun-fill');
             }
         })();
+    </script>
+
+    <!-- ===== 3D FLIPBOOK ALBUM MODAL ===== -->
+    <div class="modal fade" id="flipbookModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-dark text-white border-0">
+                <div class="modal-header border-0 pb-1 px-4 pt-3 d-flex align-items-center justify-content-between">
+                    <div>
+                        <h5 class="modal-title fw-bold text-white mb-0" id="flipbookTitle">Album Ảnh</h5>
+                        <small class="text-white-50" id="flipbookPageCounter">Đang tải album...</small>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button type="button" class="btn btn-outline-light rounded-circle px-3 py-2 me-1" id="flipbookPrevBtn" title="Trang trước"><i class="bi bi-chevron-left"></i></button>
+                        <button type="button" class="btn btn-outline-light rounded-circle px-3 py-2 me-2" id="flipbookNextBtn" title="Trang sau"><i class="bi bi-chevron-right"></i></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center p-3 position-relative overflow-hidden" id="flipbookWrapper">
+                    <div id="flipbookContainer" class="flipbook-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var pageFlipInstance = null;
+
+        window.openAlbumFlipbook = function (images, title, startIndex) {
+            title      = title      || 'Album Ảnh';
+            startIndex = startIndex || 0;
+
+            var modalEl     = document.getElementById('flipbookModal');
+            var containerEl = document.getElementById('flipbookContainer');
+            var titleEl     = document.getElementById('flipbookTitle');
+            var counterEl   = document.getElementById('flipbookPageCounter');
+            if (!modalEl || !containerEl) return;
+
+            titleEl.textContent = title;
+            containerEl.innerHTML = '';
+
+            if (pageFlipInstance) {
+                try { pageFlipInstance.destroy(); } catch(e) {}
+                pageFlipInstance = null;
+            }
+
+            if (!images || images.length === 0) return;
+
+            function mkPage(cls, html) {
+                var d = document.createElement('div');
+                d.className = cls;
+                d.innerHTML = html;
+                return d;
+            }
+
+            // 1. Front cover
+            var firstSrc = (typeof images[0] === 'string' ? images[0] : (images[0].url || ''));
+            var bgStyle  = firstSrc ? 'background-image:url(\'' + firstSrc + '\');' : '';
+            containerEl.appendChild(mkPage('page page-cover page-cover-top',
+                '<div class="page-content flipbook-cover-front" style="' + bgStyle + '">'
+                + '<div class="flipbook-cover-bg"></div>'
+                + '<div class="flipbook-cover-topbar">Nội Thất Ngân Gia Nguyễn</div>'
+                + '<div class="flipbook-cover-body">'
+                +   '<div class="flipbook-cover-frame">'
+                +     '<div class="flipbook-cover-frame-inner">'
+                +       '<div class="flipbook-cover-logo">'
+                +         '<svg width="48" height="48" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">'
+                +           '<rect width="44" height="44" rx="10" fill="rgba(255,255,255,0.12)"/>'
+                +           '<path d="M8 34V16l14-8 14 8v18H8z" stroke="#c9a84c" stroke-width="1.8" fill="none"/>'
+                +           '<path d="M16 34V24h12v10" stroke="#c9a84c" stroke-width="1.8" fill="none"/>'
+                +           '<path d="M19 20h6" stroke="#c9a84c" stroke-width="1.5"/>'
+                +         '</svg>'
+                +       '</div>'
+                +       '<h2 class="flipbook-cover-title">' + title + '</h2>'
+                +       '<div class="flipbook-cover-divider"></div>'
+                +       '<p class="flipbook-cover-sub">Bộ sưu tập hình ảnh công trình</p>'
+                +       '<p class="flipbook-cover-brand">Nội Thất Ngân Gia Nguyễn</p>'
+                +     '</div>'
+                +   '</div>'
+                + '</div>'
+                + '<div class="flipbook-cover-hint"><i class="bi bi-arrow-right-circle me-2"></i>Vuốt hoặc nhấn mũi tên để lật trang</div>'
+                + '</div>'
+            ));
+
+            // 2. Image pages
+            images.forEach(function (imgObj, idx) {
+                var src     = typeof imgObj === 'string' ? imgObj : (imgObj.url || '');
+                var caption = typeof imgObj === 'string' ? ('Ảnh ' + (idx + 1)) : (imgObj.caption || ('Ảnh ' + (idx + 1)));
+                containerEl.appendChild(mkPage('page',
+                    '<div class="page-content h-100 d-flex flex-column justify-content-between p-3 bg-white text-dark">'
+                    + '<div class="flex-grow-1 d-flex align-items-center justify-content-center overflow-hidden">'
+                    +   '<img src="' + src + '" alt="' + caption + '" style="max-height:100%;max-width:100%;object-fit:contain;" loading="lazy">'
+                    + '</div>'
+                    + (caption ? '<div class="text-center pt-2 mt-2 text-muted border-top fw-semibold" style="font-size:0.72rem">' + caption + '</div>' : '')
+                    + '</div>'
+                ));
+            });
+
+            // 3. Back cover
+            containerEl.appendChild(mkPage('page page-cover page-cover-bottom',
+                '<div class="page-content flipbook-cover-back">'
+                + '<div class="flipbook-back-accent"></div>'
+                + '<div class="flipbook-back-logo">'
+                +   '<svg width="56" height="56" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">'
+                +     '<rect width="44" height="44" rx="10" fill="rgba(201,168,76,0.15)"/>'
+                +     '<path d="M8 34V16l14-8 14 8v18H8z" stroke="#c9a84c" stroke-width="1.8" fill="none"/>'
+                +     '<path d="M16 34V24h12v10" stroke="#c9a84c" stroke-width="1.8" fill="none"/>'
+                +     '<path d="M19 20h6" stroke="#c9a84c" stroke-width="1.5"/>'
+                +   '</svg>'
+                + '</div>'
+                + '<h3 class="flipbook-back-brand">Nội Thất<br><span>Ngân Gia Nguyễn</span></h3>'
+                + '<p class="flipbook-back-tagline">Chuyên thiết kế &amp; thi công nội thất<br>may đo độc bản — Gia Lai</p>'
+                + '<div class="flipbook-back-divider"></div>'
+                + '<div class="flipbook-back-contacts">'
+                +   '<div class="flipbook-back-contact-item"><i class="bi bi-telephone-fill"></i><span>Hotline: <strong>0916 113 169</strong></span></div>'
+                +   '<div class="flipbook-back-contact-item"><i class="bi bi-chat-dots-fill"></i><span>Zalo: <strong>0916 113 169</strong></span></div>'
+                +   '<div class="flipbook-back-contact-item"><i class="bi bi-geo-alt-fill"></i><span>126 Lý Thái Tổ, P. Diên Hồng, Gia Lai</span></div>'
+                +   '<div class="flipbook-back-contact-item"><i class="bi bi-facebook"></i><span>noithatngangianguyen</span></div>'
+                + '</div>'
+                + '<div class="flipbook-back-bottom"><span>Cảm ơn bạn đã xem qua bộ sưu tập</span></div>'
+                + '</div>'
+            ));
+
+            // Show modal & init PageFlip
+            var modal = new bootstrap.Modal(modalEl);
+            modal.show();
+
+            modalEl.addEventListener('shown.bs.modal', function onShown() {
+                modalEl.removeEventListener('shown.bs.modal', onShown);
+
+                var isMobile = window.innerWidth < 768;
+                var w = isMobile ? Math.min(window.innerWidth * 0.88, 420) : Math.min(window.innerWidth * 0.42, 540);
+                var h = isMobile ? Math.min(window.innerHeight * 0.72, 640) : Math.min(window.innerHeight * 0.80, 720);
+
+                pageFlipInstance = new St.PageFlip(containerEl, {
+                    width : Math.floor(w),
+                    height: Math.floor(h),
+                    size  : 'stretch',
+                    minWidth: 280, maxWidth: 650,
+                    minHeight: 380, maxHeight: 850,
+                    maxShadowOpacity: 0.55,
+                    showCover: true,
+                    mobileScrollSupport: false
+                });
+
+                pageFlipInstance.loadFromHTML(containerEl.querySelectorAll('.page'));
+
+                pageFlipInstance.on('flip', function (e) {
+                    counterEl.textContent = 'Trang ' + (e.data + 1) + ' / ' + pageFlipInstance.getPageCount();
+                });
+
+                counterEl.textContent = 'Trang 1 / ' + pageFlipInstance.getPageCount();
+
+                if (startIndex > 0) {
+                    setTimeout(function () {
+                        try { pageFlipInstance.turnToPage(startIndex + 1); } catch(e) {}
+                    }, 350);
+                }
+            });
+
+            document.getElementById('flipbookPrevBtn').onclick = function () { pageFlipInstance && pageFlipInstance.flipPrev(); };
+            document.getElementById('flipbookNextBtn').onclick = function () { pageFlipInstance && pageFlipInstance.flipNext(); };
+        };
+    }());
     </script>
 
 </body>

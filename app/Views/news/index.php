@@ -83,7 +83,7 @@
                         <?php if (!empty($categories)): ?>
                             <?php foreach ($categories as $cat): ?>
                                 <li class="py-2 border-bottom">
-                                    <a href="#" class="text-decoration-none text-dark d-flex justify-content-between align-items-center">
+                                    <a href="<?= base_url('tin-tuc/danh-muc/' . esc($cat['slug'])) ?>" class="text-decoration-none text-heading hover-primary d-flex justify-content-between align-items-center">
                                         <span><i class="bi bi-folder-fill text-primary me-2"></i> <?= esc($cat['title']) ?></span>
                                     </a>
                                 </li>
