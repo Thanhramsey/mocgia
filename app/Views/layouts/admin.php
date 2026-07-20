@@ -65,6 +65,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?= (strpos(uri_string(), 'admin/product-categories') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/product-categories') ?>">
+                        <i class="bi bi-tags"></i> Nhóm Sản Phẩm
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= (strpos(uri_string(), 'admin/products') === 0) ? 'active' : '' ?>" href="<?= base_url('admin/products') ?>">
+                        <i class="bi bi-box-seam"></i> Quản Lý Sản Phẩm
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?= (uri_string() == 'admin/news') ? 'active' : '' ?>" href="<?= base_url('admin/news') ?>">
                         <i class="bi bi-newspaper"></i> Quản Lý Tin Tức
                     </a>

@@ -28,15 +28,15 @@ $currentFlagUrl = $currentLocale === 'vi' ? 'https://flagcdn.com/w20/vn.png' : '
             <a class="navbar-brand text-wrap" href="<?= base_url() ?>" style="max-width: 420px;">
                 <div class="d-flex align-items-center">
                     <?php if (get_setting('site_logo')): ?>
-                        <img src="<?= base_url('uploads/settings/' . get_setting('site_logo')) ?>" alt="<?= esc(get_setting('company_name', 'Việt Lệ Thanh')) ?>" style="max-height: 64px; width: auto;" class="me-1">
+                        <img src="<?= base_url('uploads/settings/' . get_setting('site_logo')) ?>" alt="<?= esc(get_setting('company_name', 'Ngân Gia Nguyễn')) ?>" style="max-height: 64px; width: auto;" class="me-1">
                     <?php else: ?>
                         <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 42px; height: 42px; min-width: 42px;">
-                            <span class="fw-bold fs-5">VLT</span>
+                            <span class="fw-bold fs-5">MG</span>
                         </div>
                     <?php endif; ?>
                     <div class="lh-sm">
-                        <span class="d-block fw-extrabold text-primary" style="font-size: 0.95rem; font-weight: 800; text-transform: uppercase;">VIỆT LỆ THANH</span>
-                        <span class="d-block text-muted" style="font-size: 0.7rem; text-transform: uppercase;">Gia Lai</span>
+                        <span class="d-block fw-extrabold text-primary" style="font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">NGÂN GIA NGUYỄN</span>
+                        <span class="d-block text-muted" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px;">Premium Wood & Interior</span>
                     </div>
                 </div>
             </a>
@@ -52,6 +52,39 @@ $currentFlagUrl = $currentLocale === 'vi' ? 'https://flagcdn.com/w20/vn.png' : '
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= (uri_string() == 'gioi-thieu') ? 'active' : '' ?>" href="<?= base_url('gioi-thieu') ?>"><?= esc(lang('Site.about')) ?></a>
+                    </li>
+
+                    <!-- Sản Phẩm Dropdown -->
+                    <?php
+                    $navProductCatModel = [];
+                    try {
+                        $navProductCatModel = new \App\Models\ProductCategoryModel();
+                        $navProductCats = $navProductCatModel->where('status', 1)->orderBy('sort_order', 'ASC')->findAll();
+                    } catch (\Throwable $e) {
+                        $navProductCats = [];
+                    }
+                    ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle <?= (uri_string() == 'san-pham' || strpos(uri_string(), 'san-pham/') === 0) ? 'active' : '' ?>"
+                           href="<?= base_url('san-pham') ?>" id="productDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Sản Phẩm
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="productDropdown">
+                            <li><a class="dropdown-item" href="<?= base_url('san-pham') ?>">
+                                <i class="bi bi-box-seam me-2 text-primary"></i>Tất cả sản phẩm
+                            </a></li>
+                            <?php if (!empty($navProductCats)): ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <?php foreach ($navProductCats as $pc): ?>
+                                    <li>
+                                        <a class="dropdown-item" href="<?= base_url('san-pham/nhom/' . $pc['slug']) ?>">
+                                            <i class="bi <?= esc($pc['icon'] ?: 'bi-chevron-right') ?> me-2 text-primary" style="font-size:0.8rem;"></i><?= esc($pc['title']) ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
                     </li>
 
                     <!-- Dịch Vụ Dropdown -->

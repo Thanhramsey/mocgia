@@ -8,6 +8,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('lang/(:segment)', 'Language::switch/$1');
 $routes->get('/', 'Home::index');
 $routes->get('gioi-thieu', 'About::index');
+$routes->get('san-pham', 'Product::index');
+$routes->get('san-pham/nhom/(:segment)', 'Product::index/$1');
+$routes->get('san-pham/(:segment)', 'Product::show/$1');
 $routes->get('dich-vu', 'Service::index');
 $routes->get('dich-vu/(:segment)', 'Service::show/$1');
 $routes->get('thu-vien', 'Gallery::index');
@@ -57,6 +60,23 @@ $routes->group('admin', function($routes) {
     $routes->get('services/edit/(:num)', 'Admin\Service::edit/$1');
     $routes->post('services/update/(:num)', 'Admin\Service::update/$1');
     $routes->get('services/delete/(:num)', 'Admin\Service::delete/$1');
+
+    // Product Categories CRUD
+    $routes->get('product-categories', 'Admin\ProductCategory::index');
+    $routes->get('product-categories/create', 'Admin\ProductCategory::create');
+    $routes->post('product-categories/store', 'Admin\ProductCategory::store');
+    $routes->get('product-categories/edit/(:num)', 'Admin\ProductCategory::edit/$1');
+    $routes->post('product-categories/update/(:num)', 'Admin\ProductCategory::update/$1');
+    $routes->get('product-categories/delete/(:num)', 'Admin\ProductCategory::delete/$1');
+
+    // Products CRUD
+    $routes->get('products', 'Admin\Product::index');
+    $routes->get('products/create', 'Admin\Product::create');
+    $routes->post('products/store', 'Admin\Product::store');
+    $routes->get('products/edit/(:num)', 'Admin\Product::edit/$1');
+    $routes->post('products/update/(:num)', 'Admin\Product::update/$1');
+    $routes->get('products/delete/(:num)', 'Admin\Product::delete/$1');
+    $routes->post('products/delete-media/(:num)', 'Admin\Product::deleteMedia/$1');
     
     // News CRUD
     $routes->get('news', 'Admin\News::index');

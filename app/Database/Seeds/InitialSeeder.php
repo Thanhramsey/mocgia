@@ -14,9 +14,9 @@ class InitialSeeder extends Seeder
         $adminPassword = password_hash('admin123', PASSWORD_DEFAULT);
         $userData = [
             'username'   => 'admin',
-            'email'      => 'admin@vietlethanh.com',
+            'email'      => 'admin@mocgiawood.com',
             'password'   => $adminPassword,
-            'fullname'   => 'Quản trị viên',
+            'fullname'   => 'Quản trị viên Ngân Gia Nguyễn',
             'role'       => 'superadmin',
             'status'     => 1,
             'created_at' => $now,
@@ -26,20 +26,22 @@ class InitialSeeder extends Seeder
 
         // 2. Seed Settings
         $settings = [
-            ['key' => 'company_name', 'value' => 'CÔNG TY TNHH MỘT THÀNH VIÊN VIỆT LỆ THANH'],
-            ['key' => 'company_name_en', 'value' => 'VIET LE THANH ONE MEMBER COMPANY LIMITED'],
-            ['key' => 'address', 'value' => '77 Quang Trung, khu phố II, Thị trấn Chư Ty, Huyện Đức Cơ, Tỉnh Gia Lai, Việt Nam'],
-            ['key' => 'phone', 'value' => '0914.168.379'], // A realistic representative phone number or mockup
-            ['key' => 'email', 'value' => 'info@vietlethanh.com'],
-            ['key' => 'map_embed', 'value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15545.98188562417!2d107.5851443!3d13.9782522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316cf9b71f98d7af%3A0x8cf218f3a3d5e27a!2s77%20Quang%20Trung%2C%20Ch%C6%B0%20Ty%2C%20%C4%90%E1%BB%A9c%20C%C6%A1%2C%20Gia%20Lai!5e0!3m2!1svi!2s!4v1720668000000!5m2!1svi!2s'],
-            ['key' => 'seo_title', 'value' => 'Việt Lệ Thanh - Dịch vụ lưu trú ngắn ngày & Xây dựng công trình tại Gia Lai'],
-            ['key' => 'seo_description', 'value' => 'Công ty TNHH MTV Việt Lệ Thanh cung cấp các dịch vụ khách sạn nghỉ dưỡng uy tín, xây dựng công trình giao thông đường bộ và chăn nuôi nông nghiệp chất lượng tại Đức Cơ, Gia Lai.'],
-            ['key' => 'seo_keywords', 'value' => 'viet le thanh, viet le thanh gia lai, khach san duc co, nha nghi chu ty, xay dung giao thong duc co'],
-            ['key' => 'facebook', 'value' => 'https://facebook.com/vietlethanh.gialai'],
-            ['key' => 'zalo', 'value' => '0914168379'],
-            ['key' => 'working_hours', 'value' => 'Mở cửa 24/7 (Đối với lưu trú)'],
-            ['key' => 'theme_border_radius_btn', 'value' => '8px'],
-            ['key' => 'theme_border_radius_block', 'value' => '12px'],
+            ['key' => 'company_name', 'value' => 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN'],
+            ['key' => 'company_name_en', 'value' => 'MOC GIA WOOD JOINT STOCK COMPANY'],
+            ['key' => 'address', 'value' => '128 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh, Việt Nam'],
+            ['key' => 'phone', 'value' => '1900.5858.92'],
+            ['key' => 'email', 'value' => 'info@mocgiawood.com'],
+            ['key' => 'map_embed', 'value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.231987515155!2d106.6775191!3d10.7935405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528cb2c6d4825%3A0xe5a36398d5c414!2s128%20Nguy%E1%BB%85n%20V%C4%83n%20Tr%E1%BB%97i%2C%20Ph%C6%B0%E1%BB%9Dng%208%2C%20Ph%C3%BA%20Nhu%E1%BA%ADn%2C%20Th%C3%A0nh%20ph%E1%BB%91%20H%E1%BB%93%20Ch%C3%AD%20Minh!5e0!3m2!1svi!2s!4v1720668000000!5m2!1svi!2s'],
+            ['key' => 'seo_title', 'value' => 'Ngân Gia Nguyễn - Giải pháp vật liệu gỗ công nghiệp & nội thất cao cấp'],
+            ['key' => 'seo_description', 'value' => 'Ngân Gia Nguyễn chuyên cung cấp ván gỗ công nghiệp cao cấp, MDF phủ Melamine, Acrylic, Laminate đạt tiêu chuẩn châu Âu và dịch vụ thi công nội thất may đo đẳng cấp.'],
+            ['key' => 'seo_keywords', 'value' => 'go cong nghiep moc gia, mdf moc gia, melamine moc gia, noi that may do, thiet ke noi that'],
+            ['key' => 'facebook', 'value' => 'https://facebook.com/mocgiawood'],
+            ['key' => 'zalo', 'value' => '1900585892'],
+            ['key' => 'working_hours', 'value' => '8:00 - 18:00 (Thứ 2 - Thứ 7)'],
+            ['key' => 'theme_color_preset', 'value' => 'mocgia'],
+            ['key' => 'theme_font_preset', 'value' => 'mocgia_font'],
+            ['key' => 'theme_border_radius_btn', 'value' => '4px'],
+            ['key' => 'theme_border_radius_block', 'value' => '8px'],
         ];
 
         foreach ($settings as $setting) {
@@ -51,39 +53,39 @@ class InitialSeeder extends Seeder
         // 3. Seed Services
         $services = [
             [
-                'title'           => 'Dịch vụ lưu trú ngắn ngày (Khách sạn / Nhà nghỉ)',
-                'slug'            => 'dich-vu-luu-tru-ngan-ngay',
-                'summary'         => 'Cung cấp phòng nghỉ tiện nghi, không gian thoáng mát, yên tĩnh và sạch sẽ tại thị trấn Chư Ty, Đức Cơ. Đảm bảo an toàn, dịch vụ chu đáo phục vụ 24/7.',
-                'content'         => '<p>Chào mừng quý khách đến với dịch vụ lưu trú ngắn ngày của <strong>Việt Lệ Thanh</strong>. Chúng tôi tự hào mang lại không gian lưu trú thoải mái và tiện nghi nhất cho hành khách khi ghé thăm hoặc đi công tác tại huyện Đức Cơ, tỉnh Gia Lai.</p><p>Hệ thống phòng nghỉ đa dạng bao gồm phòng đơn, phòng đôi được trang bị đầy đủ các trang thiết bị hiện đại như điều hòa, tivi màn hình phẳng, wifi tốc độ cao, bình nóng lạnh và dịch vụ giặt là tiện ích. Đội ngũ nhân viên thân thiện, nhiệt tình sẽ luôn làm hài lòng quý khách.</p>',
-                'image'           => 'accommodation.webp',
-                'icon'            => 'bi-building-fill-check',
-                'seo_title'       => 'Dịch vụ Lưu trú Khách sạn Nhà nghỉ tại Đức Cơ, Gia Lai - Việt Lệ Thanh',
-                'seo_description' => 'Tìm phòng nghỉ, khách sạn chất lượng tốt, giá rẻ tại thị trấn Chư Ty, huyện Đức Cơ, Gia Lai? Việt Lệ Thanh cung cấp hệ thống phòng lưu trú tiện nghi, sạch sẽ và an toàn.',
-                'seo_keywords'    => 'nha nghi duc co, khach san duc co, luu tru duc co, viet le thanh hotel',
+                'title'           => 'Vật Liệu & Giải Pháp Gỗ Công Nghiệp',
+                'slug'            => 'vat-lieu-va-giai-phap-go-cong-nghiep',
+                'summary'         => 'Cung cấp ván gỗ công nghiệp chất lượng cao, MFC, MDF phủ Melamine, Laminate, Acrylic đa dạng màu sắc và bề mặt đạt tiêu chuẩn xuất khẩu.',
+                'content'         => '<p>Ngân Gia Nguyễn tự hào là đơn vị tiên phong cung cấp vật liệu gỗ công nghiệp cao cấp tại thị trường Việt Nam. Chúng tôi sở hữu danh mục sản phẩm đa dạng với hơn 1.000 màu sắc và bề mặt khác nhau, từ vân gỗ tự nhiên, vân đá, giả da đến các bề mặt đơn sắc sang trọng.</p><p>Các dòng sản phẩm ván MFC, MDF, HDF của Ngân Gia Nguyễn đều đạt tiêu chuẩn quốc tế E1, E0 về nồng độ phát thải Formaldehyde, đảm bảo an toàn tuyệt đối cho sức khỏe người tiêu dùng và độ bền vượt trội theo thời gian.</p>',
+                'image'           => 'wood_materials.webp',
+                'icon'            => 'bi-grid-1x2-fill',
+                'seo_title'       => 'Vật Liệu Gỗ Công Nghiệp MFC MDF HDF E0 E1 - Ngân Gia Nguyễn',
+                'seo_description' => 'Ngân Gia Nguyễn cung cấp gỗ công nghiệp chất lượng cao đạt chuẩn châu Âu E0, E1. Hơn 1000 màu sắc bề mặt vân gỗ, melamine, acrylic bóng gương, laminate chống trầy.',
+                'seo_keywords'    => 'go cong nghiep mdf, van go melamine, tam acrylic, laminate go mọc gia',
                 'status'          => 1,
             ],
             [
-                'title'           => 'Xây dựng công trình giao thông & dân dụng',
-                'slug'            => 'xay-dung-cong-trinh-giao-thong-dan-dung',
-                'summary'         => 'Thi công xây dựng công trình đường bộ, hạ tầng kỹ thuật đô thị và nhà ở. Sử dụng công nghệ hiện đại, đội ngũ kỹ sư lành nghề đảm bảo tiến độ và chất lượng.',
-                'content'         => '<p>Công ty TNHH Một Thành Viên Việt Lệ Thanh nhận thi công xây dựng các công trình giao thông đường bộ, cầu cống, nâng cấp và sửa chữa hệ thống hạ tầng đô thị. Bên cạnh đó, chúng tôi cũng đảm nhận thiết kế thi công các công trình dân dụng như nhà ở và công trình công cộng.</p><p>Với năng lực thiết bị máy móc hiện đại và đội ngũ cán bộ kỹ thuật giàu kinh nghiệm, chúng tôi luôn cam kết chất lượng công trình đạt chuẩn kỹ thuật cao, tiến độ thi công nhanh chóng và chi phí tối ưu nhất cho đối tác.</p>',
-                'image'           => 'construction.webp',
-                'icon'            => 'bi-cone-striped',
-                'seo_title'       => 'Thi công xây dựng đường bộ dân dụng tại Gia Lai - Việt Lệ Thanh',
-                'seo_description' => 'Nhà thầu thi công xây dựng công trình giao thông đường bộ và dân dụng uy tín tại Đức Cơ, tỉnh Gia Lai. Đảm bảo chất lượng công trình bền vững theo thời gian.',
-                'seo_keywords'    => 'xay dung duong bo gia lai, nha thau xay dung duc co, thi cong duong bo',
+                'title'           => 'Nội Thất May Đo & Giải Pháp Thiết Kế (Bespoke)',
+                'slug'            => 'noi-that-may-do-va-giai-phap-thiet-ke',
+                'summary'         => 'Thiết kế và sản xuất nội thất gia đình, căn hộ, biệt thự và văn phòng theo yêu cầu riêng biệt, mang lại tính độc bản và tối ưu hóa công năng.',
+                'content'         => '<p>Không chỉ dừng lại ở cung cấp vật liệu, Ngân Gia Nguyễn mang đến giải pháp thiết kế và thi công nội thất may đo độc bản (bespoke). Chúng tôi thấu hiểu mỗi không gian sống là một câu chuyện riêng của gia chủ, vì thế đội ngũ kiến trúc sư của Ngân Gia Nguyễn luôn sáng tạo để tạo nên các tác phẩm nội thất hoàn hảo nhất.</p><p>Nhờ dây chuyền sản xuất hiện đại và quy trình kiểm soát chất lượng chặt chẽ, sản phẩm nội thất may đo của Ngân Gia Nguyễn đạt độ tinh xảo cao, đường nét sắc sảo và độ hoàn thiện tinh tế chuẩn châu Âu.</p>',
+                'image'           => 'bespoke_furniture.webp',
+                'icon'            => 'bi-palette-fill',
+                'seo_title'       => 'Thiết kế thi công nội thất may đo Bespoke cao cấp - Ngân Gia Nguyễn',
+                'seo_description' => 'Giải pháp thiết kế và sản xuất đồ gỗ nội thất gia đình, tủ bếp, tủ áo, giường ngủ may đo chuẩn xác theo yêu cầu khách hàng cá nhân.',
+                'seo_keywords'    => 'noi that may do, noi that bespoke, thiet ke noi that cao cap, tu bep mdf moc gia',
                 'status'          => 1,
             ],
             [
-                'title'           => 'Chăn nuôi gia súc & phát triển nông nghiệp',
-                'slug'            => 'chan-nuoi-gia-suc-phat-trien-nong-nghiep',
-                'summary'         => 'Phát triển mô hình trang trại chăn nuôi bò, lợn, gia cầm đạt chuẩn VietGAP. Cung cấp nguồn sản phẩm sạch, an toàn vệ sinh thực phẩm cho thị trường.',
-                'content'         => '<p>Tại vùng đất Tây Nguyên đầy nắng gió, Việt Lệ Thanh đầu tư xây dựng mô hình trang trại nông nghiệp tổng hợp, trong đó tập trung vào chăn nuôi gia súc (trâu, bò, lợn) và gia cầm. Trang trại được quy hoạch xa khu dân cư, áp dụng nghiêm ngặt các quy trình phòng dịch và chăn nuôi khép kín.</p><p>Chúng tôi hướng tới việc cung cấp nguồn thực phẩm thịt thương phẩm sạch, không chất cấm, đảm bảo chất lượng cao nhất phục vụ người tiêu dùng địa phương và các khu vực lân cận.</p>',
-                'image'           => 'husbandry.webp',
-                'icon'            => 'bi-egg-fried',
-                'seo_title'       => 'Trang trại chăn nuôi gia súc sạch tại Đức Cơ Gia Lai - Việt Lệ Thanh',
-                'seo_description' => 'Mô hình trang trại chăn nuôi gia súc bò heo và gia cầm sạch của công ty Việt Lệ Thanh tại Gia Lai. Ứng dụng quy trình kỹ thuật hiện đại, đảm bảo vệ sinh dịch tễ.',
-                'seo_keywords'    => 'trang trai chan nuoi gia lai, nuoi bo thit duc co, nong nghiep sach gia lai',
+                'title'           => 'Thi Thi Công Dự Án Trọn Gói',
+                'slug'            => 'thi-cong-du-an-tron-goi',
+                'summary'         => 'Nhà thầu thi công lắp đặt hoàn thiện nội thất trọn gói cho biệt thự, căn hộ cao cấp, văn phòng và các dự án thương mại quy mô lớn.',
+                'content'         => '<p>Ngân Gia Nguyễn là đối tác tin cậy của các chủ đầu tư, tập đoàn bất động sản lớn tại Việt Nam trong lĩnh vực thi công hoàn thiện nội thất dự án. Với quy mô xưởng sản xuất lớn và đội ngũ thợ lành nghề, chúng tôi tự tin đảm nhận các dự án có độ khó kỹ thuật cao.</p><p>Chúng tôi cam kết tiến độ thi công chính xác, chất lượng vật liệu bàn giao đúng cam kết hợp đồng và dịch vụ bảo hành, bảo trì chuyên nghiệp, kịp thời.</p>',
+                'image'           => 'project_construction.webp',
+                'icon'            => 'bi-tools',
+                'seo_title'       => 'Nhà thầu thi công nội thất dự án căn hộ biệt thự - Ngân Gia Nguyễn',
+                'seo_description' => 'Ngân Gia Nguyễn nhận thi công lắp đặt nội thất trọn gói cho các dự án biệt thự, chung cư cao cấp, văn phòng làm việc quy mô lớn chuyên nghiệp.',
+                'seo_keywords'    => 'thi cong noi that tron goi, thau noi that van phong, lap dat do go du an',
                 'status'          => 1,
             ],
         ];
@@ -97,22 +99,22 @@ class InitialSeeder extends Seeder
         // 4. Seed Banners
         $banners = [
             [
-                'title'         => 'KHÁCH SẠN & DỊCH VỤ VIỆT LỆ THANH',
-                'subtitle'      => 'Không gian lưu trú lý tưởng, tiện nghi và ấm cúng tại Đức Cơ, Gia Lai',
-                'desktop_image' => 'banner_hotel.webp',
-                'mobile_image'  => 'banner_hotel_mb.webp',
-                'button_text'   => 'Đặt phòng ngay',
-                'button_link'   => '#contact',
+                'title'         => 'NGÂN GIA NGUYỄN — GIẢI PHÁP VẬT LIỆU GỖ CAO CẤP',
+                'subtitle'      => 'Sản phẩm cốt ván chống ẩm đạt chuẩn an toàn sức khỏe quốc tế E0, E1',
+                'desktop_image' => 'banner_wood.webp',
+                'mobile_image'  => 'banner_wood_mb.webp',
+                'button_text'   => 'Khám phá giải pháp',
+                'button_link'   => '#services',
                 'sort_order'    => 1,
                 'status'        => 1,
             ],
             [
-                'title'         => 'ĐỐI TÁC THI CÔNG TIN CẬY',
-                'subtitle'      => 'Đồng hành cùng các công trình hạ tầng giao thông và dân dụng bền vững',
-                'desktop_image' => 'banner_construction.webp',
-                'mobile_image'  => 'banner_construction_mb.webp',
-                'button_text'   => 'Xem dự án',
-                'button_link'   => '#services',
+                'title'         => 'KIẾN TẠO KHÔNG GIAN NỘI THẤT MAY ĐO',
+                'subtitle'      => 'Hơn 1.000 màu sắc và bề mặt vân gỗ thời thượng dẫn đầu xu hướng thiết kế',
+                'desktop_image' => 'banner_interior.webp',
+                'mobile_image'  => 'banner_interior_mb.webp',
+                'button_text'   => 'Liên hệ tư vấn',
+                'button_link'   => '#contact',
                 'sort_order'    => 2,
                 'status'        => 1,
             ],
@@ -137,33 +139,33 @@ class InitialSeeder extends Seeder
         $news = [
             [
                 'category_id'     => $categoryId,
-                'title'           => 'Việt Lệ Thanh nâng cấp cơ sở vật chất hệ thống phòng nghỉ năm 2026',
-                'slug'            => 'viet-le-thanh-nang-cap-co-so-vat-chat-phong-nghi-2026',
-                'summary'         => 'Nhằm nâng cao chất lượng dịch vụ lưu trú ngắn ngày, Công ty Việt Lệ Thanh đã tiến hành cải tạo nâng cấp toàn bộ hệ thống nội thất phòng nghỉ.',
-                'content'         => '<p>Thực hiện cam kết mang lại trải nghiệm tốt nhất cho quý khách hàng, trong quý II năm 2026, Công ty TNHH MTV Việt Lệ Thanh đã hoàn thành đợt nâng cấp toàn diện cơ sở vật chất phòng nghỉ tại số 77 Quang Trung, thị trấn Chư Ty, huyện Đức Cơ.</p><p>Toàn bộ phòng nghỉ đều được thay mới chăn ga gối đệm cao cấp, lắp đặt thêm hệ thống đèn chiếu sáng dịu nhẹ và tivi thông minh kết nối internet tốc độ cao. Ngoài ra phòng tắm cũng được sửa sang sạch đẹp với vách kính hiện đại. Hãy ghé thăm chúng tôi để trải nghiệm không gian nghỉ ngơi ấm cúng như chính ngôi nhà của bạn!</p>',
-                'image'           => 'news_upgrade.webp',
+                'title'           => 'Ngân Gia Nguyễn ra mắt Bộ sưu tập Bề mặt gỗ Công nghiệp Xu hướng 2026/2027',
+                'slug'            => 'moc-gia-ra-mat-bo-suu-tap-be-mat-go-cong-nghiep-xu-huong-2026-2027',
+                'summary'         => 'Lấy cảm hứng từ tự nhiên và phong cách tối giản Bắc Âu, Ngân Gia Nguyễn chính thức giới thiệu bộ sưu tập mới với 50+ bề mặt vân gỗ và giả đá siêu thực.',
+                'content'         => '<p>Đón đầu xu hướng thiết kế nội thất xanh và tối giản, Ngân Gia Nguyễn đã chính thức công bố Bộ sưu tập bề mặt gỗ công nghiệp xu hướng 2026/2027. Bộ sưu tập mang chủ đề "Chạm vào Cảm xúc", tập trung vào các tông màu gỗ ấm áp, bề mặt nhám sần siêu thực mô phỏng hoàn hảo gỗ tự nhiên.</p><p>Tất cả sản phẩm trong bộ sưu tập mới đều sử dụng cốt ván chống ẩm đạt chuẩn Super E0 cao cấp, hoàn toàn không mùi, bảo vệ sức khỏe cho các thành viên trong gia đình. Đây hứa hẹn sẽ là nguồn cảm hứng mới cho các kiến trúc sư trong các dự án sắp tới.</p>',
+                'image'           => 'news_collection.webp',
                 'is_featured'     => 1,
                 'status'          => 'published',
                 'published_at'    => $now,
-                'tags'            => 'khách sạn, phòng nghỉ, đức cơ, gia lai',
-                'seo_title'       => 'Nâng cấp hệ thống phòng nghỉ Việt Lệ Thanh Đức Cơ Gia Lai',
-                'seo_description' => 'Công ty Việt Lệ Thanh nâng cấp toàn bộ phòng nghỉ khách sạn năm 2026 tại thị trấn Chư Ty, mang lại trải nghiệm lưu trú ấm cúng, sang trọng, đầy đủ tiện nghi.',
-                'seo_keywords'    => 'nha nghi duc co nang cap, gia phong viet le thanh, luu tru chat luong cao gia lai',
+                'tags'            => 'gỗ công nghiệp, bộ sưu tập, nội thất, xu hướng 2026',
+                'seo_title'       => 'Bộ sưu tập bề mặt gỗ công nghiệp xu hướng 2026 - Ngân Gia Nguyễn',
+                'seo_description' => 'Ngân Gia Nguyễn ra mắt bộ sưu tập bề mặt gỗ công nghiệp mới 2026 với cốt ván siêu sạch đạt chuẩn an toàn Super E0 và vân gỗ sần sâu thời thượng.',
+                'seo_keywords'    => 'bo suu tap go mọc gia, xu huong noi that 2026, go super e0',
             ],
             [
                 'category_id'     => $categoryId,
-                'title'           => 'Hoàn thành bàn giao dự án nâng cấp tuyến đường giao thông liên xã',
-                'slug'            => 'hoan-thanh-ban-giao-du-an-nang-cap-tuyen-duong-giao-thong-lien-xa',
-                'summary'         => 'Đội ngũ kỹ sư và công nhân xây dựng của Việt Lệ Thanh đã bàn giao xuất sắc dự án làm đường đúng tiến độ cam kết.',
-                'content'         => '<p>Công ty TNHH MTV Việt Lệ Thanh phối hợp cùng các đơn vị quản lý vừa qua đã nghiệm thu bàn giao dự án thảm nhựa và nâng cấp hạ tầng đường giao thông nội khu liên thôn xã tại địa bàn huyện Đức Cơ. Công trình hoàn thành trước thời hạn 15 ngày, đáp ứng các tiêu chuẩn khắt khe về kỹ thuật giao thông đường bộ.</p><p>Sự kiện này khẳng định năng lực thi công và chữ tín của Việt Lệ Thanh trên thị trường xây dựng tỉnh Gia Lai.</p>',
-                'image'           => 'news_road.webp',
+                'title'           => 'Ngân Gia Nguyễn nhận chứng chỉ An toàn Sức khỏe Tiêu chuẩn Châu Âu E0',
+                'slug'            => 'moc-gia-nhan-chung-chi-an-toan-suc-khoe-tieu-chuan-chau-au-e0',
+                'summary'         => 'Hội đồng kiểm định quốc tế vừa trao chứng nhận tiêu chuẩn E0 cho toàn bộ dòng sản phẩm gỗ công nghiệp của Ngân Gia Nguyễn.',
+                'content'         => '<p>Vừa qua, Công ty Cổ phần Gỗ Ngân Gia Nguyễn đã vinh dự đón nhận chứng chỉ tiêu chuẩn an toàn sức khỏe E0 từ Tổ chức kiểm định quốc tế. Đây là cột mốc quan trọng khẳng định cam kết của Ngân Gia Nguyễn trong việc đem lại các sản phẩm xanh, sạch và an toàn cho người sử dụng.</p><p>Tiêu chuẩn E0 quy định nghiêm ngặt về lượng phát thải Formaldehyde từ gỗ công nghiệp. Việc đạt chứng chỉ này giúp Ngân Gia Nguyễn vững bước xuất khẩu sang các thị trường khó tính như Mỹ, Châu Âu và Nhật Bản.</p>',
+                'image'           => 'news_certificate.webp',
                 'is_featured'     => 0,
                 'status'          => 'published',
                 'published_at'    => $now,
-                'tags'            => 'xây dựng, làm đường, giao thông, đức cơ',
-                'seo_title'       => 'Hoàn thành dự án xây dựng giao thông đường bộ Đức Cơ Gia Lai',
-                'seo_description' => 'Việt Lệ Thanh hoàn thành thảm nhựa và nâng cấp hạ tầng giao thông đường bộ liên xã tại Đức Cơ, Gia Lai trước thời hạn, bảo đảm tiêu chuẩn an toàn kỹ thuật.',
-                'seo_keywords'    => 'nha thau thi cong duong duc co, xay dung cau duong gia lai',
+                'tags'            => 'chứng chỉ, tiêu chuẩn E0, sức khỏe, gỗ sạch',
+                'seo_title'       => 'Gỗ công nghiệp Ngân Gia Nguyễn đạt chuẩn quốc tế E0 - Bảo vệ sức khỏe',
+                'seo_description' => 'Chứng nhận tiêu chuẩn phát thải E0 cho ván gỗ công nghiệp MDF MFC Ngân Gia Nguyễn. Đảm bảo an toàn không độc hại cho môi trường sống.',
+                'seo_keywords'    => 'chung chi go e0, van mdf an toan, go sach mọc gia',
             ],
         ];
 
@@ -175,14 +177,51 @@ class InitialSeeder extends Seeder
 
         // 6. Seed Partners
         $partners = [
-            ['name' => 'Công ty Cao su Đức Cơ', 'logo' => 'partner_rubber.webp', 'link' => '#'],
-            ['name' => 'Ủy ban Nhân dân Huyện Đức Cơ', 'logo' => 'partner_ubnd.webp', 'link' => '#'],
+            ['name' => 'Vingroup', 'logo' => 'partner_vin.webp', 'link' => '#'],
+            ['name' => 'Novaland Group', 'logo' => 'partner_nova.webp', 'link' => '#'],
+            ['name' => 'Sun Group', 'logo' => 'partner_sun.webp', 'link' => '#'],
+            ['name' => 'Khang Điền', 'logo' => 'partner_khangdien.webp', 'link' => '#'],
+            ['name' => 'Đất Xanh Group', 'logo' => 'partner_datxanh.webp', 'link' => '#'],
         ];
 
         foreach ($partners as $partner) {
             $partner['created_at'] = $now;
             $partner['updated_at'] = $now;
             $this->db->table('partners')->insert($partner);
+        }
+
+        // 7. Seed Milestones
+        $milestones = [
+            [
+                'year'        => 2017,
+                'title'       => 'Thành lập Ngân Gia Nguyễn',
+                'description' => 'Thành lập xưởng sản xuất gỗ công nghiệp đầu tiên tại TP. Hồ Chí Minh với công nghệ ép nhiệt cơ bản.',
+                'sort_order'  => 1,
+            ],
+            [
+                'year'        => 2020,
+                'title'       => 'Mở rộng quy mô nhà máy',
+                'description' => 'Đầu tư dây chuyền dán cạnh không đường line tự động nhập khẩu từ Đức, nâng công suất gấp 3 lần.',
+                'sort_order'  => 2,
+            ],
+            [
+                'year'        => 2023,
+                'title'       => 'Đạt tiêu chuẩn E0 & Xuất khẩu',
+                'description' => 'Chính thức xuất khẩu lô hàng ván gỗ MDF E0 đầu tiên sang thị trường Mỹ và các nước Đông Nam Á.',
+                'sort_order'  => 3,
+            ],
+            [
+                'year'        => 2026,
+                'title'       => 'Showroom Trải Nghiệm Cao Cấp',
+                'description' => 'Phát triển hệ thống showroom trưng bày trải nghiệm gỗ và nội thất may đo cao cấp tại các thành phố lớn.',
+                'sort_order'  => 4,
+            ],
+        ];
+
+        foreach ($milestones as $ms) {
+            $ms['created_at'] = $now;
+            $ms['updated_at'] = $now;
+            $this->db->table('company_milestones')->insert($ms);
         }
     }
 }

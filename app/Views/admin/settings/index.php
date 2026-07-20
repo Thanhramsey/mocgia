@@ -98,8 +98,9 @@
                                         <div class="col-md-6 col-lg-3">
                                             <label class="form-label fw-semibold">Preset Font FE</label>
                                             <select class="form-select rounded-3" name="theme_font_preset">
-                                                <?php $fontPreset = get_setting('theme_font_preset', 'helvetica'); ?>
-                                                <option value="helvetica" <?= $fontPreset === 'helvetica' ? 'selected' : '' ?>>Helvetica (Huong Viet Sinh style)</option>
+                                                <?php $fontPreset = get_setting('theme_font_preset', 'mocgia_font'); ?>
+                                                <option value="mocgia_font" <?= $fontPreset === 'mocgia_font' ? 'selected' : '' ?>>Ngân Gia Nguyễn Font (Be Vietnam Pro + Inter + Manrope)</option>
+                                                <option value="helvetica" <?= $fontPreset === 'helvetica' ? 'selected' : '' ?>>Helvetica (Viet Le Thanh style)</option>
                                                 <option value="inter_outfit" <?= $fontPreset === 'inter_outfit' ? 'selected' : '' ?>>Inter + Outfit (Hiện đại, cân bằng)</option>
                                                 <option value="manrope_plusjakarta" <?= $fontPreset === 'manrope_plusjakarta' ? 'selected' : '' ?>>Manrope + Plus Jakarta (Sắc nét)</option>
                                                 <option value="nunito_poppins" <?= $fontPreset === 'nunito_poppins' ? 'selected' : '' ?>>Nunito + Poppins (Mềm mại)</option>
@@ -114,7 +115,8 @@
                                         <div class="col-md-6 col-lg-3">
                                             <label class="form-label fw-semibold">Preset Màu Chủ Đạo FE</label>
                                             <select class="form-select rounded-3" name="theme_color_preset">
-                                                <?php $colorPreset = get_setting('theme_color_preset', 'huongvietsinh'); ?>
+                                                <?php $colorPreset = get_setting('theme_color_preset', 'mocgia'); ?>
+                                                <option value="mocgia" <?= $colorPreset === 'mocgia' ? 'selected' : '' ?>>Ngân Gia Nguyễn Premium Charcoal/Wood/Gold (#333333)</option>
                                                 <option value="huongvietsinh" <?= $colorPreset === 'huongvietsinh' ? 'selected' : '' ?>>Hương Việt Sinh Red/Gold (#e41e26)</option>
                                                 <option value="ocean_blue" <?= $colorPreset === 'ocean_blue' ? 'selected' : '' ?>>Ocean Blue (#0b5ed7)</option>
                                                 <option value="emerald" <?= $colorPreset === 'emerald' ? 'selected' : '' ?>>Emerald (#0f766e)</option>
@@ -263,7 +265,7 @@
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label fw-semibold">Nhãn hero</label>
-                                            <input type="text" name="home_hero_label" class="form-control rounded-3" value="<?= esc(get_setting('home_hero_label', 'VIỆT LỆ THANH')) ?>">
+                                            <input type="text" name="home_hero_label" class="form-control rounded-3" value="<?= esc(get_setting('home_hero_label', 'NGÂN GIA NGUYỄN')) ?>">
                                         </div>
                                         <div class="col-md-8">
                                             <label class="form-label fw-semibold">Tiêu đề chính</label>
@@ -313,7 +315,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <label class="form-label fw-semibold">Tiêu đề lớn section</label>
-                                            <input type="text" name="home_intro_heading" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_heading', 'CÔNG TY TNHH MTV VIỆT LỆ THANH')) ?>">
+                                            <input type="text" name="home_intro_heading" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_heading', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN')) ?>">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Đoạn mô tả 1</label>
@@ -325,7 +327,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Khối ảnh mô phỏng - Tiêu đề</label>
-                                            <input type="text" name="home_intro_card_title" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_title', 'VIỆT LỆ THANH')) ?>">
+                                            <input type="text" name="home_intro_card_title" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_title', 'NGÂN GIA NGUYỄN')) ?>">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Khối ảnh mô phỏng - Địa chỉ</label>
@@ -435,7 +437,7 @@
                                         <div class="col-md-6"><label class="form-label fw-semibold">Gallery - Text khi rỗng</label><input type="text" name="home_gallery_empty_text" class="form-control rounded-3" value="<?= esc(get_setting('home_gallery_empty_text', 'Đang cập nhật thư viện ảnh...')) ?>"></div>
 
                                         <div class="col-md-6"><label class="form-label fw-semibold">News - Nhãn section</label><input type="text" name="home_news_eyebrow" class="form-control rounded-3" value="<?= esc(get_setting('home_news_eyebrow', 'Tin Tức Mới Nhất')) ?>"></div>
-                                        <div class="col-md-6"><label class="form-label fw-semibold">News - Tiêu đề section</label><input type="text" name="home_news_title" class="form-control rounded-3" value="<?= esc(get_setting('home_news_title', 'Bản Tin Việt Lệ Thanh')) ?>"></div>
+                                        <div class="col-md-6"><label class="form-label fw-semibold">News - Tiêu đề section</label><input type="text" name="home_news_title" class="form-control rounded-3" value="<?= esc(get_setting('home_news_title', 'Bản Tin Ngân Gia Nguyễn')) ?>"></div>
                                         <div class="col-md-6"><label class="form-label fw-semibold">News - Text khi rỗng</label><input type="text" name="home_news_empty_text" class="form-control rounded-3" value="<?= esc(get_setting('home_news_empty_text', 'Đang cập nhật tin tức mới...')) ?>"></div>
                                         <div class="col-md-6"><label class="form-label fw-semibold">News - Nút đọc tiếp</label><input type="text" name="home_news_read_more_text" class="form-control rounded-3" value="<?= esc(get_setting('home_news_read_more_text', 'Đọc Tiếp')) ?>"></div>
                                         <div class="col-12"><label class="form-label fw-semibold">Partners fallback - tiền tố tên</label><input type="text" name="home_partners_empty_prefix" class="form-control rounded-3" value="<?= esc(get_setting('home_partners_empty_prefix', 'Đối tác')) ?>"></div>
@@ -498,7 +500,7 @@
                                 <div class="card-body p-4">
                                     <div class="row g-3">
                                         <div class="col-md-4"><label class="form-label fw-semibold">Nhãn hero (nhỏ phía trên)</label><input type="text" name="about_hero_label" class="form-control rounded-3" value="<?= esc(get_setting('about_hero_label', 'Về Chúng Tôi')) ?>"></div>
-                                        <div class="col-md-8"><label class="form-label fw-semibold">Tiêu đề hero</label><input type="text" name="about_hero_title" class="form-control rounded-3" value="<?= esc(get_setting('about_hero_title', 'Công ty TNHH MTV Việt Lệ Thanh')) ?>"></div>
+                                        <div class="col-md-8"><label class="form-label fw-semibold">Tiêu đề hero</label><input type="text" name="about_hero_title" class="form-control rounded-3" value="<?= esc(get_setting('about_hero_title', 'Công ty Cổ phần Gỗ Ngân Gia Nguyễn')) ?>"></div>
                                         <div class="col-12"><label class="form-label fw-semibold">Mô tả ngắn dưới tiêu đề</label><input type="text" name="about_hero_sub" class="form-control rounded-3" value="<?= esc(get_setting('about_hero_sub', 'Uy tín — Chất lượng — Tận tâm phục vụ từ năm 2017 tại Gia Lai')) ?>"></div>
                                     </div>
                                 </div>
@@ -524,12 +526,12 @@
                                 </div>
                                 <div class="card-body p-4">
                                     <div class="row g-3">
-                                        <div class="col-md-6"><label class="form-label fw-semibold">Tên đầy đủ (Tiếng Việt)</label><input type="text" name="about_company_name_vi" class="form-control rounded-3" value="<?= esc(get_setting('about_company_name_vi', 'CÔNG TY TNHH MỘT THÀNH VIÊN VIỆT LỆ THANH')) ?>"></div>
-                                        <div class="col-md-6"><label class="form-label fw-semibold">Tên quốc tế</label><input type="text" name="about_company_name_en" class="form-control rounded-3" value="<?= esc(get_setting('about_company_name_en', 'VIET LE THANH ONE MEMBER COMPANY LIMITED')) ?>"></div>
-                                        <div class="col-md-3"><label class="form-label fw-semibold">Mã số thuế</label><input type="text" name="about_tax_code" class="form-control rounded-3" value="<?= esc(get_setting('about_tax_code', '5901061783')) ?>"></div>
-                                        <div class="col-md-5"><label class="form-label fw-semibold">Đại diện pháp luật</label><input type="text" name="about_legal_rep" class="form-control rounded-3" value="<?= esc(get_setting('about_legal_rep', 'NGUYỄN HỮU VIỆT')) ?>"></div>
+                                        <div class="col-md-6"><label class="form-label fw-semibold">Tên đầy đủ (Tiếng Việt)</label><input type="text" name="about_company_name_vi" class="form-control rounded-3" value="<?= esc(get_setting('about_company_name_vi', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN')) ?>"></div>
+                                        <div class="col-md-6"><label class="form-label fw-semibold">Tên quốc tế</label><input type="text" name="about_company_name_en" class="form-control rounded-3" value="<?= esc(get_setting('about_company_name_en', 'MOC GIA WOOD JOINT STOCK COMPANY')) ?>"></div>
+                                        <div class="col-md-3"><label class="form-label fw-semibold">Mã số thuế</label><input type="text" name="about_tax_code" class="form-control rounded-3" value="<?= esc(get_setting('about_tax_code', '0314436582')) ?>"></div>
+                                        <div class="col-md-5"><label class="form-label fw-semibold">Đại diện pháp luật</label><input type="text" name="about_legal_rep" class="form-control rounded-3" value="<?= esc(get_setting('about_legal_rep', 'TRẦN MINH ĐỨC')) ?>"></div>
                                         <div class="col-md-4"><label class="form-label fw-semibold">Ngày cấp phép</label><input type="text" name="about_license_date" class="form-control rounded-3" value="<?= esc(get_setting('about_license_date', '30/05/2017')) ?>"></div>
-                                        <div class="col-12"><label class="form-label fw-semibold">Địa chỉ trụ sở</label><input type="text" name="about_address" class="form-control rounded-3" value="<?= esc(get_setting('about_address', '77 Quang Trung, khu phố II, Thị trấn Chư Ty, Huyện Đức Cơ, Tỉnh Gia Lai')) ?>"></div>
+                                        <div class="col-12"><label class="form-label fw-semibold">Địa chỉ trụ sở</label><input type="text" name="about_address" class="form-control rounded-3" value="<?= esc(get_setting('about_address', '128 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh')) ?>"></div>
                                     </div>
                                 </div>
                             </div>

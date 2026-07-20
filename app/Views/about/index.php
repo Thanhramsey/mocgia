@@ -4,31 +4,31 @@
 
 <?php
 $heroLabel = get_setting('about_hero_label', 'Về Chúng Tôi');
-$heroTitle = get_setting('about_hero_title', 'Công ty TNHH MTV Việt Lệ Thanh');
-$heroSub = get_setting('about_hero_sub', 'Uy tín — Chất lượng — Tận tâm phục vụ từ năm 2017 tại Gia Lai');
+$heroTitle = get_setting('about_hero_title', 'Công ty Cổ phần Gỗ Ngân Gia Nguyễn');
+$heroSub = get_setting('about_hero_sub', 'Giải pháp vật liệu gỗ công nghiệp cao cấp và thiết kế nội thất may đo hàng đầu từ năm 2017.');
 
 $statYear = get_setting('about_stat_year', '2017');
-$statExp = get_setting('about_stat_exp', '7+');
+$statExp = get_setting('about_stat_exp', '9+');
 $statSectors = get_setting('about_stat_sectors', '3');
 $statQuality = get_setting('about_stat_quality', '100%');
 
 $storyHeading = get_setting('about_story_heading', 'Hành Trình Phát Triển & Khẳng Định Uy Tín');
-$storyIntro = get_setting('about_story_intro', 'Được thành lập năm 2017 tại huyện Đức Cơ, Công ty TNHH MTV Việt Lệ Thanh đã vươn lên trở thành doanh nghiệp đa ngành uy tín hàng đầu khu vực cửa khẩu Tây Nguyên.');
-$storyBody1 = get_setting('about_story_body1', 'Khởi nghiệp từ dịch vụ lưu trú, đáp ứng nhu cầu của du khách và doanh nhân công tác tại Đức Cơ — khu kinh tế cửa khẩu sầm uất nhất Gia Lai. Với phương châm "Khách hàng là thượng đế", cơ sở liên tục được đầu tư nâng cấp.');
-$storyBody2 = get_setting('about_story_body2', 'Song song đó, nhận thấy tiềm năng phát triển hạ tầng và nông nghiệp tại Tây Nguyên, công ty mạnh dạn mở rộng đầu tư vào thi công đường bộ giao thông nông thôn và mô hình chăn nuôi trâu, bò, heo hữu cơ khép kín.');
+$storyIntro = get_setting('about_story_intro', 'Được thành lập năm 2017, Công ty Cổ phần Gỗ Ngân Gia Nguyễn đã nhanh chóng vươn lên trở thành thương hiệu dẫn đầu trong lĩnh vực sản xuất ván gỗ công nghiệp chất lượng cao và thiết kế thi công nội thất.');
+$storyBody1 = get_setting('about_story_body1', 'Khởi đầu từ một xưởng sản xuất quy mô vừa tại TP. Hồ Chí Minh, Ngân Gia Nguyễn không ngừng nghiên cứu công nghệ ép ván hiện đại để cung cấp giải pháp vật liệu gỗ chất lượng tiêu chuẩn quốc tế. Chúng tôi luôn chú trọng vào trải nghiệm khách hàng và tính đa dạng hóa của sản phẩm.');
+$storyBody2 = get_setting('about_story_body2', 'Đến nay, Ngân Gia Nguyễn đã sở hữu hệ thống máy móc chuẩn châu Âu và dòng sản phẩm đa dạng hơn 1.000 màu sắc từ Melamine, Laminate đến Acrylic bóng gương cao cấp. Định hướng phát triển bền vững của chúng tôi được bảo chứng bởi các chứng chỉ an toàn sức khỏe đạt chuẩn quốc tế.');
 
 $companyInfos = [
-    ['icon' => 'bi-building-fill', 'label' => lang('Site.full_name'), 'value' => get_setting('about_company_name_vi', 'CÔNG TY TNHH MỘT THÀNH VIÊN VIỆT LỆ THANH')],
-    ['icon' => 'bi-globe', 'label' => lang('Site.international_name'), 'value' => get_setting('about_company_name_en', 'VIET LE THANH ONE MEMBER COMPANY LIMITED')],
-    ['icon' => 'bi-hash', 'label' => lang('Site.tax_code'), 'value' => get_setting('about_tax_code', '5901061783')],
-    ['icon' => 'bi-person-fill-check', 'label' => lang('Site.legal_representative'), 'value' => get_setting('about_legal_rep', 'NGUYỄN HỮU VIỆT')],
+    ['icon' => 'bi-building-fill', 'label' => lang('Site.full_name'), 'value' => get_setting('about_company_name_vi', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN')],
+    ['icon' => 'bi-globe', 'label' => lang('Site.international_name'), 'value' => get_setting('about_company_name_en', 'MOC GIA WOOD JOINT STOCK COMPANY')],
+    ['icon' => 'bi-hash', 'label' => lang('Site.tax_code'), 'value' => get_setting('about_tax_code', '0314436582')],
+    ['icon' => 'bi-person-fill-check', 'label' => lang('Site.legal_representative'), 'value' => get_setting('about_legal_rep', 'TRẦN MINH ĐỨC')],
     ['icon' => 'bi-calendar-event', 'label' => lang('Site.license_date'), 'value' => get_setting('about_license_date', '30/05/2017')],
-    ['icon' => 'bi-geo-alt-fill', 'label' => lang('Site.head_office'), 'value' => get_setting('about_address', '77 Quang Trung, khu phố II, Thị trấn Chư Ty, Huyện Đức Cơ, Tỉnh Gia Lai')],
+    ['icon' => 'bi-geo-alt-fill', 'label' => lang('Site.head_office'), 'value' => get_setting('about_address', '128 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh')],
 ];
 
-$vision = get_setting('about_vision', 'Trở thành biểu tượng uy tín hàng đầu tại Đức Cơ — Gia Lai trong lĩnh vực dịch vụ lưu trú chất lượng cao, đồng thời là nhà thầu thi công hạ tầng giao thông tin cậy của tỉnh nhà.');
-$mission = get_setting('about_mission', 'Cung cấp giải pháp lưu trú ấm cúng, an toàn; xây dựng những tuyến đường giao thông bền vững thúc đẩy giao thương biên giới; cung cấp thực phẩm sạch từ nông nghiệp hữu cơ cho cộng đồng.');
-$valuesRaw = get_setting('about_values', "Chất lượng: Đảm bảo tuyệt đối ở mọi dịch vụ\nTận tâm: Luôn đặt khách hàng là trung tâm\nTrách nhiệm: Đóng góp tích cực cho địa phương");
+$vision = get_setting('about_vision', 'Trở thành thương hiệu hàng đầu cung cấp giải pháp vật liệu gỗ công nghiệp và nội thất cao cấp tại Việt Nam, mang lại không gian sống đẳng cấp và bền vững.');
+$mission = get_setting('about_mission', 'Đem đến các dòng sản phẩm gỗ công nghiệp chất lượng vượt trội, an toàn cho sức khỏe và thiết kế dẫn đầu xu hướng để hiện thực hóa mọi ý tưởng thiết kế nội thất.');
+$valuesRaw = get_setting('about_values', "Sáng tạo: Không ngừng đổi mới công nghệ và thiết kế\nChất lượng: Tiêu chuẩn quốc tế trong từng thớ gỗ\nTrách nhiệm: Phát triển bền vững vì sức khỏe và môi trường");
 $valueLines = array_values(array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', (string) $valuesRaw))));
 if (empty($valueLines)) {
     $valueLines = [
@@ -108,8 +108,8 @@ if (empty($valueLines)) {
                     <div class="about-img-main">
                         <div class="about-img-placeholder">
                             <i class="bi bi-building"></i>
-                            <p>VIỆT LỆ THANH</p>
-                            <small>Đức Cơ · Gia Lai</small>
+                            <p>NGÂN GIA NGUYỄN</p>
+                            <small>Wood & Interior Solution</small>
                         </div>
                     </div>
                     <div class="about-img-badge">
@@ -373,7 +373,7 @@ if (empty($valueLines)) {
         <div class="about-cta-inner">
             <div class="row align-items-center g-4">
                 <div class="col-lg-8">
-                    <h3 class="text-white fw-bold mb-2">Sẵn sàng hợp tác cùng Việt Lệ Thanh?</h3>
+                    <h3 class="text-white fw-bold mb-2">Sẵn sàng hợp tác cùng Ngân Gia Nguyễn?</h3>
                     <p class="text-white-50 mb-0">Liên hệ ngay để được tư vấn dịch vụ và nhận báo giá tốt nhất từ đội ngũ chuyên nghiệp của chúng tôi.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end">

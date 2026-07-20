@@ -1,0 +1,106 @@
+<?= $this->extend('layouts/admin') ?>
+
+<?= $this->section('content') ?>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h4 class="mb-1 fw-bold"><i class="bi bi-tags me-2 text-primary"></i><?= esc($title) ?></h4>
+        <p class="text-muted mb-0 small">Quản lý các nhóm/danh mục sản phẩm trưng bày trên website.</p>
+    </div>
+    <a href="<?= base_url('admin/product-categories/create') ?>" class="btn btn-primary btn-custom rounded-pill">
+        <i class="bi bi-plus-circle me-1"></i> Thêm nhóm mới
+    </a>
+</div>
+
+<?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success alert-dismissible fade show rounded-3 mb-4" role="alert">
+        <i class="bi bi-check-circle me-2"></i><?= esc(session()->getFlashdata('success')) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">
+        <i class="bi bi-x-circle me-2"></i><?= esc(session()->getFlashdata('error')) ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<?php endif; ?>
+
+<div class="card border-0 shadow-sm rounded-4 bg-white">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-4" style="width:50px;">#</th>
+                        <th style="width:60px;">Ảnh</th>
+                        <th>Tên nhóm sản phẩm</th>
+                        <th>Slug</th>
+                        <th class="text-center">Số SP</th>
+                        <th class="text-center">Thứ tự</th>
+                        <th class="text-center">Trạng thái</th>
+                        <th class="text-end pe-4">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (! empty($categories)): ?>
+                        <?php foreach ($categories as $i => $cat): ?>
+                            <tr>
+                                <td class="ps-4 text-muted small"><?= $i + 1 ?></td>
+                                <td>
+                                    <?php if (! empty($cat['image'])): ?>
+                                        <img src="<?= base_url($cat['image']) ?>" alt="<?= esc($cat['title']) ?>"
+                                             style="width:44px;height:44px;object-fit:cover;border-radius:6px;">
+                                    <?php else: ?>
+                                        <div class="bg-light text-primary rounded d-flex align-items-center justify-content-center" style="width:44px;height:44px;">
+                                            <i class="bi <?= esc($cat['icon'] ?: 'bi-box-seam') ?> fs-5"></i>
+                                        </div>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <span class="fw-semibold"><?= esc($cat['title']) ?></span>
+                                    <?php if (! empty($cat['description'])): ?>
+                                        <br><small class="text-muted"><?= esc(mb_strimwidth($cat['description'], 0, 60, '…')) ?></small>
+                                    <?php endif; ?>
+                                </td>
+                                <td><code class="small"><?= esc($cat['slug']) ?></code></td>
+                                <td class="text-center">
+                                    <span class="badge bg-primary-subtle text-primary border border-primary rounded-pill px-2">
+                                        <?= (int) ($cat['product_count'] ?? 0) ?>
+                                    </span>
+                                </td>
+                                <td class="text-center"><?= (int) $cat['sort_order'] ?></td>
+                                <td class="text-center">
+                                    <?php if ($cat['status'] == 1): ?>
+                                        <span class="badge bg-success-subtle text-success border border-success rounded-pill px-3">Hiển thị</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary-subtle text-secondary border border-secondary rounded-pill px-3">Ẩn</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-end pe-4 text-nowrap">
+                                    <a href="<?= base_url('admin/product-categories/edit/' . $cat['id']) ?>" class="btn btn-outline-primary btn-sm rounded-pill px-3 me-1">
+                                        <i class="bi bi-pencil"></i> Sửa
+                                    </a>
+                                    <a href="<?= base_url('admin/product-categories/delete/' . $cat['id']) ?>"
+                                       onclick="return confirm('Xóa nhóm sản phẩm này? Các sản phẩm bên trong sẽ không bị xóa.')"
+                                       class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                                        <i class="bi bi-trash"></i> Xóa
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="8" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-2 opacity-50"></i>
+                                Chưa có nhóm sản phẩm nào. <a href="<?= base_url('admin/product-categories/create') ?>">Thêm ngay</a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection() ?>

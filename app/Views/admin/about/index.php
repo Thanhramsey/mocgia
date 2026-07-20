@@ -35,7 +35,7 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label class="form-label fw-semibold">Nhãn hero</label>
-                                    <input type="text" name="home_hero_label" class="form-control rounded-3" value="<?= esc(get_setting('home_hero_label', 'VIỆT LỆ THANH')) ?>">
+                                    <input type="text" name="home_hero_label" class="form-control rounded-3" value="<?= esc(get_setting('home_hero_label', 'NGÂN GIA NGUYỄN')) ?>">
                                 </div>
                                 <div class="col-md-8">
                                     <label class="form-label fw-semibold">Tiêu đề chính</label>
@@ -85,11 +85,11 @@
                                 </div>
                                 <div class="col-md-8">
                                     <label class="form-label fw-semibold">Tiêu đề lớn section</label>
-                                    <input type="text" name="home_intro_heading" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_heading', 'CÔNG TY TNHH MTV VIỆT LỆ THANH')) ?>">
+                                    <input type="text" name="home_intro_heading" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_heading', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN')) ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Đoạn mô tả 1</label>
-                                    <textarea name="home_intro_body1" class="form-control rounded-3" rows="3"><?= esc(get_setting('home_intro_body1', 'Được thành lập từ năm 2017 tại huyện Đức Cơ, tỉnh Gia Lai, Công ty TNHH Một Thành Viên Việt Lệ Thanh đã và đang khẳng định vị thế là một trong những doanh nghiệp đa ngành uy tín hàng đầu trong khu vực.')) ?></textarea>
+                                    <textarea name="home_intro_body1" class="form-control rounded-3" rows="3"><?= esc(get_setting('home_intro_body1', 'Được thành lập từ năm 2017, Ngân Gia Nguyễn đã khẳng định vị thế dẫn đầu trong lĩnh vực cung cấp các giải pháp vật liệu gỗ công nghiệp và thiết kế thi công nội thất trọn gói chất lượng cao.')) ?></textarea>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Đoạn mô tả 2</label>
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Khối ảnh mô phỏng - Tiêu đề</label>
-                                    <input type="text" name="home_intro_card_title" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_title', 'VIỆT LỆ THANH')) ?>">
+                                    <input type="text" name="home_intro_card_title" class="form-control rounded-3" value="<?= esc(get_setting('home_intro_card_title', 'NGÂN GIA NGUYỄN')) ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Khối ảnh mô phỏng - Địa chỉ</label>
@@ -257,7 +257,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">News - Tiêu đề section</label>
-                                    <input type="text" name="home_news_title" class="form-control rounded-3" value="<?= esc(get_setting('home_news_title', 'Bản Tin Việt Lệ Thanh')) ?>">
+                                    <input type="text" name="home_news_title" class="form-control rounded-3" value="<?= esc(get_setting('home_news_title', 'Bản Tin Ngân Gia Nguyễn')) ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">News - Text khi rỗng</label>
@@ -301,7 +301,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <label class="form-label fw-semibold">Tiêu đề hero</label>
-                                    <input type="text" name="about_hero_title" class="form-control rounded-3" value="<?= esc(get_setting('about_hero_title', 'Công ty TNHH MTV Việt Lệ Thanh')) ?>">
+                                    <input type="text" name="about_hero_title" class="form-control rounded-3" value="<?= esc(get_setting('about_hero_title', 'Công ty Cổ phần Gỗ Ngân Gia Nguyễn')) ?>">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label fw-semibold">Mô tả ngắn dưới tiêu đề</label>
@@ -345,7 +345,7 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Tên đầy đủ (Tiếng Việt)</label>
-                                    <input type="text" name="about_company_name_vi" class="form-control rounded-3" value="<?= esc(get_setting('about_company_name_vi', 'CÔNG TY TNHH MỘT THÀNH VIÊN VIỆT LỆ THANH')) ?>">
+                                    <input type="text" name="about_company_name_vi" class="form-control rounded-3" value="<?= esc(get_setting('about_company_name_vi', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN')) ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Tên quốc tế</label>

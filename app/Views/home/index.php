@@ -3,9 +3,9 @@
 <?= $this->section('content') ?>
 
 <?php
-$homeHeroLabel = get_setting('home_hero_label', 'VIỆT LỆ THANH · GIA LAI');
-$homeHeroTitle = get_setting('home_hero_title', 'CÔNG TY TNHH MTV VIỆT LỆ THANH');
-$homeHeroSub = get_setting('home_hero_sub', 'Dịch vụ lưu trú ngắn ngày uy tín và thi công công trình chuyên nghiệp tại Gia Lai. Chất lượng — Uy tín — Tận tâm.');
+$homeHeroLabel = get_setting('home_hero_label', 'NGÂN GIA NGUYỄN · WOOD SOLUTIONS');
+$homeHeroTitle = get_setting('home_hero_title', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN');
+$homeHeroSub = get_setting('home_hero_sub', 'Giải pháp vật liệu gỗ công nghiệp cao cấp và thiết kế nội thất may đo độc bản đạt tiêu chuẩn quốc tế.');
 $homeCtaText = get_setting('home_cta_text', 'Khám Phá Dịch Vụ');
 $homeCtaLink = get_setting('home_cta_link', '/dich-vu');
 $homeHeroContactText = get_setting('home_hero_contact_text', 'Liên Hệ Ngay');
@@ -14,26 +14,26 @@ $homeHeroContactLink = get_setting('home_hero_contact_link', '/lien-he');
 $homeIntroTitle = get_setting('home_intro_title', 'Về chúng tôi');
 $homeIntroText = get_setting('home_intro_text', 'Nội dung cấu hình trang chủ đang chuẩn bị triển khai ở giao diện frontend.');
 $homeIntroEyebrow = get_setting('home_intro_eyebrow', 'Giới Thiệu Chung');
-$homeIntroHeading = get_setting('home_intro_heading', 'CÔNG TY TNHH MTV VIỆT LỆ THANH');
-$homeIntroBody1 = get_setting('home_intro_body1', 'Được thành lập từ năm 2017 tại huyện Đức Cơ, tỉnh Gia Lai, Công ty TNHH Một Thành Viên Việt Lệ Thanh đã và đang khẳng định vị thế là một trong những doanh nghiệp đa ngành uy tín hàng đầu trong khu vực.');
-$homeIntroBody2 = get_setting('home_intro_body2', 'Lấy dịch vụ lưu trú ngắn ngày làm trọng tâm phát triển với hệ thống phòng nghỉ tiện nghi, sạch sẽ và an toàn. Bên cạnh đó, công ty còn phát triển mạnh mẽ mảng thi công xây dựng hạ tầng giao thông và trang trại chăn nuôi gia súc theo hướng bền vững.');
-$homeIntroCardTitle = get_setting('home_intro_card_title', 'VIỆT LỆ THANH');
-$homeIntroCardAddress = get_setting('home_intro_card_address', 'Trụ sở tại: 77 Quang Trung, thị trấn Chư Ty, Đức Cơ, Gia Lai');
-$homeIntroFeature1Title = get_setting('home_intro_feature1_title', 'Uy Tín Hàng Đầu');
-$homeIntroFeature1Sub = get_setting('home_intro_feature1_sub', 'Đặt chất lượng lên trên hết');
-$homeIntroFeature2Title = get_setting('home_intro_feature2_title', 'Dịch Vụ Chu Đáo');
-$homeIntroFeature2Sub = get_setting('home_intro_feature2_sub', 'Phục vụ khách hàng 24/7');
+$homeIntroHeading = get_setting('home_intro_heading', 'CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN');
+$homeIntroBody1 = get_setting('home_intro_body1', 'Được thành lập từ năm 2017, Ngân Gia Nguyễn đã khẳng định vị thế dẫn đầu trong lĩnh vực cung cấp các giải pháp vật liệu gỗ công nghiệp và thiết kế thi công nội thất trọn gói chất lượng cao.');
+$homeIntroBody2 = get_setting('home_intro_body2', 'Chúng tôi sở hữu danh mục sản phẩm phong phú với hơn 1.000 màu sắc và bề mặt độc đáo, từ vân gỗ tự nhiên siêu thực, vân đá, giả da đến các bề mặt Acrylic, Laminate bóng gương sang trọng. Các sản phẩm của Ngân Gia Nguyễn đều đạt tiêu chuẩn an toàn sức khỏe quốc tế E0, E1.');
+$homeIntroCardTitle = get_setting('home_intro_card_title', 'NGÂN GIA NGUYỄN');
+$homeIntroCardAddress = get_setting('home_intro_card_address', 'Trụ sở tại: 128 Nguyễn Văn Trỗi, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh');
+$homeIntroFeature1Title = get_setting('home_intro_feature1_title', 'Chất Lượng Quốc Tế');
+$homeIntroFeature1Sub = get_setting('home_intro_feature1_sub', 'Cốt ván đạt chuẩn E0, E1 an toàn');
+$homeIntroFeature2Title = get_setting('home_intro_feature2_title', 'Giải Pháp Toàn Diện');
+$homeIntroFeature2Sub = get_setting('home_intro_feature2_sub', 'Thiết kế, sản xuất và thi công');
 $homeIntroButtonText = get_setting('home_intro_button_text', 'Xem Chi Tiết');
 $homeIntroButtonLink = get_setting('home_intro_button_link', '/gioi-thieu');
 
 $homeWhyEyebrow = get_setting('home_why_eyebrow', 'Giá Trị Cốt Lõi');
 $homeWhyTitle = get_setting('home_why_title', 'Tại Sao Nên Chọn Chúng Tôi');
-$homeWhyCard1Title = get_setting('home_why_card1_title', 'Vị Trí Đắc Địa');
-$homeWhyCard1Desc = get_setting('home_why_card1_desc', 'Nằm ngay trung tâm thị trấn Chư Ty, Đức Cơ, thuận tiện cho việc di chuyển, giao thương và lưu trú nghỉ dưỡng.');
-$homeWhyCard2Title = get_setting('home_why_card2_title', 'Giá Cả Hợp Lý');
-$homeWhyCard2Desc = get_setting('home_why_card2_desc', 'Cung cấp phòng lưu trú đầy đủ tiện nghi và các dịch vụ xây dựng với mức giá cạnh tranh nhất thị trường.');
-$homeWhyCard3Title = get_setting('home_why_card3_title', 'Đội Ngũ Tận Tâm');
-$homeWhyCard3Desc = get_setting('home_why_card3_desc', 'Đội ngũ kỹ sư xây dựng lành nghề và nhân viên khách sạn phục vụ chuyên nghiệp, chu đáo.');
+$homeWhyCard1Title = get_setting('home_why_card1_title', 'Bề Mặt Siêu Thực');
+$homeWhyCard1Desc = get_setting('home_why_card1_desc', 'Sở hữu hơn 1.000 màu sắc và bề mặt vân gỗ, giả đá, đơn sắc thời thượng, dẫn đầu xu hướng kiến trúc hiện đại.');
+$homeWhyCard2Title = get_setting('home_why_card2_title', 'An Toàn Sức Khỏe');
+$homeWhyCard2Desc = get_setting('home_why_card2_desc', 'Toàn bộ ván gỗ đạt chuẩn phát thải E0, E1 châu Âu, bảo vệ tối đa sức khỏe cho cả gia đình bạn.');
+$homeWhyCard3Title = get_setting('home_why_card3_title', 'Dịch Vụ May Đo');
+$homeWhyCard3Desc = get_setting('home_why_card3_desc', 'Quy trình thiết kế sản xuất may đo (Bespoke) tinh xảo, đáp ứng chuẩn xác mọi ý tưởng kiến trúc độc bản.');
 
 $homeStats = [
     ['value' => get_setting('home_stats_item1_value', '9+'), 'title' => get_setting('home_stats_item1_title', 'Năm Hoạt Động')],
@@ -52,7 +52,7 @@ $homeGalleryViewAllText = get_setting('home_gallery_view_all_text', 'Xem Tất C
 $homeGalleryEmptyText = get_setting('home_gallery_empty_text', 'Đang cập nhật thư viện ảnh...');
 
 $homeNewsEyebrow = get_setting('home_news_eyebrow', 'Tin Tức Mới Nhất');
-$homeNewsTitle = get_setting('home_news_title', 'Bản Tin Việt Lệ Thanh');
+$homeNewsTitle = get_setting('home_news_title', 'Bản Tin Ngân Gia Nguyễn');
 $homeNewsEmptyText = get_setting('home_news_empty_text', 'Đang cập nhật tin tức mới...');
 $homeNewsReadMoreText = get_setting('home_news_read_more_text', 'Đọc Tiếp');
 
@@ -150,7 +150,7 @@ $extractYouTubeId = static function (string $url): ?string {
                     <div class="shadow-sm position-relative overflow-hidden" style="height: 400px; border-radius: 8px;">
                         <div class="w-100 h-100 d-flex align-items-center justify-content-center text-white text-center" style="background: linear-gradient(135deg, rgba(var(--primary-dark-rgb), 0.85) 0%, rgba(var(--primary-rgb), 0.75) 100%), url('<?= base_url('uploads/settings/' . get_setting('site_logo')) ?>') center/cover no-repeat;">
                             <div class="p-4" style="z-index: 2;">
-                                <div class="play-btn-wrapper mb-3 d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-primary" style="width: 72px; height: 72px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.3s ease;" onclick="alert('Xem video giới thiệu dịch vụ Việt Lệ Thanh')">
+                                <div class="play-btn-wrapper mb-3 d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-primary" style="width: 72px; height: 72px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: transform 0.3s ease;" onclick="alert('Xem video giới thiệu giải pháp gỗ nội thất Ngân Gia Nguyễn')">
                                     <i class="bi bi-play-fill fs-1" style="margin-left: 4px; color: var(--primary-color);"></i>
                                 </div>
                                 <h4 class="fw-bold mb-1"><?= esc($homeIntroCardTitle) ?></h4>

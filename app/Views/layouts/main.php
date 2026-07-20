@@ -3,6 +3,11 @@
 <head>
     <?php
     $fontPresets = [
+        'mocgia_font' => [
+            'google'  => 'family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800',
+            'heading' => "'Be Vietnam Pro', 'Inter', sans-serif",
+            'body'    => "'Inter', sans-serif",
+        ],
         'helvetica' => [
             'google'  => 'family=Plus+Jakarta+Sans:wght@400;500;600;700;800',
             'heading' => "Helvetica, Arial, sans-serif",
@@ -56,6 +61,11 @@
     ];
 
     $colorPresets = [
+        'mocgia' => [
+            'primary' => '#333333', 'dark' => '#1a1a1a', 'light' => '#f8f6f2', 'accent' => '#c5a880',
+            'text' => '#1f1f1f', 'muted' => '#6e6e6e', 'bg_light' => '#f9f9f9',
+            'primary_rgb' => '51, 51, 51', 'dark_rgb' => '26, 26, 26',
+        ],
         'huongvietsinh' => [
             'primary' => '#e41e26', 'dark' => '#9f212e', 'light' => '#fff1f2', 'accent' => '#f3be17',
             'text' => '#111111', 'muted' => '#7f8c8d', 'bg_light' => '#f3f5f5',
@@ -108,15 +118,15 @@
         ],
     ];
 
-    $fontKey = get_setting('theme_font_preset', 'helvetica');
+    $fontKey = get_setting('theme_font_preset', 'mocgia_font');
     if (!array_key_exists($fontKey, $fontPresets)) {
-        $fontKey = 'helvetica';
+        $fontKey = 'mocgia_font';
     }
     $fontPreset = $fontPresets[$fontKey];
 
-    $colorKey = get_setting('theme_color_preset', 'huongvietsinh');
+    $colorKey = get_setting('theme_color_preset', 'mocgia');
     if (!array_key_exists($colorKey, $colorPresets)) {
-        $colorKey = 'huongvietsinh';
+        $colorKey = 'mocgia';
     }
     $themeColors = $colorPresets[$colorKey];
 
@@ -199,9 +209,9 @@
             --bs-btn-active-border-color: <?= esc($themeColors['dark']) ?>;
 
             /* Theme mode variables */
-            --bg-body: #ffffff;
-            --bg-card: #ffffff;
-            --bg-navbar: #ffffff;
+            --bg-body: #F8F6F2;
+            --bg-card: #F8F6F2;
+            --bg-navbar: #F8F6F2;
             --border-color: #e9ecef;
             --text-main: <?= esc($themeColors['text']) ?>;
             --text-muted-custom: <?= esc($themeColors['muted']) ?>;
@@ -356,6 +366,14 @@
 </head>
 <body>
 
+    <!-- Page Loader Overlay -->
+    <div id="page-loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--bg-body); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <div class="loader-content text-center" style="opacity: 0; transform: scale(0.9);">
+            <h2 class="fw-bold" style="font-family: var(--font-heading); letter-spacing: 4px; font-size: 2.2rem; color: var(--text-main);">NGÂN GIA NGUYỄN</h2>
+            <div class="spinner-border spinner-border-sm mt-3" role="status" style="color: var(--primary-color);"></div>
+        </div>
+    </div>
+
     <!-- Header Section -->
     <?= $this->include('layouts/header') ?>
 
@@ -379,6 +397,16 @@
     
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <!-- SplitType -->
+    <script src="https://unpkg.com/split-type"></script>
+    <!-- Motion JS -->
+    <script src="<?= base_url('js/motion.js') ?>"></script>
     
     <!-- Custom scripts -->
     <script>

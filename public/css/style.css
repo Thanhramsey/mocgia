@@ -197,15 +197,18 @@ a.text-primary:hover {
     position: sticky;
     top: 0;
     z-index: 1020;
-    background-color: var(--bg-navbar-rgba);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-normal);
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 12px 0;
 }
 
 .header-wrapper.scrolled {
-    padding: 5px 0;
+    background-color: var(--bg-navbar-rgba);
+    backdrop-filter: blur(18px);
     box-shadow: var(--shadow-md);
+    padding: 4px 0;
 }
 
 .navbar-brand {
@@ -1373,15 +1376,25 @@ a.text-primary:hover {
     color: #555555 !important;
 }
 
-/* Clean up card roundings and borders */
+/* Card hover effects according to MOTION.md */
 .card, .service-card, .news-card, .why-card, .gallery-item {
-    border-radius: 8px !important;
+    border-radius: var(--border-radius-md) !important;
     border: 1px solid rgba(0, 0, 0, 0.06) !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover, .service-card:hover, .news-card:hover, .why-card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+    transform: translateY(-10px) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1) !important;
+}
+
+.service-card img, .news-card img, .gallery-item img {
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover img, .news-card:hover img, .gallery-item:hover img {
+    transform: scale(1.06) !important;
 }
 
 /* Float items style */
@@ -1401,19 +1414,40 @@ a.text-primary:hover {
     color: #ffffff !important;
 }
 
-/* Force body styling to match huongvietsinh typography exactly */
+/* Custom typography overrides representing the premium brand styling */
 body {
-    font-family: Helvetica, Arial, sans-serif !important;
-    font-size: 14px !important;
-    color: #000000 !important;
+    font-family: var(--font-body) !important;
+    font-size: 15px !important;
+    color: var(--text-color) !important;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: Helvetica, Arial, sans-serif !important;
+    font-family: var(--font-heading) !important;
 }
 p {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
 }
 
+/* Social icon animations and smooth scrolling properties */
+.footer-social-icon {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+}
+.footer-social-icon:hover {
+    transform: scale(1.1) rotate(6deg) !important;
+}
 
-
+html.lenis {
+    height: auto;
+}
+.lenis-smooth {
+    scroll-behavior: initial;
+}
+.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis-stopped {
+    overflow: hidden;
+}
+.lenis-scrolling iframe {
+    pointer-events: none;
+}
