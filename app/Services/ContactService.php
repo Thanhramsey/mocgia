@@ -53,7 +53,7 @@ class ContactService
         $email = \Config\Services::email();
         
         $adminEmail = get_setting('email', 'admin@vietlethanh.com');
-        $companyName = get_setting('company_name', 'Việt Lệ Thanh');
+        $companyName = get_setting('company_name', 'Ngân Gia Nguyễn');
 
         $email->setTo($adminEmail);
         $email->setFrom('no-reply@vietlethanh.com', $companyName);

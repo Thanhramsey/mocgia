@@ -27,8 +27,8 @@ class News extends BaseController
             'newsList'        => $newsList,
             'pager'           => $this->newsModel->pager,
             'categories'      => $this->categoryModel->findAll(),
-            'seo_title'       => 'Tin tức & Sự kiện mới nhất - Việt Lệ Thanh',
-            'seo_description' => 'Cập nhật tin tức hoạt động, dự án xây dựng và khuyến mãi phòng nghỉ mới nhất từ công ty Việt Lệ Thanh Gia Lai.',
+            'seo_title'       => 'Tin tức & Sự kiện mới nhất - Ngân Gia Nguyễn',
+            'seo_description' => 'Cập nhật tin tức hoạt động, dự án xây dựng và khuyến mãi phòng nghỉ mới nhất từ công ty Ngân Gia Nguyễn Gia Lai.',
             'seo_keywords'    => 'tin tuc viet le thanh, hoat dong viet le thanh',
         ];
 
@@ -86,8 +86,8 @@ class News extends BaseController
             'pager'           => $this->newsModel->pager,
             'category'        => $category,
             'categories'      => $this->categoryModel->findAll(),
-            'seo_title'       => $category['title'] . ' - Tin tức mới nhất - Việt Lệ Thanh',
-            'seo_description' => 'Xem các tin tức mới nhất thuộc chuyên mục ' . $category['title'] . ' của công ty Việt Lệ Thanh Gia Lai.',
+            'seo_title'       => $category['title'] . ' - Tin tức mới nhất - Ngân Gia Nguyễn',
+            'seo_description' => 'Xem các tin tức mới nhất thuộc chuyên mục ' . $category['title'] . ' của công ty Ngân Gia Nguyễn Gia Lai.',
             'seo_keywords'    => 'tin tuc, ' . $category['title'],
         ];
 

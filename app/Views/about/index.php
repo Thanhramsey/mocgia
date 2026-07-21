@@ -794,14 +794,28 @@ if (empty($valueLines)) {
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
+.timeline-slides-container .card-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    position: relative;
+    overflow: hidden;
+}
 .timeline-slide {
-    display: none;
+    grid-area: 1 / 1 / 2 / 2;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    visibility: hidden;
+    transform: translateX(0);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.6s;
+    background: var(--bg-card);
 }
 .timeline-slide.active {
-    display: block;
     opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transform: translateX(0);
 }
 .timeline-slide-img-box {
     position: relative;
@@ -809,14 +823,16 @@ if (empty($valueLines)) {
     min-height: 280px;
     background: var(--bg-light);
 }
-.timeline-slide-img {
+.timeline-slide-img,
+.timeline-slide-img-fallback {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.timeline-slide.active .timeline-slide-img {
-    transform: scale(1.03);
+.timeline-slide.active .timeline-slide-img,
+.timeline-slide.active .timeline-slide-img-fallback {
+    transform: scale(1.05);
 }
 .timeline-slide-img-fallback {
     background: var(--bg-light);
@@ -824,6 +840,56 @@ if (empty($valueLines)) {
 }
 .timeline-slide-title {
     color: var(--text-color) !important;
+}
+
+/* Slide transition directions */
+.timeline-slide.enter-next {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(50px);
+    z-index: 3;
+}
+.timeline-slide.enter-prev {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-50px);
+    z-index: 3;
+}
+.timeline-slide.exit-next {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(-50px);
+    z-index: 1;
+}
+.timeline-slide.exit-prev {
+    opacity: 0;
+    visibility: visible;
+    transform: translateX(50px);
+    z-index: 1;
+}
+
+/* Stagger animation for slide content elements */
+.timeline-slide .timeline-slide-year-badge,
+.timeline-slide .timeline-slide-title,
+.timeline-slide .timeline-slide-desc {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+.timeline-slide.active .timeline-slide-year-badge {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+.timeline-slide.active .timeline-slide-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+.timeline-slide.active .timeline-slide-desc {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
 }
 
 @media (max-width: 768px) {
@@ -867,36 +933,57 @@ if (empty($valueLines)) {
 document.addEventListener('DOMContentLoaded', function() {
     var yearButtons = document.querySelectorAll('.timeline-year-btn');
     var timelineSlides = document.querySelectorAll('.timeline-slide');
+    var activeIndex = 0;
 
-    yearButtons.forEach(function(btn) {
+    // Determine initial active index
+    for (var i = 0; i < yearButtons.length; i++) {
+        if (yearButtons[i].classList.contains('active')) {
+            activeIndex = i;
+            break;
+        }
+    }
+
+    yearButtons.forEach(function(btn, index) {
         btn.addEventListener('click', function() {
-            // Remove active status
-            yearButtons.forEach(function(b) { b.classList.remove('active'); });
-            timelineSlides.forEach(function(s) { 
-                s.classList.remove('active');
-                s.style.display = 'none';
-            });
+            if (index === activeIndex) return;
 
-            // Set current active button
+            var direction = index > activeIndex ? 'next' : 'prev';
+            var oldSlide = timelineSlides[activeIndex];
+            var oldBtn = yearButtons[activeIndex];
+
+            // Deactivate old button and slide
+            if (oldBtn) oldBtn.classList.remove('active');
+            if (oldSlide) {
+                oldSlide.classList.remove('active');
+                oldSlide.classList.add('exit-' + direction);
+                
+                // Clear exit classes after transition completes (600ms)
+                (function(slide) {
+                    setTimeout(function() {
+                        slide.classList.remove('exit-next', 'exit-prev');
+                    }, 600);
+                })(oldSlide);
+            }
+
+            // Activate new button
             btn.classList.add('active');
+            activeIndex = index;
 
-            // Find current active slide
+            // Activate new slide with entry transition
             var targetId = btn.getAttribute('data-target');
             var activeSlide = document.getElementById(targetId);
             if (activeSlide) {
-                activeSlide.style.display = 'block';
-                // Trigger reflow to run transition smoothly
+                activeSlide.classList.remove('exit-next', 'exit-prev');
+                activeSlide.classList.add('enter-' + direction);
+                
+                // Trigger reflow to ensure entry starts from standard initial transform
                 activeSlide.offsetHeight;
+                
                 activeSlide.classList.add('active');
+                activeSlide.classList.remove('enter-' + direction);
             }
         });
     });
-
-    // Initialize the first slide display state explicitly (for fallback browsers)
-    var initialActive = document.querySelector('.timeline-slide.active');
-    if (initialActive) {
-        initialActive.style.display = 'block';
-    }
 });
 </script>
 

@@ -346,7 +346,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Đoạn mô tả 1</label>
-                                            <textarea name="home_intro_body1" class="form-control rounded-3" rows="3"><?= esc(get_setting('home_intro_body1', 'Được thành lập từ năm 2017 tại huyện Đức Cơ, tỉnh Gia Lai, Công ty TNHH Một Thành Viên Việt Lệ Thanh đã và đang khẳng định vị thế là một trong những doanh nghiệp đa ngành uy tín hàng đầu trong khu vực.')) ?></textarea>
+                                            <textarea name="home_intro_body1" class="form-control rounded-3" rows="3"><?= esc(get_setting('home_intro_body1', 'Được thành lập từ năm 2017 tại huyện Đức Cơ, tỉnh Gia Lai, Công ty TNHH Một Thành Viên Ngân Gia Nguyễn đã và đang khẳng định vị thế là một trong những doanh nghiệp đa ngành uy tín hàng đầu trong khu vực.')) ?></textarea>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Đoạn mô tả 2</label>
@@ -408,7 +408,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Card 1 - Mô tả</label>
-                                            <textarea name="home_why_card1_desc" class="form-control rounded-3" rows="2"><?= esc(get_setting('home_why_card1_desc', 'Nằm ngay trung tâm thị trấn Chư Ty, Đức Cơ, thuận tiện cho việc di chuyển, giao thương và lưu trú nghỉ dưỡng.')) ?></textarea>
+                                            <textarea name="home_why_card1_desc" class="form-control rounded-3" rows="2"><?= esc(get_setting('home_why_card1_desc', 'Nằm ngay trung tâm thị trấn TP Pleiku, Gia Lai thuận tiện cho việc di chuyển, giao thương và lưu trú nghỉ dưỡng.')) ?></textarea>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-semibold">Card 2 - Tiêu đề</label>

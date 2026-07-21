@@ -16,8 +16,8 @@ class Contact extends BaseController
     public function index(): string
     {
         $data = [
-            'seo_title'       => 'Liên hệ với Việt Lệ Thanh - Gia Lai',
-            'seo_description' => 'Gửi tin nhắn liên hệ, phản hồi hoặc yêu cầu đặt phòng khách sạn, thi công xây dựng đến công ty Việt Lệ Thanh tại Đức Cơ, Gia Lai.',
+            'seo_title'       => 'Liên hệ với Ngân Gia Nguyễn - Gia Lai',
+            'seo_description' => 'Gửi tin nhắn liên hệ, phản hồi hoặc yêu cầu đặt phòng khách sạn, thi công xây dựng đến công ty Ngân Gia Nguyễn tại Đức Cơ, Gia Lai.',
             'seo_keywords'    => 'lien he viet le thanh, dia chi viet le thanh duc co, sdt khach san viet le thanh',
         ];
 

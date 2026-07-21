@@ -92,7 +92,7 @@
                 <p class="mb-0">&copy; <?= date('Y') ?> CÔNG TY CỔ PHẦN GỖ NGÂN GIA NGUYỄN. <?= esc(lang('Site.all_rights_reserved')) ?></p>
             </div>
             <div class="col-md-6 text-center text-md-end mt-2 mt-md-0 text-dark">
-                <p class="mb-0 text-muted"><?= esc(lang('Site.designed_by')) ?> <a href="#" class="text-dark text-decoration-none fw-bold">Antigravity</a></p>
+                
             </div>
         </div>
     </div>

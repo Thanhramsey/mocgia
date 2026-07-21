@@ -28,7 +28,7 @@
                 <!-- Title -->
                 <div class="col-md-6">
                     <label for="title" class="form-label fw-semibold">Tiêu đề chính</label>
-                    <input type="text" class="form-control" id="title" name="title" value="<?= old('title') ?>" placeholder="Chào mừng đến với Việt Lệ Thanh...">
+                    <input type="text" class="form-control" id="title" name="title" value="<?= old('title') ?>" placeholder="Chào mừng đến với Ngân Gia Nguyễn...">
                 </div>
                 
                 <!-- Subtitle -->

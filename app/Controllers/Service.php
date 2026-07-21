@@ -19,8 +19,8 @@ class Service extends BaseController
 
         $data = [
             'services'        => $services,
-            'seo_title'       => 'Dịch vụ nổi bật của Việt Lệ Thanh',
-            'seo_description' => 'Khám phá các lĩnh vực kinh doanh của Việt Lệ Thanh: Khách sạn phòng nghỉ, xây dựng cầu đường và trang trại chăn nuôi chất lượng cao.',
+            'seo_title'       => 'Dịch vụ nổi bật của Ngân Gia Nguyễn',
+            'seo_description' => 'Khám phá các lĩnh vực kinh doanh của Ngân Gia Nguyễn: Khách sạn phòng nghỉ, xây dựng cầu đường và trang trại chăn nuôi chất lượng cao.',
             'seo_keywords'    => 'khach san duc co, xay dung cau duong gia lai, dich vu viet le thanh',
         ];
 

@@ -15,8 +15,8 @@ class About extends BaseController
             ->findAll();
 
         $data = [
-            'seo_title'       => 'Giới thiệu về Công ty TNHH MTV Việt Lệ Thanh',
-            'seo_description' => 'Tìm hiểu về lịch sử hình thành, năng lực thi công xây dựng, dịch vụ phòng nghỉ và trang trại chăn nuôi của Việt Lệ Thanh tại Đức Cơ Gia Lai.',
+            'seo_title'       => 'Giới thiệu về Công ty TNHH MTV Ngân Gia Nguyễn',
+            'seo_description' => 'Tìm hiểu về lịch sử hình thành, năng lực thi công xây dựng, dịch vụ phòng nghỉ và trang trại chăn nuôi của Ngân Gia Nguyễn tại Đức Cơ Gia Lai.',
             'seo_keywords'    => 'gioi thieu viet le thanh, viet le thanh gia lai',
             'milestones'      => $milestones,
         ];

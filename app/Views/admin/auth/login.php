@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập hệ thống quản trị - Việt Lệ Thanh</title>
+    <title>Đăng nhập hệ thống quản trị - Ngân Gia Nguyễn</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
@@ -69,7 +69,7 @@
 
 <div class="login-card">
     <div class="login-header">
-        <h3>VIỆT LỆ THANH</h3>
+        <h3>Ngân Gia Nguyễn</h3>
         <p class="mb-0 text-white-50">Hệ thống quản trị nội dung CMS</p>
     </div>
     <div class="login-body">
